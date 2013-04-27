@@ -1,0 +1,38 @@
+.2 错误2： linux/videodev.h: No such file or directory
+
+我今天在 Ubuntu 11.04 上编译 OpenCV2.2，又碰到这样一个问题，在安装好 Utuntu-11.04-server 以及相应的依赖包后，再用 cmake, make 编译 OpenCV2.2 出错，提示如下错误：
+
+/home/water/OpenCV/OpenCV-2.2.0/modules/highgui/src/cap_v4l.cpp:217:28: fatal error: linux/videodev.h: No such file or directory
+compilation terminated.
+make[2]: *** [modules/highgui/CMakeFiles/opencv_highgui.dir/src/cap_v4l.o] Error 1
+make[1]: *** [modules/highgui/CMakeFiles/opencv_highgui.dir/all] Error 2
+make: *** [all] Error 2
+这个问题在 OpenCV 的讨论组里也有讨论，由于 Ubuntu11.04 版本附带的 Linux 内核已经去掉了对 libv4L 的支持，因此需要自己安装 libv4L 库的头文件，尤其是 lib4l 包，该包是用命令
+
+$ sudo apt-get install libv4l-dev
+来安装的，注意这里是 libv4L 而不是 libv41；
+
+可是，现在你继续安装，依然会出现上述错误。这是由于这样安装的 libv4L 库把头文件名称改为
+
+/usr/include/libv4l1-videodev.h
+等。知道了原因，解决办法也很简单，只需要把出错这行代码的 #include 头文件改掉，即把文件
+
+/modules/highgui/src/cap_v4l.cpp
+第 217 行的
+
+#include <linux/videodev.h>
+代码，改为下面这行
+
+#include <libv4l1-videodev.h>
+这行代码。
+
+这样，就可以顺利进行编译了。
+
+==================================
+
+1. download webcam packets.
+2. SDL compile and install successful.
+3. spcaview compile successful.
+4. servfox compile successful.
+
+https://github.com/timonkun/webcam_project.git
