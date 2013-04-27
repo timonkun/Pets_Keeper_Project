@@ -36,3 +36,4 @@ $ sudo apt-get install libv4l-dev
 4. servfox compile successful.
 
 https://github.com/timonkun/webcam_project.git
+http://mxhaard.free.fr/
