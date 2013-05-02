@@ -4,7 +4,7 @@ top_builddir = .
 srcdir  = .
 objects = build
 depend	= build-deps
-prefix = /usr/local
+prefix = /home/timonkun/Workspace/webcam/SDL-ARM-linux-gcc4.4.1
 exec_prefix = ${prefix}
 bindir	= ${exec_prefix}/bin
 libdir  = ${exec_prefix}/lib
@@ -19,10 +19,10 @@ distfile = $(distdir).tar.gz
 
 
 SHELL	= /bin/sh
-CC      = gcc
+CC      = /opt/toolchains/arm-2009q3/bin/arm-none-linux-gnueabi-gcc
 INCLUDE = -I./include
 CFLAGS  = -g -O2 
-EXTRA_CFLAGS = -I./include -D_GNU_SOURCE=1 -fvisibility=hidden  -DXTHREADS -D_REENTRANT -DHAVE_LINUX_VERSION_H -Wall
+EXTRA_CFLAGS = -I./include -D_GNU_SOURCE=1 -fvisibility=hidden -D_REENTRANT -DHAVE_LINUX_VERSION_H -Wall
 LDFLAGS = 
 EXTRA_LDFLAGS =  -lm -ldl -lpthread
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
@@ -33,8 +33,8 @@ RANLIB	= ranlib
 WINDRES	= :
 
 TARGET  = libSDL.la
-SOURCES =  ./src/*.c ./src/audio/*.c ./src/cdrom/*.c ./src/cpuinfo/*.c ./src/events/*.c ./src/file/*.c ./src/stdlib/*.c ./src/thread/*.c ./src/timer/*.c ./src/video/*.c ./src/joystick/*.c ./src/video/dummy/*.c ./src/audio/disk/*.c ./src/audio/dummy/*.c ./src/loadso/dlopen/*.c ./src/audio/dsp/*.c ./src/audio/dma/*.c ./src/video/x11/*.c ./src/video/Xext/Xxf86dga/*.c ./src/video/dga/*.c ./src/video/Xext/Xxf86vm/*.c ./src/video/Xext/Xv/*.c ./src/video/Xext/Xinerama/*.c ./src/video/Xext/XME/*.c ./src/video/fbcon/*.c ./src/thread/pthread/SDL_systhread.c ./src/thread/pthread/SDL_syssem.c ./src/thread/pthread/SDL_sysmutex.c ./src/thread/pthread/SDL_syscond.c ./src/joystick/linux/*.c ./src/cdrom/linux/*.c ./src/timer/unix/*.c
-OBJECTS = $(objects)/SDL.lo $(objects)/SDL_error.lo $(objects)/SDL_fatal.lo $(objects)/SDL_audio.lo $(objects)/SDL_audiocvt.lo $(objects)/SDL_audiodev.lo $(objects)/SDL_mixer.lo $(objects)/SDL_mixer_MMX.lo $(objects)/SDL_mixer_MMX_VC.lo $(objects)/SDL_mixer_m68k.lo $(objects)/SDL_wave.lo $(objects)/SDL_cdrom.lo $(objects)/SDL_cpuinfo.lo $(objects)/SDL_active.lo $(objects)/SDL_events.lo $(objects)/SDL_expose.lo $(objects)/SDL_keyboard.lo $(objects)/SDL_mouse.lo $(objects)/SDL_quit.lo $(objects)/SDL_resize.lo $(objects)/SDL_rwops.lo $(objects)/SDL_getenv.lo $(objects)/SDL_iconv.lo $(objects)/SDL_malloc.lo $(objects)/SDL_qsort.lo $(objects)/SDL_stdlib.lo $(objects)/SDL_string.lo $(objects)/SDL_thread.lo $(objects)/SDL_timer.lo $(objects)/SDL_RLEaccel.lo $(objects)/SDL_blit.lo $(objects)/SDL_blit_0.lo $(objects)/SDL_blit_1.lo $(objects)/SDL_blit_A.lo $(objects)/SDL_blit_N.lo $(objects)/SDL_bmp.lo $(objects)/SDL_cursor.lo $(objects)/SDL_gamma.lo $(objects)/SDL_pixels.lo $(objects)/SDL_stretch.lo $(objects)/SDL_surface.lo $(objects)/SDL_video.lo $(objects)/SDL_yuv.lo $(objects)/SDL_yuv_mmx.lo $(objects)/SDL_yuv_sw.lo $(objects)/SDL_joystick.lo $(objects)/SDL_nullevents.lo $(objects)/SDL_nullmouse.lo $(objects)/SDL_nullvideo.lo $(objects)/SDL_diskaudio.lo $(objects)/SDL_dummyaudio.lo $(objects)/SDL_sysloadso.lo $(objects)/SDL_dspaudio.lo $(objects)/SDL_dmaaudio.lo $(objects)/SDL_x11dga.lo $(objects)/SDL_x11dyn.lo $(objects)/SDL_x11events.lo $(objects)/SDL_x11gamma.lo $(objects)/SDL_x11gl.lo $(objects)/SDL_x11image.lo $(objects)/SDL_x11modes.lo $(objects)/SDL_x11mouse.lo $(objects)/SDL_x11video.lo $(objects)/SDL_x11wm.lo $(objects)/SDL_x11yuv.lo $(objects)/XF86DGA.lo $(objects)/XF86DGA2.lo $(objects)/SDL_dgaevents.lo $(objects)/SDL_dgamouse.lo $(objects)/SDL_dgavideo.lo $(objects)/XF86VMode.lo $(objects)/Xv.lo $(objects)/Xinerama.lo $(objects)/xme.lo $(objects)/SDL_fb3dfx.lo $(objects)/SDL_fbelo.lo $(objects)/SDL_fbevents.lo $(objects)/SDL_fbmatrox.lo $(objects)/SDL_fbmouse.lo $(objects)/SDL_fbriva.lo $(objects)/SDL_fbvideo.lo $(objects)/SDL_systhread.lo $(objects)/SDL_syssem.lo $(objects)/SDL_sysmutex.lo $(objects)/SDL_syscond.lo $(objects)/SDL_sysjoystick.lo $(objects)/SDL_syscdrom.lo $(objects)/SDL_systimer.lo
+SOURCES =  ./src/*.c ./src/audio/*.c ./src/cdrom/*.c ./src/cpuinfo/*.c ./src/events/*.c ./src/file/*.c ./src/stdlib/*.c ./src/thread/*.c ./src/timer/*.c ./src/video/*.c ./src/video/dummy/*.c ./src/audio/disk/*.c ./src/audio/dummy/*.c ./src/loadso/dlopen/*.c ./src/audio/dsp/*.c ./src/audio/dma/*.c ./src/video/fbcon/*.c ./src/thread/pthread/SDL_systhread.c ./src/thread/pthread/SDL_syssem.c ./src/thread/pthread/SDL_sysmutex.c ./src/thread/pthread/SDL_syscond.c ./src/timer/unix/*.c ./src/cdrom/dummy/*.c
+OBJECTS = $(objects)/SDL.lo $(objects)/SDL_error.lo $(objects)/SDL_fatal.lo $(objects)/SDL_audio.lo $(objects)/SDL_audiocvt.lo $(objects)/SDL_audiodev.lo $(objects)/SDL_mixer.lo $(objects)/SDL_mixer_MMX.lo $(objects)/SDL_mixer_MMX_VC.lo $(objects)/SDL_mixer_m68k.lo $(objects)/SDL_wave.lo $(objects)/SDL_cdrom.lo $(objects)/SDL_cpuinfo.lo $(objects)/SDL_active.lo $(objects)/SDL_events.lo $(objects)/SDL_expose.lo $(objects)/SDL_keyboard.lo $(objects)/SDL_mouse.lo $(objects)/SDL_quit.lo $(objects)/SDL_resize.lo $(objects)/SDL_rwops.lo $(objects)/SDL_getenv.lo $(objects)/SDL_iconv.lo $(objects)/SDL_malloc.lo $(objects)/SDL_qsort.lo $(objects)/SDL_stdlib.lo $(objects)/SDL_string.lo $(objects)/SDL_thread.lo $(objects)/SDL_timer.lo $(objects)/SDL_RLEaccel.lo $(objects)/SDL_blit.lo $(objects)/SDL_blit_0.lo $(objects)/SDL_blit_1.lo $(objects)/SDL_blit_A.lo $(objects)/SDL_blit_N.lo $(objects)/SDL_bmp.lo $(objects)/SDL_cursor.lo $(objects)/SDL_gamma.lo $(objects)/SDL_pixels.lo $(objects)/SDL_stretch.lo $(objects)/SDL_surface.lo $(objects)/SDL_video.lo $(objects)/SDL_yuv.lo $(objects)/SDL_yuv_mmx.lo $(objects)/SDL_yuv_sw.lo $(objects)/SDL_nullevents.lo $(objects)/SDL_nullmouse.lo $(objects)/SDL_nullvideo.lo $(objects)/SDL_diskaudio.lo $(objects)/SDL_dummyaudio.lo $(objects)/SDL_sysloadso.lo $(objects)/SDL_dspaudio.lo $(objects)/SDL_dmaaudio.lo $(objects)/SDL_fb3dfx.lo $(objects)/SDL_fbelo.lo $(objects)/SDL_fbevents.lo $(objects)/SDL_fbmatrox.lo $(objects)/SDL_fbmouse.lo $(objects)/SDL_fbriva.lo $(objects)/SDL_fbvideo.lo $(objects)/SDL_systhread.lo $(objects)/SDL_syssem.lo $(objects)/SDL_sysmutex.lo $(objects)/SDL_syscond.lo $(objects)/SDL_systimer.lo $(objects)/SDL_syscdrom.lo
 
 SDLMAIN_TARGET = libSDLmain.la
 SDLMAIN_SOURCES = ./src/main/dummy/*.c

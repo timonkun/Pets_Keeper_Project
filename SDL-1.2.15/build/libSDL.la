@@ -5,10 +5,10 @@
 # It is necessary for linking the library.
 
 # The name that we can dlopen(3).
-dlname='libSDL-1.2.so.0'
+dlname=''
 
 # Names of this library.
-library_names='libSDL-1.2.so.0.11.4 libSDL-1.2.so.0 libSDL.so'
+library_names=''
 
 # The name of the static archive.
 old_library='libSDL.a'
@@ -38,4 +38,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/usr/local/lib'
+libdir='/home/timonkun/Workspace/webcam/SDL-ARM-linux-gcc4.4.1/lib'

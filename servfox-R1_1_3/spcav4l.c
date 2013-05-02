@@ -304,9 +304,10 @@ v4lGrab (struct vdIn *vd )
 static int
 GetVideoPict (struct vdIn *vd)
 {
+	/***
   if (ioctl (vd->fd, VIDIOCGPICT, &vd->videopict) < 0)
     exit_fatal ("Couldnt get videopict params with VIDIOCGPICT");
-
+***/
 
   if(debug) printf ("VIDIOCGPICT brightnes=%d hue=%d color=%d contrast=%d whiteness=%d"
 	  "depth=%d palette=%d\n", vd->videopict.brightness,
@@ -320,9 +321,10 @@ GetVideoPict (struct vdIn *vd)
 static int
 SetVideoPict (struct vdIn *vd)
 {
+	/***
   if (ioctl (vd->fd, VIDIOCSPICT, &vd->videopict) < 0)
     exit_fatal ("Couldnt set videopict params with VIDIOCSPICT");
-
+***/
   if(debug) printf ("VIDIOCSPICT brightnes=%d hue=%d color=%d contrast=%d whiteness=%d"
 	  "depth=%d palette=%d\n", vd->videopict.brightness,
 	  vd->videopict.hue, vd->videopict.colour, vd->videopict.contrast,
@@ -370,9 +372,11 @@ init_v4l (struct vdIn *vd)
       }
     }
 /* Only jpeg webcam allowed */
-if(vd->cameratype != JPEG) {
+/***
+  if(vd->cameratype != JPEG) {
 	exit_fatal ("Not a JPEG webcam sorry Abort !");
 }
+***/
    if(debug) printf ("StreamId: %d  Camera\n", vd->cameratype);
 /* probe all available palette and size Not need on the FOX always jpeg
    if (probePalette(vd ) < 0) {
@@ -393,12 +397,13 @@ if(vd->cameratype != JPEG) {
    vd->framesizeIn = (vd->hdrwidth * vd->hdrheight >> 2 ); // here alloc the output ringbuffer jpeg only
   erreur = SetVideoPict (vd);
   erreur = GetVideoPict (vd);
+  /***
   if (vd->formatIn != vd->videopict.palette ||
       vd->bppIn != vd->videopict.depth)
     exit_fatal ("could't set video palette Abort !");
   if (erreur < 0)
     exit_fatal ("could't set video palette Abort !");
-
+  ***/
   if (vd->grabMethod)
     {
       if(debug) printf (" grabbing method default MMAP asked \n");
@@ -1105,10 +1110,12 @@ spcaSetAutoExpo(struct vdIn *vdin)
 }
 static void spcaPrintParam (int fd, struct video_param *videoparam)
 {
+	/***
 	if(ioctl(fd,SPCAGVIDIOPARAM, videoparam) == -1){
 		printf ("wrong spca5xx device\n");
 	} else 
-		printf("quality %d autoexpo %d Timeframe %d \n",
+	***/
+	printf("quality %d autoexpo %d Timeframe %d \n",
 			 videoparam->quality,videoparam->autobright,videoparam->time_interval);
 }
 

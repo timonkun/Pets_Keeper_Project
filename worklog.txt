@@ -1,5 +1,37 @@
-20130429
+20130502
+/opt/toolchains/arm-2009q3/bin/arm-none-linux-gnueabi-gcc
 
+20130430
+下一步用SD卡启动，在SD卡上做系统
+切勿删除Nand flash系统。
+
+root=/dev/mtdblock2 rootfstype=yaffs init=/linuxrc mem=512 console=ttySAC0,115200
+
+root=/dev/nfs ip=192.168.1.111:192.168.1.100:192.168.1.1:255.255.255.0::eth0:on nfsroot=192.168.1.100:/home/nfs/rootfs,nolock,proto=tcp console=ttySAC0,115200
+
+set bootargs "noinitrd root=/dev/nfs rw nfsroot=192.168.1.100:/home/nfs/rootfs,nolock,tcp ip=192.168.1.111:192.168.1.100:192.168.1.1:255.255.255.0::eth0:off console=tty0 console=ttySAC0,115200 init=/linuxrc"
+
+set bootargs "root=/dev/mtdblock2 rootfstype=yaffs2 console=ttySAC0,115200"
+set bootcmd "nand read 0xc0008000 0x00080000 0x00800000; bootm 0xc0008000 bootdelay=3"
+
+没有提供触屏驱动：http://www.arm9home.net/simple/index.php?t24467.html
+下面是启动信息：
+[    1.850000] Touchscreen driver of guitar is installing...                    
+[    1.850000] Install touchscreen driver for guitar.                           
+[    1.880000] input: Goodix TouchScreen of Guitar as /devices/virtual/input/in1
+[    1.880000] Registered input device for guitar.                              
+[    1.880000] Request EIRQ 36 succesd on GPIO:132                              
+[    1.880000] End of probe for guitar.                                         
+[    1.930000] Goodix-TS 0-0055:  Guitar Version: GT801_1R07_2011081501_Goodix_ 
+[    1.930000]  Guitar Version: GT801_1R07_2011081501_Goodix_Tech  
+
+发现QT210板子的一个现象：重设置uboot启动参数后，会导致之前保存的参数失效，需要重新设置之前的参数，参考：http://www.armzone.com/bbs/forum.php?mod=viewthread&tid=58&extra=page%3D2
+NAND启动参数：
+#define CONFIG_BOOTCOMMAND	"nand read C0008000 600000 400000; nand read 30A00000 B00000 180000; bootm C0008000 30A00000"
+#define CONFIG_BOOTARGS		"console=ttySAC0,115200 mem=512M"
+
+
+20130429
 next:
 1. network, wifi
 2. tftp, nfs server

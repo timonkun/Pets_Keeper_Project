@@ -12,7 +12,7 @@ BIN=/usr/local/bin
 
 SERVFLAGS= -O2 -DLINUX $(WARNINGS) -I/home/timonkun/Workspace/Linux设备驱动光盘/sd-card/source/android-kernel-samsung-dev-full/include
 
-SERVLIBS= -lpthread
+SERVLIBS= -lpthread -static
 
 #WARNINGS = -Wall \
 #           -Wundef -Wpointer-arith -Wbad-function-cast \
