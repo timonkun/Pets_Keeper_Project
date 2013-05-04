@@ -1,4 +1,38 @@
-20130502
+20130504
+
+[    3.570000] VFS: Mounted root (ext3 filesystem) on device 179:1.
+[    3.575000] Freeing init memory: 164K
+[    3.580000] Failed to execute /linuxrc.  Attempting defaults...
+[    3.590000] Kernel panic - not syncing: No init found.  Try passing init= option to kernel. See Linux Documentation/init.txt for guidance.
+[    3.595000] Backtrace:
+
+
+    3.555000] List of all partitions:                                          
+[    3.555000] 1f00             256 mtdblock0 (driver?)                         
+[    3.560000] 1f01            5120 mtdblock1 (driver?)                         
+[    3.565000] 1f02            5120 mtdblock2 (driver?)                         
+[    3.570000] 1f03            3072 mtdblock3 (driver?)                         
+[    3.575000] 1f04          112640 mtdblock4 (driver?)                         
+[    3.580000] 1f05           81920 mtdblock5 (driver?)                         
+[    3.585000] 1f06           53248 mtdblock6 (driver?)                         
+[    3.590000] b300         3813376 mmcblk0 driver: mmcblk                      
+[    3.595000]   b301         3790867 mmcblk0p1                                 
+[    3.600000] No filesystem could mount root, tried:  ext3
+
+
+用uboot目录下的sd_fusing工具可以顺利烧写uboot到SD卡。
+SD卡版uboot参数：
+setenv bootargs "noinitrd root=/dev/mmcblk0p1 rootfstype=ext3 rootwait console=ttySAC0,115200 init=/linuxrc mem=512M"
+bootcmd "movi read kernel C0008000; movi read rootfs 30A00000 180000; bootm C0008000 30A00000"
+ipaddr 192.168.1.111
+serverip 192.168.1.100
+gatewayip 192.168.1.1
+netmask 255.255.255.0
+
+try：
+"noinitrd root=/dev/mtdblock2 rootfstype=ext3 rw console=ttySAC0,115200 init=/linuxrc mem=512M"
+“root=/dev/mtdblock2 rootfstype=ext3 rootwait console=ttySAC1,115200”
+
 /opt/toolchains/arm-2009q3/bin/arm-none-linux-gnueabi-gcc
 
 20130430
