@@ -80,7 +80,10 @@ int main(int argc, char *argv[])
      char *fpsstring  = NULL;
     int enableRawStreamCapture = 0;
     int enableRawFrameCapture = 0;
-
+    char *time_tmpstr = NULL;
+	int time_delay = 0;
+	int record_time = 0;
+	unsigned int picture_count = 0;
 
 
     printf("luvcview version %s \n", version);
@@ -190,8 +193,30 @@ int main(int argc, char *argv[])
 		    getpictureflag = 1;
 		}
 		
+		if(strcmp(argv[i], "-t") == 0) {
+			/* time delay between two snapshots */
+			if (i + 1 >= argc) {
+				printf("No parameter specified with -t, aborting.\n");
+				exit(1);
+	        }
+	        time_tmpstr = strdup(argv[i + 1]);
+	        time_delay = strtoul(time_tmpstr, NULL, 10);
+	        printf("time_delay=%d\n", time_delay);
+		}
+		
+		if(strcmp(argv[i], "-T") == 0) {
+			/* total time of picture recording  */
+			if (i + 1 >= argc) {
+				printf("No parameter specified with -t, aborting.\n");
+				exit(1);
+	        }
+	        time_tmpstr = strdup(argv[i + 1]);
+	        record_time = strtoul(time_tmpstr, NULL, 10);
+	        printf("record_time=%dH\n", record_time);
+		}
+		
 		if (strcmp(argv[i], "-h") == 0) {
-		    printf("usage: uvcview [-h -d -g -f -s -i -c -o -C -S -L -l -r] \n");
+		    printf("usage: uvcview [-h -d -g -f -s -i -c -o -C -S -L -l -r -t] \n");
 		    printf("-h	print this message \n");
 		    printf("-d	/dev/videoX       use videoX device\n");
 		    printf("-g	use read method for grab instead mmap \n");
@@ -207,10 +232,23 @@ int main(int argc, char *argv[])
 		    printf("-l	query valid controls and settings\n");
             printf("-r	read and set control settings from luvcview.cfg\n");
 			printf("-O	get picture.\n");
+			printf("-t	time delay between two snapshot(only use in get picture[-O] mode).\n");
+			printf("-T  total picture recording hours(only use in get picture[-O] mode).\n");
 		    exit(0);
 		}
     }
-
+    
+    if(time_delay != 0 && getpictureflag == 0) {
+		time_delay = 0;
+	}
+	
+	if( record_time != 0 && (time_delay == 0 || getpictureflag == 0)) {
+		record_time = 0;
+	}
+	else if( record_time != 0 && time_delay != 0 && getpictureflag == 1)
+	{
+		record_time = record_time * 3600;    // hour to seconds.
+	}
 
     if (videodevice == NULL || *videodevice == 0) {
 		videodevice = "/dev/video0";
@@ -281,7 +319,12 @@ int main(int argc, char *argv[])
 					break;
 			}
 			videoIn->getPict = 0;
-			printf("get picture !\n");
+			printf("get picture %d!\n", picture_count++);
+			record_time -= time_delay;
+			if(record_time < 0) {
+				exit(0);	// times up, jump out.
+			}
+			sleep(time_delay);
 		}
 
     }
