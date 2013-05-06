@@ -322,6 +322,7 @@ int main(int argc, char *argv[])
 			printf("get picture %d!\n", picture_count++);
 			record_time -= time_delay;
 			if(record_time < 0) {
+				printf("picture_count=%d\ntimes up, close.\n");
 				exit(0);	// times up, jump out.
 			}
 			sleep(time_delay);

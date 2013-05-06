@@ -1,0 +1,70 @@
+Android Training Logs
+20130506
+
+so -- shared object
+dll -- dynamic link library
+
+Librares are located on /system/lib/
+such as libwebcore.so, libril.so
+but surface manager is a exception.
+
+JVM -- dalvik virtual machine
+each app has it own Dalvik VM instance.
+the source is located in android/dalvik
+
+libc --- C library, is located in android/bionic
+
+both bionic and dalvik contain important functions.
+
+android/device/asus/grouper  --> Nexus7 
+
+android/external  --> contain a lot of open source projects.
+AOSP -- android opensource project
+HAL -- hardware abstraction layer
+
+android/libcore -- JAVA library developed by apache harmony, not sun or oracle.
+
+in this lecture we only focus on 4 directories: bionic, dalvik, framework, system.
+
+we use vim+ctags to analyse source code.
+$ctags *
+ctags file contain all the function and variable lables.
+open vim to edit a file, choose a function, press ctrl+] to the func, press ctrl+t to return.
+To build the ctags database: $ctags -R bionic/ dalvik/ frameworks/ system/
+
+init is located in android-2.2.x/system/core/init, it's the first process to start when boot Android system.
+
+Power on
+-> CPU reset
+-> Bootloader: Hardware checking & initializtion
+			   Kernel & RAMdisk loading
+-> Linux kernel
+-> init (ex: System-V init, Upstart init ...)
+
+Types
+
+zygote is the base process responsible for start all the Android services.
+it's the parent process of all the JAVA services.
+
+make -j(# of CPUs)
+make -j(# of CPUs * 2)
+make -j(# of CPUs + 2)
+
+make -j2
+make -j4
+
+----------------------------------
+
+init.rc include two parts: Action(commands) and Service(deamons)
+Actions --> 1.early init, 2.init, 3.early-boot, 4.boot
+Services --> a lots of...
+
+init process monitor all the child process, if the child process go to zombie and exit, the init will decide whether to recreate or kill it.
+
+<TODAY ASSIMENTS>
+1. Building the 4.2.x platform source for the emulator.
+2. Study vim editor.(ctags usage)
+3. Read chapter 1 of ebook "Embedded Android".
+
+
+
