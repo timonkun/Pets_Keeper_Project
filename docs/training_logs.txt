@@ -66,5 +66,131 @@ init process monitor all the child process, if the child process go to zombie an
 2. Study vim editor.(ctags usage)
 3. Read chapter 1 of ebook "Embedded Android".
 
+=========================================
+20130507
+
+boot.img (bootloader + kernel)
+source ./buildsetup.sh
+lunch
+emulator (use the output image by default)
+
+start the emulator with the img we build last night for android-4.2.2
+copy userdata.img(104K) -->  userdata-qemu.img(12M) when emulator start, the size becomes larger. it's located in /data directory in the device.
+ramdisk.img  -- root file system.
+system.img  -- android things, lib,service.read-only, /system directory in the device
+userdata.img -- read-write,
+
+password of the pdf: droid4x or jb422
+
+android stage driver introduce:
+BINDER
+lowmemorykiller  -- how does it know who should be killed? by what standard?
+The anwser is by "ADJ value" which define the priority of the process. Please check figure 3-8 in page 20 of "03. The init process.pdf".
+Memory thresholds value: when the mem is above(bigger) the value, mem killer will kill it.
+
+logger
+
+keep going on study init process.
+Property service:
+similiar to enviroment variable, Name = Value
+Each process has its own environment variable in its memroy area.
+One process can't change the environment variable of other process.
+But property could be accessed by other processes, it's located in shared memory area. All the modification requested by process will be transfer to init process to change the property value. General process don't have permission to change it.
+
+
+init process register SIGCHILD signal, once the kernel call SIGCHILD to hang up a process, the init can recieve it. 
+sigaction(SIGCHLD, &act, 0);
+
+Create basic filesystem:
+/dev
+/sys/
+/proc
+
+/dev/pts contain virtual terminal device file. It's means how many times you log in with shell.
+/dev/socket contain the socket file node. property_service can be only modified by init process.
+All the /dev/socket file is Unix Domain Socket.(it's different with TCP/IP socket)
+
+Logging device
+
+init.rc parsing
+
+After parse_config_file("/init.rc"), action lists and service lists are created. 
+
+socketpair() create two connected sockets.Only use Unix Domain Socket for internal communication(can be seen by AF_UNIX and SOCK_STREAM).
+
+Other process send SIGCHILD to init, then init call: SOCKET A(signal_fd) ----> SOCKET B(signal_recv_fd), to pass the event to SIG detection.
+
+Three file descriptors should be noted: device_fd, property_set_fd, signal_recv_fd in init.c.
+device_fd --- recieved when new device is detected
+property_set_fd  -- recieved when the other process send the property change request.
+signal_recv_fd   -- recieved when child process terminate
+
+"class_start default" in init.rc : this line start the services of "default" class.
+############################
+###  Action ################
+############################
+=============================
+#############################
+#### Service ################
+#############################
+
+
+on property:ro.kernel.qemu=1  //it means if(ro.kernel.qemu == 1)
+	start adbd				  // then        start adbd;
+
+servicemanager has a name context manager
+
+init process will enter "recovery" mode when some serious problem occur.
+
+service servicemanager /system/bin/servicemanager
+	user system		// user is system
+	critical		// means it's should be restart if it's dead
+	onrestart restart zygote    // should restart zygote when it's restart
+	onrestart restart media     // same as above
+
+
+service bootanim /system/bin/bootanimation
+	user graphics
+	group graphics
+	disabled
+	oneshot		// oneshot means should be runing only once after the device boot
+
+android/system/core/init/readme.txt has the info of init.c and init.rc, worth to read.
+
+
+3.4 Device node creation
+Note that some device node such as binder should be created staticly. Because when the kernel start, the init process is not lunched.
+
+The device detection is not same after android2.3:
+After Android2.3(gingerbread), use udev to replace init to detect new device.
+	ueventd.goldfish.rc
+	ueventd.rc	// defines the device node that should be created staticly
+
+Before android 2.3:
+device ---> init ---> /dev/node
+
+After android 2.3:
+device ---> ueventd ---> /dev/node
+
+3.5 Process termination and restart
+
+3.6 Property service
+_system_property_area_ is created by init_property_area() with ASHMEM method.
+
+================================
+04. JNI & NDK
+JNIEXPORT and JNICALL are only for windows, in linux we don't need these keyword.
+JNICALL means function calling convention. 
+JNIEXPORT void JNICALL Java_HelloJNI_printHello(JNIEnv *, jobject);
+
+<TODAY ASSIMENTS>
+1. Compile the Android Platform source for Nexus 7.
+2. Read Chapter 2 of "Embedded Android".
+3. 
+
+<MY QUESTION>
+1. why does .so is bigger than .o, what's the contents inside.
+2. notice extern "C"
+3. Nexus 7 include some non-open-source library. need to extract first before compiling.
 
 
