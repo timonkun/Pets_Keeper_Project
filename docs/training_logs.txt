@@ -194,3 +194,58 @@ JNIEXPORT void JNICALL Java_HelloJNI_printHello(JNIEnv *, jobject);
 3. Nexus 7 include some non-open-source library. need to extract first before compiling.
 
 
+20130508
+1. 编译Nexus7原生内核。
+2. JNIHello源码讲解。
+JAVA  String 2bytes
+------------------------
+C/C++ jstring(char) 1byte
+
+(*env)->GetStringUTFChars(env, string, 0); 调用jni指针函数可以转换
+
+ g++ -Wall -fPIC -c jnifunc.cpp -I /home/student/jdk6/include/ -I /home/student/jdk6/include/linux/
+-Wall : warn all 
+-fPIC : to generate "position independent code"
+
+g++ -shared -Wl,-soname=libjnifunc.so -o libjnifunc.so jnifunc.o
+-Wl,-soname=libjnifunc.so : 把-soname=libjnifunc.so传递给linker,这个选项只会被linker识别，GCC/G++不识别。
+-Wl,option1,option2 (pass to linker)
+-Wa,option1,option2 (pass to assembler)
+-Wp,option1,option2 ()
+
+Ctags只能记住function and global varaiable.不能记住local varirable。
+本地变量用"gd"搜索定义，"``"返回。
+Ctags用"Ctrl+]"搜索定义，“Ctrl+t”返回。
+
+C++中调用JAVA类的方法：1.获取class,2.获取class ID,3.NewObject调用构造函数
+24     // Find the class for object creation
+25     targetClass = env->FindClass("JniTest");
+26     // Get the constructor method ID
+27     mid = env->GetMethodID(targetClass, "<init>", "(I)V");
+28     // Create a Java object
+29     printf("[CPP] JniTest object created\n");
+30     newObject = env->NewObject(targetClass, mid, 100);
+
+C调用JAVA函数。
+
+JAVA调CPP，通过JNI。
+
+为啥要学习JNI
+1. 学习Android platform
+2. 写APP用得到。
+
+SDK : JAVA
+NDK : JAVA + C/C++
+
+用eclipse写APP的时候，libs/android-support-v4.jar library的目的是让老版本的APP能够顺利运行在新版本库上。
+AndroidManifest.xml --- APP的配置文件，向android环境提供运行平台信息，版本信息，permission信息等等。
+生成文件在bin/res/Hello.apk
+
+JNI native function name: Java_com_example_hellojni_HelloJni_stringFromJNI
+Java_<package name>_<class name>_ownname();
+
+<TODAY ASSIGNMENT>
+1. Compile the Android platform source.(again, for the emulator, but with different combination)
+2. Read "The JAVA Native Interface(1999)".
+3.Read chapter 4 of "Embedded Android", to know what's the meaning of LOCAL_PATH := $(call my-dir)
+	include $(CLEAR_VARS)
