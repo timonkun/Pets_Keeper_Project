@@ -249,3 +249,89 @@ Java_<package name>_<class name>_ownname();
 2. Read "The JAVA Native Interface(1999)".
 3.Read chapter 4 of "Embedded Android", to know what's the meaning of LOCAL_PATH := $(call my-dir)
 	include $(CLEAR_VARS)
+
+
+20130509
+学习了fork, execl。
+学习app_main.cpp，了解zygote process是怎么启动的。
+set_process_name("zygote"); 改变了进程名，由app_process --> zygote
+执行了source ./build/envsetup.sh 之后，会包括很多有用的命令。如godir, cgrep, croot可以到android根目录。
+
+class name --> com.android.internal.os.ZygoteInit
+				com/android/internal/os/ZygoteInit
+ jclass = env->FindClass(className)
+
+method name --> main()
+	jmethodID = env->GetStaticMethodID(jclass, "main", "([Ljava/lang/String;)V");
+
+     (JAVA system service)     (C++)
+	      SystemServer ---> SurfaceFlinger(Native System Service)
+              |
+            Zygote
+         \|/
+        init
+          |  
+		kernel
+
+runtime->callStatic("com/android/server/SystemServer", "init2");
+//means go back to JAVA space，创建完Native Service surfaceflinger，返回JAVA空间。调用init2，开启ServerThread.
+
+5.3.4
+下面讲如何通过Zygote运行起来一个新的APP。
+通过socket通信。select/poll监听client事件。
+
+<Practice - Embedded Applications>
+把APP添加进/system/app，用eclipse建立一个新的APP工程MyApp，并在手机上验证通过。
+删除APP源码中的bin, gen目录。将MyApp目录拷贝到android/packages/apps。
+在android根目录执行source ./build/envsetup.sh
+lunch full-userdebug
+到app目录执行mm, 在out下生成apk。
+最后为了集成到system.img中，在android目录执行m,但是发现system.img没有更新。因此需要用以下命令生成：
+m snod
+snod = System image with No Dependency checking
+
+Android PDK
+
+=====================
+Android APP
+每个app都会包含以下四个部分：
+- Activity : Output(UI) + Input
+- Service : Background processing
+- (Broadcast) Receiver : Event processing
+- (Content) Provider : Data sharing
+
+
+Manifest 
+- (n) The list of components
+
+             [Activity]        [Service]
+			StartService() --> onCreate()
+			StopService()       ...
+			                   StopSelf()
+
+			[Activity]
+								  [Service]
+			BindService <========>	
+			UnbindService<=======>
+
+	原始概念的RPC call通过TCP/IP socket传送数据。
+	[Computer A]			[Computer B]
+	res=add(10,20)			add(i, j)
+	   |	/\				{
+	   \/	|					****			   
+	add(m, n)				}   /\  |
+	{	(Proxy)	    (TCP/IP)	 |  \/
+		RPC socket  ------>   RPC socket(Stub) 
+	}			   <----------------|				-
+
+IDL(interface definition language)
+	IDL compiler ==> Proxy & Stub code auto-generated!
+	"Marshalling", "Unmashalling"
+	Crosses process boundary using Binder communication.
+
+AIDL(Android interface definition language)
+	 AIDL compiler ==> Proxy & Stub code auto-generated!
+	 "Marshalling", "Unmashalling"
+	Crosses process boundary using Binder communication.
+
+
