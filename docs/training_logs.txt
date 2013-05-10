@@ -238,7 +238,7 @@ SDK : JAVA
 NDK : JAVA + C/C++
 
 用eclipse写APP的时候，libs/android-support-v4.jar library的目的是让老版本的APP能够顺利运行在新版本库上。
-AndroidManifest.xml --- APP的配置文件，向android环境提供运行平台信息，版本信息，permission信息等等。
+AndroidManifest.xml --- the list of components. APP的配置文件，向android环境提供运行平台信息，版本信息，permission信息等等。
 生成文件在bin/res/Hello.apk
 
 JNI native function name: Java_com_example_hellojni_HelloJni_stringFromJNI
@@ -320,9 +320,10 @@ Manifest
 	   |	/\				{
 	   \/	|					****			   
 	add(m, n)				}   /\  |
-	{	(Proxy)	    (TCP/IP)	 |  \/
+	{	(Proxy)	   (TCP/IP)	    |  \/
 		RPC socket  ------>   RPC socket(Stub) 
 	}			   <----------------|				-
+					(IDL)
 
 IDL(interface definition language)
 	IDL compiler ==> Proxy & Stub code auto-generated!
@@ -334,4 +335,63 @@ AIDL(Android interface definition language)
 	 "Marshalling", "Unmashalling"
 	Crosses process boundary using Binder communication.
 
+
+20130510
+跨进程的activity 和service通信需要aidl接口定义Proxy&Stub的操作。
+
+ ------------------------               ---------------------
+ |	 [Activity]	        |==============>|     [Service]     |
+ |                      |    AIDL       |                   |
+ |    bindService()     |<==============|     onBind()      |
+ ------------------------               ---------------------
+       
+在菜单里new一个service。
+
+class A
+{
+	...
+}
+
+class B extends A
+{
+	f(){...}
+	g(){...}
+}
+
+B obj = new B();
+--------------------------
+匿名内部类
+"Anonymous inner class"
+class A
+{   
+    ...
+}
+
+A obj = new A() { // "Anonymous inner class", extends from class A.
+	f(){...}
+	g(){...}
+
+};
+
+Activity对应一个screen界面。
+onResume() -- Foreground Activity，进入前台显示
+onPause()  -- Backgound Activity，进入后台挂起
+
+如果service被强制kill了，如果clinet还在的话，service会被重新启动。这个特性取决于创建时是否用BIND_AUTO_CREATE参数。bindService(intent, srvConn, BIND_AUTO_CREATE);
+
+getSystemService()获取系统服务
+
+media server包括了audio flinger, media player service, camera service, audio policy service.
+init --> media server (native system service)
+
+service manager != context manager
+                    binder                      binder
+  [Native Service] <=====>  [service manager1] <=====> [context manager]
+  [Java service]   <=====>  [service manager2] <=====> [context manager]
+the real manager is context manager, service manager we use is just a proxy to context manager.我们只要知道怎么用service manager就行了，context manager是对开发者屏蔽的。ServiceManager类。
+
+
+data was passed through binder driver, and the calling was passed through binder RPC
+
+service list命令显示的服务是逆序排列的，越早注册的标号越大，越晚注册的标号越小。
 
