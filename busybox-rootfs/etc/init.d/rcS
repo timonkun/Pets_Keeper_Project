@@ -17,7 +17,9 @@ mdev -s
 
 
 ifconfig eth0 192.168.1.111
+hwclock -s
 
+date
 echo "BOOT DONE."
 
 cd /samples
