@@ -4,8 +4,8 @@
 #include <unistd.h>
 #include <string.h>
 
-#define CONFIG_FILE "address.txt"
-#define URL_PATH  "kaffeel.org/timeonkun/address.txt"
+#define CONFIG_FILE "control.txt"
+#define URL_PATH  "kaffeel.org/timeonkun/control.txt"
 
 typedef struct{
 	char pKeyword[40];
@@ -76,8 +76,8 @@ void download_config_file(void)
 	pid = fork();
 	switch(pid)
 	{
-		case 0: // "-q"
-			execlp("wget", "wget", "-N", "-q", \
+		case 0:
+			execlp("wget", "wget", /*"-N",*/ "-q", \
 					URL_PATH, NULL);
 			break;
 		case -1:
