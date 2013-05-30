@@ -1,5 +1,5 @@
 <CTRL_MODE_WEBCAM>
-3
+1
 
 <CTRL_MODE_FAN>
 4
