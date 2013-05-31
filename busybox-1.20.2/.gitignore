@@ -1,13 +1,13 @@
 #
 # Kbuild ignores
 #
-.*
 *.o
 *.o.*
 *.a
 *.s
 Kbuild
 Config.in
+*.cmd
 
 #
 # Never ignore these

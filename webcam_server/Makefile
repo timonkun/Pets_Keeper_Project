@@ -1,12 +1,15 @@
+CC = gcc
+CROSS_CC = /opt/toolchains/arm-2009q3/bin/arm-none-linux-gnueabi-gcc
+
 arm : webcam_server.arm
 
 webcam_server.arm : webcam_server.c
-	arm-none-linux-gnueabi-gcc webcam_server.c -static -o webcam_server.arm
+	$(CROSS_CC) $< -static -o $@
 
 all : webcam_server
 
 webcam_server : webcam_server.c
-	gcc webcam_server.c -o webcam_server
+	$(CC) $< -o $@
 
 clean :
 	rm webcam_server webcam_server.arm
