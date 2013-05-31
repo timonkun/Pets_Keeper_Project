@@ -4,7 +4,7 @@ CROSS_CC = /opt/toolchains/arm-2009q3/bin/arm-none-linux-gnueabi-gcc
 arm : webcam_server.arm
 
 webcam_server.arm : webcam_server.c
-	$(CROSS_CC) $< -static -o $@
+	$(CROSS_CC) $< -o $@
 
 all : webcam_server
 

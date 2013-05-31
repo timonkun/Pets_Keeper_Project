@@ -5,7 +5,7 @@
 #include <string.h>
 
 #define CONFIG_FILE "control.txt"
-#define URL_PATH  "kaffeel.org/timeonkun/control.txt"
+#define URL_PATH  "http://kaffeel.org/timeonkun/control.txt"
 
 typedef struct{
 	char pKeyword[40];
@@ -58,16 +58,35 @@ int feed_operation(int ctrl_code);
 int main(int argc, char **argv)
 {
 	
-
 	while(1)
 	{
-		//download_config_file();
+		download_config_file();
 		compare_update();	// don't compare the entire file, compare the values.
 		sleep(3);
 	}
 
 	return 0;
 }
+
+/***
+void remove_config_file(void)
+{
+    pid_t pid;
+ 
+    pid = fork();
+    switch(pid)
+    {
+        case 0:
+           execlp("rm", "rm", CONFIG_FILE, NULL);
+           break;
+        case -1:
+           perror("fork error.");
+           exit(1);
+      default:
+      break;
+    }
+}
+***/   
 
 void download_config_file(void)
 {
@@ -77,7 +96,7 @@ void download_config_file(void)
 	switch(pid)
 	{
 		case 0:
-			execlp("wget", "wget", /*"-N",*/ "-q", \
+			execlp("wget", "wget", /*"-N",*/ "-O", CONFIG_FILE, "-q", \
 					URL_PATH, NULL);
 			break;
 		case -1:
@@ -99,7 +118,7 @@ int load_config_data(Control_Struct *tmp_ctrl)
 	if(NULL == fp)
 	{
 		perror("Can't open CONFIG_FILE");
-		exit(1);
+		return -1;
 	}
 
 
@@ -133,7 +152,7 @@ int load_config_data(Control_Struct *tmp_ctrl)
 				else
 				{
 					perror("fgets str_value error.");
-					exit(1);
+					return -1;
 				}
 			
 				for(i=0; i<256; i++)
