@@ -12,8 +12,8 @@ libavcodec/tiff.o: libavcodec/tiff.c libavcodec/avcodec.h \
  libavcodec/version.h libavcodec/old_codec_ids.h libavutil/common.h \
  libavcodec/bytestream.h libavutil/intreadwrite.h libavutil/bswap.h \
  libavutil/arm/bswap.h libavutil/arm/intreadwrite.h \
- /home/timonkun/Workspace/webcam_project/live555-ffmpeg/ffmpeg_install/include/zlib.h \
- /home/timonkun/Workspace/webcam_project/live555-ffmpeg/ffmpeg_install/include/zconf.h \
+ /home/timonkun/Workspace/webcam/live555-ffmpeg/ffmpeg_install/include/zlib.h \
+ /home/timonkun/Workspace/webcam/live555-ffmpeg/ffmpeg_install/include/zconf.h \
  libavcodec/lzw.h libavcodec/tiff.h libavcodec/tiff_data.h \
  libavcodec/faxcompr.h libavcodec/internal.h libavutil/mathematics.h \
  libavcodec/mathops.h libavcodec/arm/mathops.h libavutil/imgutils.h \

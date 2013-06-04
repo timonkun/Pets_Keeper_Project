@@ -12,8 +12,8 @@ libavcodec/tiffenc.o: libavcodec/tiffenc.c libavutil/imgutils.h \
  libavutil/avutil.h libavutil/cpu.h libavutil/channel_layout.h \
  libavutil/dict.h libavutil/pixfmt.h libavutil/rational.h \
  libavcodec/version.h libavcodec/old_codec_ids.h libavutil/common.h \
- /home/timonkun/Workspace/webcam_project/live555-ffmpeg/ffmpeg_install/include/zlib.h \
- /home/timonkun/Workspace/webcam_project/live555-ffmpeg/ffmpeg_install/include/zconf.h \
+ /home/timonkun/Workspace/webcam/live555-ffmpeg/ffmpeg_install/include/zlib.h \
+ /home/timonkun/Workspace/webcam/live555-ffmpeg/ffmpeg_install/include/zconf.h \
  libavcodec/bytestream.h libavutil/intreadwrite.h libavutil/bswap.h \
  libavutil/arm/bswap.h libavutil/arm/intreadwrite.h libavcodec/internal.h \
  libavutil/mathematics.h libavcodec/tiff.h libavcodec/rle.h \

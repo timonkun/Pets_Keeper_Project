@@ -20,5 +20,5 @@ libavformat/rtmpproto.o: libavformat/rtmpproto.c libavcodec/bytestream.h \
  libavutil/error.h libavformat/os_support.h libavformat/flv.h \
  libavformat/rtmp.h libavformat/rtmpcrypt.h libavformat/url.h \
  libavformat/rtmppkt.h \
- /home/timonkun/Workspace/webcam_project/live555-ffmpeg/ffmpeg_install/include/zlib.h \
- /home/timonkun/Workspace/webcam_project/live555-ffmpeg/ffmpeg_install/include/zconf.h
+ /home/timonkun/Workspace/webcam/live555-ffmpeg/ffmpeg_install/include/zlib.h \
+ /home/timonkun/Workspace/webcam/live555-ffmpeg/ffmpeg_install/include/zconf.h

@@ -14,5 +14,5 @@ libavcodec/pngenc.o: libavcodec/pngenc.c libavcodec/avcodec.h \
  libavutil/intreadwrite.h libavutil/bswap.h libavutil/arm/bswap.h \
  libavutil/arm/intreadwrite.h libavcodec/dsputil.h libavcodec/png.h \
  libavutil/avassert.h \
- /home/timonkun/Workspace/webcam_project/live555-ffmpeg/ffmpeg_install/include/zlib.h \
- /home/timonkun/Workspace/webcam_project/live555-ffmpeg/ffmpeg_install/include/zconf.h
+ /home/timonkun/Workspace/webcam/live555-ffmpeg/ffmpeg_install/include/zlib.h \
+ /home/timonkun/Workspace/webcam/live555-ffmpeg/ffmpeg_install/include/zconf.h

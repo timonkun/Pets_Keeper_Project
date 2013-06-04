@@ -11,6 +11,6 @@ libavcodec/cscd.o: libavcodec/cscd.c libavcodec/avcodec.h \
  libavutil/log.h libavutil/pixfmt.h libavutil/rational.h \
  libavcodec/version.h libavcodec/old_codec_ids.h libavutil/common.h \
  libavcodec/internal.h libavutil/mathematics.h \
- /home/timonkun/Workspace/webcam_project/live555-ffmpeg/ffmpeg_install/include/zlib.h \
- /home/timonkun/Workspace/webcam_project/live555-ffmpeg/ffmpeg_install/include/zconf.h \
+ /home/timonkun/Workspace/webcam/live555-ffmpeg/ffmpeg_install/include/zlib.h \
+ /home/timonkun/Workspace/webcam/live555-ffmpeg/ffmpeg_install/include/zconf.h \
  libavutil/lzo.h

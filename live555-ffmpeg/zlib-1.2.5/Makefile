@@ -44,7 +44,7 @@ TAR=tar
 SHELL=/bin/sh
 EXE=
 
-prefix =/home/timonkun/Workspace/webcam_project/live555-ffmpeg/ffmpeg_install
+prefix =/home/timonkun/Workspace/webcam/live555-ffmpeg/ffmpeg_install
 exec_prefix =${prefix}
 libdir =${exec_prefix}/lib
 sharedlibdir =${libdir}

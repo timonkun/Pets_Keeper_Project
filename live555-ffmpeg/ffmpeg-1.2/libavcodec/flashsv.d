@@ -1,6 +1,6 @@
 libavcodec/flashsv.o: libavcodec/flashsv.c \
- /home/timonkun/Workspace/webcam_project/live555-ffmpeg/ffmpeg_install/include/zlib.h \
- /home/timonkun/Workspace/webcam_project/live555-ffmpeg/ffmpeg_install/include/zconf.h \
+ /home/timonkun/Workspace/webcam/live555-ffmpeg/ffmpeg_install/include/zlib.h \
+ /home/timonkun/Workspace/webcam/live555-ffmpeg/ffmpeg_install/include/zconf.h \
  libavutil/intreadwrite.h libavutil/avconfig.h libavutil/attributes.h \
  libavutil/bswap.h config.h libavutil/arm/bswap.h libavutil/attributes.h \
  libavutil/arm/intreadwrite.h libavcodec/avcodec.h libavutil/samplefmt.h \

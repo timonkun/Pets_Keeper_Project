@@ -10,8 +10,8 @@ libavformat/swfdec.o: libavformat/swfdec.c libavutil/avassert.h \
  libavutil/imgutils.h libavutil/pixdesc.h libavutil/intreadwrite.h \
  libavutil/bswap.h libavutil/arm/bswap.h libavutil/arm/intreadwrite.h \
  libavformat/swf.h \
- /home/timonkun/Workspace/webcam_project/live555-ffmpeg/ffmpeg_install/include/zlib.h \
- /home/timonkun/Workspace/webcam_project/live555-ffmpeg/ffmpeg_install/include/zconf.h \
+ /home/timonkun/Workspace/webcam/live555-ffmpeg/ffmpeg_install/include/zlib.h \
+ /home/timonkun/Workspace/webcam/live555-ffmpeg/ffmpeg_install/include/zconf.h \
  libavutil/fifo.h libavformat/avformat.h libavcodec/avcodec.h \
  libavutil/samplefmt.h libavutil/avutil.h libavutil/cpu.h \
  libavutil/dict.h libavutil/log.h libavutil/pixfmt.h libavutil/rational.h \

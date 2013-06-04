@@ -15,6 +15,6 @@ libavformat/swfenc.o: libavformat/swfenc.c libavcodec/put_bits.h \
  libavutil/pixfmt.h libavutil/rational.h libavcodec/version.h \
  libavcodec/old_codec_ids.h libavformat/avio.h libavformat/version.h \
  libavutil/time.h libavformat/swf.h \
- /home/timonkun/Workspace/webcam_project/live555-ffmpeg/ffmpeg_install/include/zlib.h \
- /home/timonkun/Workspace/webcam_project/live555-ffmpeg/ffmpeg_install/include/zconf.h \
+ /home/timonkun/Workspace/webcam/live555-ffmpeg/ffmpeg_install/include/zlib.h \
+ /home/timonkun/Workspace/webcam/live555-ffmpeg/ffmpeg_install/include/zconf.h \
  libavutil/fifo.h libavformat/internal.h

@@ -21,6 +21,6 @@ libavformat/mov.o: libavformat/mov.c libavutil/attributes.h \
  libavformat/isom.h libavformat/dv.h libavcodec/get_bits.h \
  libavutil/avassert.h libavcodec/mathops.h libavcodec/arm/mathops.h \
  libavformat/id3v1.h libavformat/mov_chan.h \
- /home/timonkun/Workspace/webcam_project/live555-ffmpeg/ffmpeg_install/include/zlib.h \
- /home/timonkun/Workspace/webcam_project/live555-ffmpeg/ffmpeg_install/include/zconf.h \
+ /home/timonkun/Workspace/webcam/live555-ffmpeg/ffmpeg_install/include/zlib.h \
+ /home/timonkun/Workspace/webcam/live555-ffmpeg/ffmpeg_install/include/zconf.h \
  libavformat/qtpalette.h

@@ -1,6 +1,6 @@
 libavcodec/flashsv2enc.o: libavcodec/flashsv2enc.c \
- /home/timonkun/Workspace/webcam_project/live555-ffmpeg/ffmpeg_install/include/zlib.h \
- /home/timonkun/Workspace/webcam_project/live555-ffmpeg/ffmpeg_install/include/zconf.h \
+ /home/timonkun/Workspace/webcam/live555-ffmpeg/ffmpeg_install/include/zlib.h \
+ /home/timonkun/Workspace/webcam/live555-ffmpeg/ffmpeg_install/include/zconf.h \
  libavutil/imgutils.h libavutil/avutil.h libavutil/common.h \
  libavutil/attributes.h libavutil/version.h libavutil/avconfig.h config.h \
  libavutil/intmath.h libavutil/arm/intmath.h libavutil/attributes.h \

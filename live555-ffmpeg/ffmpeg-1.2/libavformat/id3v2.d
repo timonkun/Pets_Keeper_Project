@@ -1,6 +1,6 @@
 libavformat/id3v2.o: libavformat/id3v2.c config.h \
- /home/timonkun/Workspace/webcam_project/live555-ffmpeg/ffmpeg_install/include/zlib.h \
- /home/timonkun/Workspace/webcam_project/live555-ffmpeg/ffmpeg_install/include/zconf.h \
+ /home/timonkun/Workspace/webcam/live555-ffmpeg/ffmpeg_install/include/zlib.h \
+ /home/timonkun/Workspace/webcam/live555-ffmpeg/ffmpeg_install/include/zconf.h \
  libavformat/id3v2.h libavformat/avformat.h libavcodec/avcodec.h \
  libavutil/samplefmt.h libavutil/avutil.h libavutil/common.h \
  libavutil/attributes.h libavutil/version.h libavutil/avconfig.h \

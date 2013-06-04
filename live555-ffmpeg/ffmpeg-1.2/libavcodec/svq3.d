@@ -23,6 +23,6 @@ libavcodec/svq3.o: libavcodec/svq3.c libavcodec/internal.h \
  libavcodec/h264dsp.h libavcodec/h264pred.h libavcodec/h264qpel.h \
  libavcodec/rectangle.h libavcodec/h264data.h libavcodec/h264_mvpred.h \
  libavcodec/golomb.h libavcodec/vdpau_internal.h \
- /home/timonkun/Workspace/webcam_project/live555-ffmpeg/ffmpeg_install/include/zlib.h \
- /home/timonkun/Workspace/webcam_project/live555-ffmpeg/ffmpeg_install/include/zconf.h \
+ /home/timonkun/Workspace/webcam/live555-ffmpeg/ffmpeg_install/include/zlib.h \
+ /home/timonkun/Workspace/webcam/live555-ffmpeg/ffmpeg_install/include/zconf.h \
  libavcodec/svq1.h libavcodec/svq3.h

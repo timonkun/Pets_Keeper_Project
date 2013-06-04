@@ -21,5 +21,5 @@ libavformat/matroskadec.o: libavformat/matroskadec.c \
  libavcodec/mathops.h libavcodec/arm/mathops.h libavcodec/put_bits.h \
  libavutil/bswap.h libavutil/intfloat.h libavutil/avstring.h \
  libavutil/lzo.h \
- /home/timonkun/Workspace/webcam_project/live555-ffmpeg/ffmpeg_install/include/zlib.h \
- /home/timonkun/Workspace/webcam_project/live555-ffmpeg/ffmpeg_install/include/zconf.h
+ /home/timonkun/Workspace/webcam/live555-ffmpeg/ffmpeg_install/include/zlib.h \
+ /home/timonkun/Workspace/webcam/live555-ffmpeg/ffmpeg_install/include/zconf.h
