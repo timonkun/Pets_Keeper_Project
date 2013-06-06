@@ -1,3 +1,11 @@
+20130606
+参考网页：
+http://www.unlab.ca/w/Cam_Server
+http://ffmpeg.org/general.html#Video-Codecs
+
+ffserver -f ffserver.conf &
+ffmpeg -f v4l2 -i /dev/video0 http://localhost:8090/cam1.ffm
+
 20130605
 这几天移植了live555,ffmpeg，已经可以在板子上顺利运行。不过还不能截取实时视频播放，可能用ffserver+ffmpeg可以解决这个问题，至少按照官网上是这样说的。
 
