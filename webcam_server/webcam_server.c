@@ -3,6 +3,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <string.h>
+#include <sys/wait.h>
 
 #define CONFIG_FILE "control.txt"
 #define URL_PATH  "http://kaffeel.org/timeonkun/control.txt"
@@ -86,7 +87,52 @@ void remove_config_file(void)
       break;
     }
 }
-***/   
+***/
+
+void stop_webcam(void)
+{
+	system("./pkill.sh ffserver");
+	system("./pkill.sh ffmpeg");
+}
+
+void start_webcam(void)
+{
+	pid_t pid, wait_pid;
+/**
+	pid = fork();
+	switch(pid)
+	{
+		case 0:
+			execlp("ffserver", "ffserver", "&", NULL);
+			break;
+		case -1:
+			perror("ffserver fork error.");
+			exit(1);
+		default:
+			break;
+	}
+	**/
+	system("ffserver &");
+	sleep(1);
+	system("ffmpeg -f v4l2 -i /dev/video0 http://localhost:8090/cam1.ffm &");
+	/**
+	pid = fork();
+	switch(pid)
+	{
+	    case 0:
+	       execlp("ffmpeg", "ffmpeg", "-f", "v4l2", "-i", "/dev/video0", \
+				  "http://localhost:8090/cam1.ffm", NULL);
+	       break;
+	    case -1:
+	       perror("ffmpeg fork error.");
+	       exit(1);
+	    default:
+	        break;
+	}
+	wait_pid = wait(NULL);
+	**/
+	printf("%s success.\n", __func__);
+}
 
 void download_config_file(void)
 {
@@ -105,6 +151,8 @@ void download_config_file(void)
 		default:
 			break;
 	}
+	pid = wait(NULL);
+	printf("%s pid=%d returned\n", __func__, pid);
 }
 
 int load_config_data(Control_Struct *tmp_ctrl)
@@ -169,6 +217,17 @@ int load_config_data(Control_Struct *tmp_ctrl)
 int webcam_operation(int ctrl_code)
 {
 	printf("%s: ctrl_code=%d\n", __func__, ctrl_code);
+	switch(ctrl_code)
+	{
+		case 0:
+			stop_webcam();
+			break;
+		case 1:
+			start_webcam();
+			break;
+		default:
+			break;
+	}
 	return 0;
 }
 
