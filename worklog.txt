@@ -1,11 +1,3 @@
-20130608
-用fork+execlp方式开启的子进程需要wait进行等待回收，父进程退出后所有子进程自动退出。
-用system方式开启的进程不受父进程管理，父进程退出后不会被收回。需要手动kill。
-
-打开、关闭摄像头服务已经完成，待验证。
-下一步需要减小延时，改善画质，调通wifi，编写控制端, save the video to local。
-
-
 20130606
 参考网页：
 http://www.unlab.ca/w/Cam_Server
