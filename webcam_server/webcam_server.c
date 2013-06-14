@@ -6,7 +6,7 @@
 #include <sys/wait.h>
 
 #define CONFIG_FILE "control.txt"
-#define URL_PATH  "http://kaffeel.org/timeonkun/control.txt"
+#define URL_PATH  "http://timonkun.me/webcam/control.txt"
 
 typedef struct{
 	char pKeyword[40];
@@ -107,8 +107,8 @@ void download_config_file(void)
 			break;
 	}
 	pid = wait(NULL);
-	if(pid > 0)
-		printf("wget exit success.\n");
+	//if(pid > 0)
+		//printf("wget exit success.\n");
 }
 
 int load_config_data(Control_Struct *tmp_ctrl)
@@ -167,12 +167,16 @@ int load_config_data(Control_Struct *tmp_ctrl)
 		}
 	}
 
+	if(0 != fclose(fp))
+		perror("fclose error.""");
+
 	return 0;
 }
 
 void start_webcam(void)
 {
 	system("ffserver -f ffserver.conf &");
+	sleep(1);
 	system("ffmpeg -f v4l2 -preset utralfast -tune zerolatency -i /dev/video0 http://localhost:8090/cam1.ffm cam`date +\"%I-%M-%S\"`.mpeg &");
 	printf("%s\n", __func__);
 }
