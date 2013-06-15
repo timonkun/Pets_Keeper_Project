@@ -1,14 +1,14 @@
 20130614
 
 1.减小画面延时，实时显示，延迟控制在200ms以内
-	调试方向：1)ffmpeg参数控制，2)specaview+编解码
-	时间：1周~3周
+	调试方向：1）ffmpeg参数控制，2）spcaview+编解码
+	时间：2～3周
 
 2.外网可访问画面
 	调试方向：1）公共服务器，2）动态域名
 	时间：2周
 
-3.编写控制端APP，实现操控，察看状态，监控
+3.编写控制端APP，实现操控，查看状态，视频监控
 	调试方向：android app
 	时间：3周
 
@@ -23,11 +23,11 @@
 
 
 20130608
-用fork+execlp方式开启的子进程需要wait进行等待回收，父进程退出后所有子进程自动退
-用system方式开启的进程不受父进程管理，父进程退出后不会被收回。需要手动kill。
+用fork+execlp方式开启的子进程需要wait进行等待回收，父进程退出后所有子进程自动退出。
+用system方式开启的进程不受父进程管理，父进程退出后不会被收回，需要手动kill。
+打开、关闭摄像头服务已经完成。
 
-打开、关闭摄像头服务已经完成，待验证。
-下一步需要减小延时，改善画质，调通wifi，编写控制端, save the video to local。
+下一步需要减小延迟，改善画质，调通wifi，编写控制端。
 
 20130606
 参考网页：
@@ -35,7 +35,7 @@ http://www.unlab.ca/w/Cam_Server
 http://ffmpeg.org/general.html#Video-Codecs
 
 ffserver -f ffserver.conf &
-ffmpeg -f v4l2 -i /dev/video0 http://localhost:8090/cam1.ffm
+ffmpeg -f v4l2 -preset faster -i /dev/video0 http://localhost:8090/cam1.ffm
 
 20130605
 这几天移植了live555,ffmpeg，已经可以在板子上顺利运行。不过还不能截取实时视频播放，可能用ffserver+ffmpeg可以解决这个问题，至少按照官网上是这样说的。
