@@ -1,0 +1,13 @@
+<resources>
+
+    <string name="app_name">webcam</string>
+    <string name="webcam">Webcam</string>
+    <string name="fan">Fan</string>
+    <string name="feed">Feed</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">Webcam</string>
+    <string name="webcam_btn">webcam_onoff</string>
+    <string name="fan_btn">fan_onoff</string>
+    <string name="feed_btn">feed_onoff</string>
+
+</resources>
