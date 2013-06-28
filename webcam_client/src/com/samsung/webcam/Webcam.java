@@ -19,13 +19,13 @@ import org.apache.commons.net.ftp.FTPReply;
 /***
  * 
  * @author lingkun
- * 1. Æô¶¯ºó×Ô¶¯´ÓÍøÉÏÏÂÔØ½Å±¾£¬¸ù¾Ý½Å±¾ÅäÖÃ³õÊ¼»¯¿ª¹Ø°´Å¥
+ * 1. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø½Å±ï¿½ï¿½ï¿½ï¿½ï¿½Ý½Å±ï¿½ï¿½ï¿½ï¿½Ã³ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Ø°ï¿½Å¥
     1.1 download
     1.2 read config
     1.3 initialize button
-    1.4 ÊÊµ±µÄÑÓ³Ù·´À¡ÓÃ»§
+    1.4 ï¿½Êµï¿½ï¿½ï¿½ï¿½Ó³Ù·ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
 
-   2. ÓÃ»§²Ù×÷¿ª¹Øºó£¬¸üÐÂÅäÖÃ½Å±¾£¬ÉÏ´«ÍøÂç
+   2. ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øºó£¬¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã½Å±ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ï¿½ï¿½
     2.1 write config
     2.2 upload 
  ***/
@@ -43,8 +43,10 @@ public class Webcam {
     private static final String g_feed_ctrl_str = "<CTRL_MODE_FEED>";
     
     private static final String gFileName="control.txt";
-    private static final String gPathName="/data/media/Download/"+gFileName;//ÎÄ¼þ´æ´¢Â·¾¶ 
-    private static final String gUrlStr="http://timonkun.me/webcam/control.txt";  
+    private static final String gDirName = "/mnt/sdcard/";
+    private static final String gPathName=gDirName+gFileName;//ï¿½Ä¼ï¿½ï¿½æ´¢Â·ï¿½ï¿½ 
+    //private static final String gUrlStr="http://timonkun.me/webcam/control.txt";  
+    private static final String gUrlStr="http://kaffeel.org/timeonkun/control.txt";
     
     public Webcam(){}
     
@@ -116,30 +118,32 @@ public class Webcam {
                 BufferedReader in=new BufferedReader(new InputStreamReader(input_stream));   
                 String line=null;
                 String ctrl_line = null;
-                StringBuffer sb=new StringBuffer();   
                 while((line=in.readLine())!=null)
                 {   
-                    //sb.append(line);   
-                    System.out.println(line.toString());
                     if(line.equals(g_webcam_ctrl_str))
                     {
                         ctrl_line=in.readLine();
                         g_webcam_ctrl = Integer.parseInt(ctrl_line);
+                        System.out.println(ctrl_line.toString());
                     }
                     else if(line.equals(g_fan_ctrl_str))
                     {
                         ctrl_line=in.readLine();
                         g_fan_ctrl = Integer.parseInt(ctrl_line);
+                        System.out.println(ctrl_line.toString());
                     }
                     else if(line.equals(g_feed_ctrl_str))
                     {
                         ctrl_line=in.readLine();
                         g_feed_ctrl = Integer.parseInt(ctrl_line);
+                        System.out.println(ctrl_line.toString());
                     }
                     else
                     {
-                        //System.out.println("not recognize the line.");
+                        System.out.println("readControlFile() not recognize the line.");
                     }
+                    System.out.println(line.toString());
+                    
                 }   
             }
           else
@@ -155,9 +159,9 @@ public class Webcam {
         finally {   
             try {   
                 input_stream.close();   
-                System.out.println("success");   
+                System.out.println("readControlFile() input close success");   
             } catch (IOException e) {   
-                System.out.println("fail");   
+                System.out.println("readControlFile() input close fail");   
                 e.printStackTrace();   
             }   
         }   
@@ -181,19 +185,19 @@ public class Webcam {
               tmp_line = g_webcam_ctrl_str+"\n";
               output_stream.write(tmp_line.getBytes());
               cur_ctrl_line = Integer.toString(g_webcam_ctrl);
-              tmp_line = cur_ctrl_line + "\n";
+              tmp_line = cur_ctrl_line + "\n\n";
               output_stream.write(tmp_line.getBytes());
               
               tmp_line = g_fan_ctrl_str + "\n";
               output_stream.write(tmp_line.getBytes());
               cur_ctrl_line = Integer.toString(g_fan_ctrl);
-              tmp_line = cur_ctrl_line+ "\n";
+              tmp_line = cur_ctrl_line+ "\n\n";
               output_stream.write(tmp_line.getBytes());
               
               tmp_line = g_feed_ctrl_str + "\n";
               output_stream.write(tmp_line.getBytes());
               cur_ctrl_line = Integer.toString(g_feed_ctrl);
-              tmp_line = cur_ctrl_line + "\n";
+              tmp_line = cur_ctrl_line + "\n\n";
               output_stream.write(tmp_line.getBytes());
   
               output_stream.flush();
@@ -212,9 +216,9 @@ public class Webcam {
             try {   
                 //input_stream.close();   
                 output_stream.close();
-                System.out.println("success");   
+                System.out.println("writeControlFile() close output success");   
             } catch (IOException e) {   
-                System.out.println("fail");   
+                System.out.println("writeControlFile() close output fail");   
                 e.printStackTrace();   
             }   
         }   
@@ -230,14 +234,14 @@ public class Webcam {
         
         try {   
             /*  
-             * Í¨¹ýURLÈ¡µÃHttpURLConnection  
-             * ÒªÍøÂçÁ¬½Ó³É¹¦£¬ÐèÔÚAndroidMainfest.xmlÖÐ½øÐÐÈ¨ÏÞÅäÖÃ  
+             * Í¨ï¿½ï¿½URLÈ¡ï¿½ï¿½HttpURLConnection  
+             * Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó³É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½AndroidMainfest.xmlï¿½Ð½ï¿½ï¿½ï¿½È¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
              * <uses-permission android:name="android.permission.INTERNET" />  
              */  
            
             URL url=new URL(gUrlStr);   
             HttpURLConnection conn=(HttpURLConnection)url.openConnection();   
-            //È¡µÃinputStream£¬²¢½øÐÐ¶ÁÈ¡   
+            //È¡ï¿½ï¿½inputStreamï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½È¡   
             InputStream input=conn.getInputStream();   //maxSdkVersion must below 8
            
           
@@ -247,7 +251,7 @@ public class Webcam {
            //} else {
                 file.createNewFile(); 
                 output=new FileOutputStream(file);   
-                //¶ÁÈ¡´óÎÄ¼þ   
+                //ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ä¼ï¿½   
                 byte[] buffer=new byte[256];   
                 while(input.read(buffer)!=-1){   
                     output.write(buffer);   
@@ -273,67 +277,77 @@ public class Webcam {
     
     public void uploadControlFile() 
     {
+    	/***
         String urlStr="184.168.232.1";
         String port = "21";
         String username = "timonkun";
         String pwd = "SAw7895123!";
         String remotePath = "/webcam/";
-        String fileNamePath = "/data/media/Download/";
-        String fileName = "control.txt";
-        String retMesg = null;
+        ***/
+    	String urlStr="118.139.186.1";
+        String port = "21";
+        String username = "timeonkun";
+        String pwd = "SAw7895123!";
+        String remotePath = "/";
+    	
+        String fileNamePath = gDirName;   //"/data/media/Download/";
+        String fileName = gFileName;
         
-        retMesg = ftpUpload(urlStr, port, username, pwd, remotePath, fileNamePath, fileName);
-        System.out.println(retMesg);
+        
+        boolean ret = false;
+        
+        ret = ftpUpload(urlStr, port, username, pwd, remotePath, fileNamePath, fileName);
+        if(!ret)
+            System.out.println("Error: FTP upload fail.");
     }
     
     /**  
-     * Í¨¹ýftpÉÏ´«ÎÄ¼þ  
-     * @param url ftp·þÎñÆ÷µØÖ· Èç£º 192.168.1.110  
-     * @param port ¶Ë¿ÚÈç £º 21  
-     * @param username  µÇÂ¼Ãû  
-     * @param password   ÃÜÂë  
-     * @param remotePath  ÉÏµ½ftp·þÎñÆ÷µÄ´ÅÅÌÂ·¾¶  
-     * @param fileNamePath  ÒªÉÏ´«µÄÎÄ¼þÂ·¾¶  
-     * @param fileName      ÒªÉÏ´«µÄÎÄ¼þÃû  
+     * Í¨ï¿½ï¿½ftpï¿½Ï´ï¿½ï¿½Ä¼ï¿½  
+     * @param url ftpï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö· ï¿½ç£º 192.168.1.110  
+     * @param port ï¿½Ë¿ï¿½ï¿½ï¿½ ï¿½ï¿½ 21  
+     * @param username  ï¿½ï¿½Â¼ï¿½ï¿½  
+     * @param password   ï¿½ï¿½ï¿½ï¿½  
+     * @param remotePath  ï¿½Ïµï¿½ftpï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½Â·ï¿½ï¿½  
+     * @param fileNamePath  Òªï¿½Ï´ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½Â·ï¿½ï¿½  
+     * @param fileName      Òªï¿½Ï´ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½  
      * @return  
      */   
-    private String ftpUpload(String url, String port, String username,String password, String remotePath, String fileNamePath,String fileName) {   
+    private boolean ftpUpload(String url, String port, String username,String password, String remotePath, String fileNamePath,String fileName) {   
      FTPClient ftpClient = new FTPClient();   
      FileInputStream fis = null;   
-     String returnMessage = "0";   
+     boolean ret = false;   
      try {   
          ftpClient.connect(url, Integer.parseInt(port));   
          boolean loginResult = ftpClient.login(username, password);   
          int returnCode = ftpClient.getReplyCode();   
-         if (loginResult && FTPReply.isPositiveCompletion(returnCode)) {// Èç¹ûµÇÂ¼³É¹¦    
+         if (loginResult && FTPReply.isPositiveCompletion(returnCode)) {// ï¿½ï¿½ï¿½ï¿½Â¼ï¿½É¹ï¿½    
              ftpClient.makeDirectory(remotePath);   
-             // ÉèÖÃÉÏ´«Ä¿Â¼    
+             // ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½Ä¿Â¼    
              ftpClient.changeWorkingDirectory(remotePath);   
              //ftpClient.setBufferSize(1024);   
             // ftpClient.setControlEncoding("UTF-8");   
              ftpClient.enterLocalPassiveMode();   
-                     fis = new FileInputStream(fileNamePath + fileName);   
-             ftpClient.storeFile(fileName, fis);   
+             fis = new FileInputStream(fileNamePath + fileName);   
+             ret = ftpClient.storeFile(fileName, fis);   
                 
-             returnMessage = "1";   //ÉÏ´«³É¹¦          
-         } else {// Èç¹ûµÇÂ¼Ê§°Ü    
-             returnMessage = "0";   
-             }   
-                    
-       
+             //ret = true;   //ï¿½Ï´ï¿½ï¿½É¹ï¿½          
+         } else {// ï¿½ï¿½ï¿½ï¿½Â¼Ê§ï¿½ï¿½    
+             ret = false;   
+         }   
      } catch (IOException e) {   
          e.printStackTrace();   
-         throw new RuntimeException("FTP¿Í»§¶Ë³ö´í£¡", e);   
+         throw new RuntimeException("Error: FTP client upload fail.", e);   
      } finally {   
          //IOUtils.closeQuietly(fis);    
-     try {   
+     try {
+         fis.close();
          ftpClient.disconnect();   
      } catch (IOException e) {   
             e.printStackTrace();   
-            throw new RuntimeException("¹Ø±ÕFTPÁ¬½Ó·¢ÉúÒì³££¡", e);   
+            throw new RuntimeException("Error: FTP close exception.", e);   
         }   
      }   
-     return returnMessage;   
+     return ret;   
     }  
 
 }

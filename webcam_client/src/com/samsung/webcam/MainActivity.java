@@ -6,6 +6,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.widget.Button;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 import android.support.v4.app.NavUtils;
@@ -26,6 +28,7 @@ public class MainActivity extends Activity {
     private ToggleButton  toggleWebcamBtn;
     private ToggleButton  toggleFanBtn;
     private ToggleButton  toggleFeedBtn;
+    private Button updateBtn;
     private Webcam webcam = new Webcam();
     
     @Override
@@ -45,16 +48,19 @@ public class MainActivity extends Activity {
         toggleFeedBtn = (ToggleButton) findViewById(R.id.toggleFeedBtn);  
         toggleFeedBtn.setChecked(webcam.getFeedCtrl());
         
+        updateBtn = (Button) findViewById(R.id.updateBtn);
+        
+        // WEBCAM
         toggleWebcamBtn.setOnClickListener(new OnClickListener() {     
         public void onClick(View v) {         
-               // µ±°´Å¥µÚÒ»´Î±»µã»÷Ê±ºòÏìÓ¦µÄÊÂ¼þ      
+               // ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½Ò»ï¿½Î±ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½Â¼ï¿½      
              if (toggleWebcamBtn.isChecked()) {    
                  webcam.setWebcamCtrl(1);
                  webcam.writeControlFile();
                  webcam.uploadControlFile();
                  Toast.makeText(MainActivity.this, "webcam on", Toast.LENGTH_SHORT).show();     
              }  
-             // µ±°´Å¥ÔÙ´Î±»µã»÷Ê±ºòÏìÓ¦µÄÊÂ¼þ  
+             // ï¿½ï¿½ï¿½ï¿½Å¥ï¿½Ù´Î±ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½Â¼ï¿½  
              else {         
                  webcam.setWebcamCtrl(0);
                  webcam.writeControlFile();
@@ -64,17 +70,17 @@ public class MainActivity extends Activity {
         } 
         }); 
         
-        
+        // FAN
         toggleFanBtn.setOnClickListener(new OnClickListener() {     
         public void onClick(View v) {         
-               // µ±°´Å¥µÚÒ»´Î±»µã»÷Ê±ºòÏìÓ¦µÄÊÂ¼þ      
-             if (toggleWebcamBtn.isChecked()) {    
+               // ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½Ò»ï¿½Î±ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½Â¼ï¿½      
+             if (toggleFanBtn.isChecked()) {    
                  webcam.setFanCtrl(1);
                  webcam.writeControlFile();
                  webcam.uploadControlFile();
                  Toast.makeText(MainActivity.this, "Fan on", Toast.LENGTH_SHORT).show();     
              }  
-             // µ±°´Å¥ÔÙ´Î±»µã»÷Ê±ºòÏìÓ¦µÄÊÂ¼þ  
+             // ï¿½ï¿½ï¿½ï¿½Å¥ï¿½Ù´Î±ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½Â¼ï¿½  
              else {         
                  webcam.setFanCtrl(0);
                  webcam.writeControlFile();
@@ -84,17 +90,17 @@ public class MainActivity extends Activity {
         } 
         }); 
         
-        
+        // FEED
         toggleFeedBtn.setOnClickListener(new OnClickListener() {     
         public void onClick(View v) {         
-               // µ±°´Å¥µÚÒ»´Î±»µã»÷Ê±ºòÏìÓ¦µÄÊÂ¼þ      
-             if (toggleWebcamBtn.isChecked()) {    
+               // ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½Ò»ï¿½Î±ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½Â¼ï¿½      
+             if (toggleFeedBtn.isChecked()) {    
                  webcam.setFeedCtrl(1);
                  webcam.writeControlFile();
                  webcam.uploadControlFile();
                  Toast.makeText(MainActivity.this, "Feed on", Toast.LENGTH_SHORT).show();     
              }  
-             // µ±°´Å¥ÔÙ´Î±»µã»÷Ê±ºòÏìÓ¦µÄÊÂ¼þ  
+             // ï¿½ï¿½ï¿½ï¿½Å¥ï¿½Ù´Î±ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½Â¼ï¿½  
              else {         
                  webcam.setFeedCtrl(0);
                  webcam.writeControlFile();
@@ -103,6 +109,19 @@ public class MainActivity extends Activity {
              }     
         } 
         }); 
+        
+        updateBtn.setOnClickListener(new OnClickListener(){
+            
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                webcam.downloadControlFile();
+                webcam.readControlFile();
+                toggleWebcamBtn.setChecked(webcam.getWebcamCtrl());
+                toggleFanBtn.setChecked(webcam.getFanCtrl());
+                toggleFeedBtn.setChecked(webcam.getFeedCtrl());
+            } 
+            
+        });
     }
 
     @Override

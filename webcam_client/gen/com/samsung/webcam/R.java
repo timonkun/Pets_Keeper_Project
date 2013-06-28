@@ -22,11 +22,12 @@ public final class R {
     public static final class id {
         public static final int TextView01=0x7f080003;
         public static final int TextView02=0x7f080004;
-        public static final int menu_settings=0x7f080006;
+        public static final int menu_settings=0x7f080007;
         public static final int textView1=0x7f080000;
         public static final int toggleFanBtn=0x7f080002;
         public static final int toggleFeedBtn=0x7f080005;
         public static final int toggleWebcamBtn=0x7f080001;
+        public static final int updateBtn=0x7f080006;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -42,6 +43,7 @@ public final class R {
         public static final int feed_btn=0x7f050008;
         public static final int menu_settings=0x7f050004;
         public static final int title_activity_main=0x7f050005;
+        public static final int update_btn=0x7f050009;
         public static final int webcam=0x7f050001;
         public static final int webcam_btn=0x7f050006;
     }
