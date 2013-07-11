@@ -64,4 +64,13 @@
         android:layout_alignLeft="@+id/toggleFanBtn"
         android:text="@string/feed_btn" />
 
+    <Button
+        android:id="@+id/updateBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toggleFeedBtn"
+        android:layout_marginTop="53dp"
+        android:layout_toRightOf="@+id/textView1"
+        android:text="@string/update_btn" />
+
 </RelativeLayout>

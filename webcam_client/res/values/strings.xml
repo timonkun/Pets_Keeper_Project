@@ -9,5 +9,5 @@
     <string name="webcam_btn">webcam_onoff</string>
     <string name="fan_btn">fan_onoff</string>
     <string name="feed_btn">feed_onoff</string>
-
+	<string name="update_btn">update</string>
 </resources>
