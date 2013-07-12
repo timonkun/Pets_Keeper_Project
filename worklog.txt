@@ -1,3 +1,11 @@
+20130629
+nfs挂载命令：mount -t nfs -o nolock 192.168.1.100:/home/nfs /mnt 
+
+用x264方法
+ffmpeg -f v4l2 -i /dev/video0 -vcodec libx264 -qmin 10 -qmax 51 -qdiff 4 -me_range 16 -keyint_min 25 -qcomp 0.6 -b 400K  http://localhost:8090/cam1.ffm
+
+VLC播放： http://192.168.1.103:8090/live.h264
+
 20130628
 果然和我之前的想法一样，有很多互联网公司进入路由器行业，开发智能路由，卡位布局，反而是TPlink这种传统厂商转型迟钝。
 关于智能车，还有个想法，可以将手机插到车上，提供camera、3G、遥控功能。这方面需要学习android USB接口，android app编程（camera, web，GPS方面）。
@@ -55,6 +63,8 @@ http://ffmpeg.org/general.html#Video-Codecs
 
 ffserver -f ffserver.conf &
 ffmpeg -f v4l2 -preset faster -i /dev/video0 http://localhost:8090/cam1.ffm
+
+VLC播放： http://192.168.1.103:8090/cam1.mpeg
 
 20130605
 这几天移植了live555,ffmpeg，已经可以在板子上顺利运行。不过还不能截取实时视频播放，可能用ffserver+ffmpeg可以解决这个问题，至少按照官网上是这样说的。
