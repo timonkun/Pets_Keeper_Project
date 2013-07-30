@@ -42,6 +42,7 @@
 #include <sys/stat.h>
 #include <pthread.h>
 
+
 /* V4L1 extension API */
 #define VIDEO_PALETTE_JPEG  21
 /* in case default setting */

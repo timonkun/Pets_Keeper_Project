@@ -5,7 +5,7 @@
 INSTALLROOT=$(PWD)
 
 #CC=arm-linux-gcc
-CC=/opt/toolchains/arm-2009q3/bin/arm-none-linux-gnueabi-gcc
+CC=arm-none-linux-gnueabi-gcc
 INSTALL=install
 BIN=/usr/local/bin
 
@@ -24,7 +24,7 @@ SERVLIBS= -lpthread -static
 
 
 
-OBJSERVER= server.o spcav4l.o utils.o tcputils.o 
+OBJSERVER= server.o color.o utils.o tcputils.o v4l2uvc.o avilib.o
 
 		
 all:	 servfox 
@@ -42,15 +42,23 @@ servfox: $(OBJSERVER)
 server.o:	server.c
 		$(CC) $(SERVFLAGS) -c -o $@ $<
 	
-spcav4l.o:	spcav4l.c spcav4l.h
-		$(CC) $(SERVFLAGS) -c -o $@ $<
+#spcav4l.o:	spcav4l.c spcav4l.h
+#		$(CC) $(SERVFLAGS) -c -o $@ $<
 		
 utils.o:	utils.c utils.h
 		$(CC) $(SERVFLAGS) -c -o $@ $<
 				
 tcputils.o:	tcputils.c tcputils.h
 		$(CC) $(SERVFLAGS) -c -o $@ $<
-		
+
+color.o: color.c color.h
+	$(CC) $(SERVFLAGS) -c -o $@ $<
+
+v4l2uvc.o: v4l2uvc.c v4l2uvc.h
+		$(CC) $(SERVFLAGS) -c -o $@ $<
+
+avilib.o: avilib.c avilib.h
+	$(CC) $(SERVFLAGS) -c -o $@ $<
 
 		
 install_servfox: spcafox

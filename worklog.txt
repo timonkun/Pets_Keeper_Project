@@ -1,3 +1,13 @@
+20130722
+由于yeelink需要用到curl进行设备更新，因此移植curl到开发板：
+~/Workspace/Linux设备驱动光盘/sd-card/source/programs/curl-7.31.0
+curl依赖于openssl，好在之前为了移植wifi已经弄好了，直接指定路径就可以。
+配置命令：
+export CC=arm-none-linux-gnueabi-gcc
+export CPP="arm-none-linux-gnueabi-gcc -E"
+./configure --host=x86_64 --target=arm-linux --prefix=`pwd`/_install --with-ssl=/home/timonkun/Workspace/_install --with-random=/dev/urandom
+
+
 20130716
 域名：
 www.pets-care.com  -- exist

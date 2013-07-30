@@ -1,0 +1,6 @@
+{
+	"type":"photo",
+	"title":"webcam",
+	"about":"home watch",
+	"tags":["webcam","photo"]
+}

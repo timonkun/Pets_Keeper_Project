@@ -26,12 +26,14 @@
 #include <string.h>
 #include <syslog.h>
 #include "spcaframe.h"
-#include "spcav4l.h"
+//#include "spcav4l.h"
+#include "v4l2uvc.h"
 #include "utils.h"
 #include "tcputils.h"
 #include "version.h"
+#include "color.h"
 
-static int debug = 0;
+static int debug = 1;
 void grab(void);
 void service(void *ir);
 void sigchld_handler(int s);
@@ -43,11 +45,14 @@ int main(int argc, char *argv[])
 	char *videodevice = NULL;
 
 	int grabmethod = 1;
-	int format = VIDEO_PALETTE_JPEG;
+	int format = V4L2_PIX_FMT_MJPEG;
+	int fps = 15;
 	int width = 352;
 	int height = 288;
+	char *avifilename = NULL;
 	char *separateur;
 	char *sizestring = NULL;
+	char *fpsstring  = NULL;
 	int i;
 	int serv_sock, new_sock;
 	pthread_t w1;
@@ -73,6 +78,16 @@ int main(int argc, char *argv[])
 		if (strcmp(argv[i], "-g") == 0) {
 			/* Ask for read instead default  mmap */
 			grabmethod = 0;
+		}
+
+		if (strcmp(argv[i], "-i") == 0){
+		  if (i + 1 >= argc) {
+		    printf("No parameter specified with -i, aborting. \n");
+		    exit(1);
+		  }
+		  fpsstring = strdup(argv[i + 1]);
+		  fps = strtoul(fpsstring, &separateur, 10);
+		  printf(" interval: %d fps \n", fps);
 		}
 
 		if (strcmp(argv[i], "-s") == 0) {
@@ -103,6 +118,14 @@ int main(int argc, char *argv[])
 					       width, height);
 			}
 		}
+		if (strcmp(argv[i], "-o") == 0) {
+	        /* set the avi filename */
+	        if (i + 1 >= argc) {
+	        printf("No parameter specified with -o, aborting.\n");
+	        exit(1);
+	        }
+	        avifilename = strdup(argv[i + 1]);
+	    }
 		if (strcmp(argv[i], "-w") == 0) {
 			if (i + 1 >= argc) {
 				if (debug)
@@ -120,14 +143,15 @@ int main(int argc, char *argv[])
 		}
 
 		if (strcmp(argv[i], "-h") == 0) {
-			printf("usage: cdse [-h -d -g ] \n");
+			printf("usage: servfox [-h -d -g ] \n");
 			printf("-h	print this message \n");
 			printf("-d	/dev/videoX       use videoX device\n");
 			printf
 			    ("-g	use read method for grab instead mmap \n");
-
+			printf("-i	fps 		  use specified frame interval \n");
 			printf
 			    ("-s	widthxheight      use specified input size \n");
+			printf("-o	avifile  create avifile, default video.avi\n");
 			printf("-w	port      server port \n");
 
 			exit(0);
@@ -139,15 +163,22 @@ int main(int argc, char *argv[])
 	if (videodevice == NULL || *videodevice == 0) {
 		videodevice = "/dev/video0";
 	}
+	
+	if (avifilename == NULL || *avifilename == 0) {
+			avifilename = "video.avi";
+		}
 
 	memset(&videoIn, 0, sizeof(struct vdIn));
 
 	if (init_videoIn
-	    (&videoIn, videodevice, width, height, format, grabmethod) != 0)
+	    (&videoIn, videodevice, width, height, fps, format, 
+	    	grabmethod, avifilename) != 0)
 
 		if (debug)
 			printf(" damned encore rate !!\n");
 	// if(debug) printf("depth %d",videoIn.bppIn);  
+
+	initLut();   // from luvcview
 
 	pthread_create(&w1, NULL, (void *)grab, NULL);
 
@@ -175,7 +206,7 @@ int main(int argc, char *argv[])
 	pthread_join(w1, NULL);
 
 	close(serv_sock);
-	close_v4l(&videoIn);
+	close_v4l2(&videoIn);
 	return 0;
 }
 
@@ -184,7 +215,7 @@ void grab(void)
 	int err = 0;
 	for (;;) {
 		//if(debug) printf("I am the GRABBER !!!!! \n");
-		err = v4lGrab(&videoIn);
+		err = uvcGrab(&videoIn);
 		if (!videoIn.signalquit || (err < 0)) {
 			if (debug)
 				printf("GRABBER going out !!!!! \n");
@@ -208,10 +239,10 @@ void service(void *ir)
 	sock = *id;
 	// if(debug) printf (" \n I am the server %d \n", *id);
 	/* initialize video setting */
-	bright = upbright(&videoIn);
-	contrast = upcontrast(&videoIn);
-	bright = downbright(&videoIn);
-	contrast = downcontrast(&videoIn);
+	//bright = upbright(&videoIn);
+	//contrast = upcontrast(&videoIn);
+	//bright = downbright(&videoIn);
+	//contrast = downcontrast(&videoIn);
 	for (;;) {
 		memset(&message, 0, sizeof(struct client_t));
 		ret =
@@ -231,27 +262,27 @@ void service(void *ir)
 		if (message.updobright) {
 			switch (message.updobright) {
 			case 1:
-				bright = upbright(&videoIn);
+				//bright = upbright(&videoIn);
 				break;
 			case 2:
-				bright = downbright(&videoIn);
+				//bright = downbright(&videoIn);
 				break;
 			}
 			ack = 1;
 		} else if (message.updocontrast) {
 			switch (message.updocontrast) {
 			case 1:
-				contrast = upcontrast(&videoIn);
+				//contrast = upcontrast(&videoIn);
 				break;
 			case 2:
-				contrast = downcontrast(&videoIn);
+				//contrast = downcontrast(&videoIn);
 				break;
 			}
 			ack = 1;
 		} else if (message.updoexposure) {
 			switch (message.updoexposure) {
 			case 1:
-				spcaSetAutoExpo(&videoIn);
+				//spcaSetAutoExpo(&videoIn);
 				break;
 			case 2:;
 				break;
@@ -260,20 +291,20 @@ void service(void *ir)
 		} else if (message.updosize) {	//compatibility FIX chg quality factor ATM
 			switch (message.updosize) {
 			case 1:
-				qualityUp(&videoIn);
+				//qualityUp(&videoIn);
 				break;
 			case 2:
-				qualityDown(&videoIn);
+				//qualityDown(&videoIn);
 				break;
 			}
 			ack = 1;
 		} else if (message.fps) {
 			switch (message.fps) {
 			case 1:
-				timeDown(&videoIn);
+				//timeDown(&videoIn);
 				break;
 			case 2:
-				timeUp(&videoIn);
+				//timeUp(&videoIn);
 				break;
 			}
 			ack = 1;
