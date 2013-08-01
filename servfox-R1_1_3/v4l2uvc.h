@@ -20,6 +20,8 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA    #
 #                                                                              #
 *******************************************************************************/
+#ifndef _V4L2UVC_H
+#define _V4L2UVC_H
 
 #include <stdio.h>
 #include <string.h>
@@ -97,9 +99,9 @@ struct vdIn {
     int framelock[4];
     unsigned char *ptframe[4];
 };
-int
-init_videoIn(struct vdIn *vd, char *device, int width, int height, int fps,
-	     int format, int grabmethod, char *avifilename);
+
+int init_videoIn(struct vdIn *vd, char *device, int width, int height, 
+	int fps, int format, int grabmethod, char *avifilename);
 int enum_controls(int vd);
 int save_controls(int vd);
 int load_controls(int vd);
@@ -122,3 +124,4 @@ int enum_frame_intervals(int dev, __u32 pixfmt, __u32 width, __u32 height);
 int enum_frame_sizes(int dev, __u32 pixfmt);
 int enum_frame_formats(int dev);
 
+#endif

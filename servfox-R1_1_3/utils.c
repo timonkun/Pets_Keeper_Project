@@ -1,24 +1,28 @@
-/****************************************************************************
-#	 	Spcaview:  Spca5xx Grabber                                  #
-# 		Copyright (C) 2004 2005 Michel Xhaard                       #
-#                                                                           #
-# This program is free software; you can redistribute it and/or modify      #
-# it under the terms of the GNU General Public License as published by      #
-# the Free Software Foundation; either version 2 of the License, or         #
-# (at your option) any later version.                                       #
-#                                                                           #
-# This program is distributed in the hope that it will be useful,           #
-# but WITHOUT ANY WARRANTY; without even the implied warranty of            #
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the             #
-# GNU General Public License for more details.                              #
-#                                                                           #
-# You should have received a copy of the GNU General Public License         #
-# along with this program; if not, write to the Free Software               #
-# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA #
-#                                                                           #
-****************************************************************************/
+/*******************************************************************************
+#	 	luvcview: Sdl video Usb Video Class grabber          .         #
+#This package work with the Logitech UVC based webcams with the mjpeg feature. #
+#All the decoding is in user space with the embedded jpeg decoder              #
+#.                                                                             #
+# 		Copyright (C) 2005 2006 Laurent Pinchart &&  Michel Xhaard     #
+#                                                                              #
+# This program is free software; you can redistribute it and/or modify         #
+# it under the terms of the GNU General Public License as published by         #
+# the Free Software Foundation; either version 2 of the License, or            #
+# (at your option) any later version.                                          #
+#                                                                              #
+# This program is distributed in the hope that it will be useful,              #
+# but WITHOUT ANY WARRANTY; without even the implied warranty of               #
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the                #
+# GNU General Public License for more details.                                 #
+#                                                                              #
+# You should have received a copy of the GNU General Public License            #
+# along with this program; if not, write to the Free Software                  #
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA    #
+#                                                                              #
+*******************************************************************************/
 
 #include "utils.h"
+#include "color.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -26,14 +30,9 @@
 #include <string.h>
 #include <fcntl.h>
 #include <wait.h>
-#include <sys/time.h>
-#include <limits.h>
-
-#include "color.h"
-#include <limits.h>
 #include <time.h>
+#include <limits.h>
 #include "huffman.h"
-
 
 #define ISHIFT 11
 
@@ -133,7 +132,6 @@ typedef void (*ftopict) ( int *out, unsigned char *pic, int width) ;
 #define M_COM	0xfe
 
 static unsigned char *datap;
-
 
 static int getbyte(void)
 {
@@ -1062,6 +1060,7 @@ static void yuv420pto422(int * out,unsigned char *pic,int width)
 	}
     
 }
+
 static void yuv422pto422(int * out,unsigned char *pic,int width)
 {
     int j, k;
@@ -1107,6 +1106,7 @@ static void yuv422pto422(int * out,unsigned char *pic,int width)
 	}
     
 }
+
 static void yuv444pto422(int * out,unsigned char *pic,int width)
 {
     int j, k;
@@ -1145,6 +1145,7 @@ static void yuv444pto422(int * out,unsigned char *pic,int width)
 	}
     
 }
+
 static void yuv400pto422(int * out,unsigned char *pic,int width)
 {
     int j, k;
@@ -1177,8 +1178,7 @@ static void yuv400pto422(int * out,unsigned char *pic,int width)
     
 }
 
-int 
-is_huffman(unsigned char *buf)
+int is_huffman(unsigned char *buf)
 {
 	unsigned char *ptbuf;
 	int i = 0;
@@ -1193,8 +1193,7 @@ is_huffman(unsigned char *buf)
 	return 0;
 }
 
-static void
- getPictureName (char *Picture, int fmt)
+static void getPictureName (char *Picture, int fmt)
 {
 	char temp[80];
   char *myext[] = { "pnm", "jpg" };
@@ -1217,8 +1216,7 @@ static void
   memcpy (Picture, temp, strlen (temp));
 }
 
-int 
-get_picture(unsigned char *buf,int size)
+int get_picture(unsigned char *buf,int size)
 {
 	FILE *file;
 	unsigned char *ptdeb,*ptcur = buf;
@@ -1275,27 +1273,9 @@ get_pictureYV2(unsigned char *buf,int width,int height)
 	return 0;
 }
 
-
 void exit_fatal(char *messages)
 {
-	printf("%s \n", messages);
+	printf(" %s \n", messages);
 	exit(1);
 }
 
-double ms_time(void)
-{
-	static struct timeval tod;
-	gettimeofday(&tod, NULL);
-	return ((double)tod.tv_sec * 1000.0 + (double)tod.tv_usec / 1000.0);
-
-}
-
-int get_jpegsize(unsigned char *buf, int insize)
-{
-	int i;
-	for (i = 1024; i < insize; i++) {
-		if ((buf[i] == 0xFF) && (buf[i + 1] == 0xD9))
-			return i + 10;
-	}
-	return -1;
-}

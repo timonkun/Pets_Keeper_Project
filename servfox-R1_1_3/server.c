@@ -33,11 +33,13 @@
 #include "version.h"
 #include "color.h"
 
+int getpictureflag = 0;
+
 static int debug = 1;
 void grab(void);
 void service(void *ir);
 void sigchld_handler(int s);
-struct vdIn videoIn;
+struct vdIn *videoIn;
 
 int main(int argc, char *argv[])
 {
@@ -61,6 +63,17 @@ int main(int argc, char *argv[])
 	unsigned short serverport = 7070;
 	struct sockaddr_in their_addr;
 	struct sigaction sa;
+	
+	int time_delay = 0;
+	int record_time = 0;
+	unsigned int picture_count = 0;
+	unsigned char frmrate = 0;
+	int querycontrols = 0;
+	int queryformats = 0;
+	int enableRawStreamCapture = 0;
+	int enableRawFrameCapture = 0;
+
+	
 	for (i = 1; i < argc; i++) {
 		/* skip bad arguments */
 		if (argv[i] == NULL || *argv[i] == 0 || *argv[i] != '-') {
@@ -126,6 +139,12 @@ int main(int argc, char *argv[])
 	        }
 	        avifilename = strdup(argv[i + 1]);
 	    }
+
+	    if (strcmp(argv[i], "-O") == 0) {
+		    /* get picture */
+		    getpictureflag = 1;
+		}
+		
 		if (strcmp(argv[i], "-w") == 0) {
 			if (i + 1 >= argc) {
 				if (debug)
@@ -141,17 +160,36 @@ int main(int argc, char *argv[])
 				serverport = 7070;
 			}
 		}
+		if (strcmp(argv[i], "-l") == 0) {
+		    /* query list of valid video formats */
+		    querycontrols = 1;
+		}
+		if (strcmp(argv[i], "-L") == 0) {
+		    /* query list of valid video formats */
+		    queryformats = 1;
+		}
+		if (strcmp(argv[i], "-c") == 0) {
+			/* Enable raw frame capture for the first frame */
+			enableRawFrameCapture = 1;
+		}
+		if (strcmp(argv[i], "-C") == 0) {
+			/* Enable raw frame stream capture from the start*/
+			enableRawFrameCapture = 2;
+		}
 
 		if (strcmp(argv[i], "-h") == 0) {
 			printf("usage: servfox [-h -d -g ] \n");
 			printf("-h	print this message \n");
+			printf("-c	enable raw frame capturing for the first frame\n");
+		    printf("-C	enable raw frame stream capturing from the start\n");
 			printf("-d	/dev/videoX       use videoX device\n");
-			printf
-			    ("-g	use read method for grab instead mmap \n");
+			printf("-g	use read method for grab instead mmap \n");
 			printf("-i	fps 		  use specified frame interval \n");
-			printf
-			    ("-s	widthxheight      use specified input size \n");
+			printf("-l	query valid controls and settings\n");
+			printf("-L	query valid video formats\n");
 			printf("-o	avifile  create avifile, default video.avi\n");
+			printf("-O	get picture.\n");
+			printf("-s	widthxheight      use specified input size \n");
 			printf("-w	port      server port \n");
 
 			exit(0);
@@ -168,18 +206,97 @@ int main(int argc, char *argv[])
 			avifilename = "video.avi";
 		}
 
-	memset(&videoIn, 0, sizeof(struct vdIn));
+	//memset(videoIn, 0, sizeof(struct vdIn));
+	videoIn = (struct vdIn *) calloc(1, sizeof(struct vdIn));
 
-	if (init_videoIn
-	    (&videoIn, videodevice, width, height, fps, format, 
+	if ( queryformats ) {
+		 /* if we're supposed to list the video formats, do that now and go out */
+			check_videoIn(videoIn,(char *) videodevice);
+			free(videoIn);
+			exit(1);
+	}
+
+	if (init_videoIn(videoIn, videodevice, width, height, fps, format, 
 	    	grabmethod, avifilename) != 0)
-
+	{
 		if (debug)
 			printf(" damned encore rate !!\n");
-	// if(debug) printf("depth %d",videoIn.bppIn);  
+
+		free(videoIn);
+		exit(1);
+	}
+	// if(debug) printf("depth %d",videoIn->bppIn);  
+
+	/* if we're supposed to list the controls, do that now */
+    if ( querycontrols )
+        enum_controls(videoIn->fd);
+        
+	if (enableRawStreamCapture) {
+			videoIn->captureFile = fopen("stream.raw", "wb");
+			if(videoIn->captureFile == NULL) {
+				perror("Unable to open file for raw stream capturing");
+			} 
+		else{
+				printf("Starting raw stream capturing to stream.raw ...\n");
+			}
+	}
+	
+	if (enableRawFrameCapture)
+		videoIn->rawFrameCapture = enableRawFrameCapture;
+		
 
 	initLut();   // from luvcview
 
+	////////////luvcview/////////////////////////////
+	/* main big loop */
+    while (videoIn->signalquit) {
+		//
+		if (uvcGrab(videoIn) < 0) {
+		    printf("Error grabbing \n");
+		    break;
+		}
+		//
+	    /* if we're grabbing video, show the frame rate */
+	    if (videoIn->toggleAvi)
+	        printf("\rframe rate: %d ",frmrate);
+		//
+		
+		if(getpictureflag){
+		//if (videoIn->getPict) { 
+			switch(videoIn->formatIn){
+				case V4L2_PIX_FMT_MJPEG:
+					get_picture(videoIn->tmpbuffer,videoIn->buf.bytesused);
+					break;
+				case V4L2_PIX_FMT_YUYV:
+					printf("get picture yuv...\n");
+					get_pictureYV2(videoIn->framebuffer,videoIn->width,videoIn->height);
+					break;
+				default:
+					break;
+			}
+			videoIn->getPict = 0;
+			printf("get picture %d!\n", picture_count++);
+			record_time -= time_delay;
+			if(record_time < 0) {
+				printf("picture_count=%d\ntimes up, close.\n");
+				exit(0);	// times up, jump out.
+			}
+			sleep(time_delay);
+		}
+    }
+
+    /* if avifile is defined, we made a video: compute the exact fps and
+       set it in the video */
+    if (videoIn->avifile != NULL) {
+        float fps=(videoIn->framecount/(videoIn->recordtime/1000));
+        fprintf(stderr,"setting fps to %f\n",fps);
+        AVI_set_video(videoIn->avifile, videoIn->width, videoIn->height,
+            fps, "MJPG");
+        AVI_close(videoIn->avifile);
+    }
+	////////////luvcview/////////////////////////////
+
+#if 0
 	pthread_create(&w1, NULL, (void *)grab, NULL);
 
 	serv_sock = open_sock(serverport);
@@ -190,7 +307,7 @@ int main(int argc, char *argv[])
 	sa.sa_flags = SA_RESTART;
 	syslog(LOG_ERR, "Spcaserv Listening on Port  %d\n", serverport);
 	printf("Waiting .... for connection. CTrl_c to stop !!!! \n");
-	while (videoIn.signalquit) {
+	while (videoIn->signalquit) {
 		sin_size = sizeof(struct sockaddr_in);
 		if ((new_sock =
 		     accept(serv_sock, (struct sockaddr *)&their_addr,
@@ -206,7 +323,11 @@ int main(int argc, char *argv[])
 	pthread_join(w1, NULL);
 
 	close(serv_sock);
-	close_v4l2(&videoIn);
+#endif
+	close_v4l2(videoIn);
+	free(videoIn);
+	freeLut();
+	
 	return 0;
 }
 
@@ -215,8 +336,8 @@ void grab(void)
 	int err = 0;
 	for (;;) {
 		//if(debug) printf("I am the GRABBER !!!!! \n");
-		err = uvcGrab(&videoIn);
-		if (!videoIn.signalquit || (err < 0)) {
+		err = uvcGrab(videoIn); //v4lGrab(&videoIn);
+		if (!videoIn->signalquit || (err < 0)) {
 			if (debug)
 				printf("GRABBER going out !!!!! \n");
 			break;
@@ -239,10 +360,10 @@ void service(void *ir)
 	sock = *id;
 	// if(debug) printf (" \n I am the server %d \n", *id);
 	/* initialize video setting */
-	//bright = upbright(&videoIn);
-	//contrast = upcontrast(&videoIn);
-	//bright = downbright(&videoIn);
-	//contrast = downcontrast(&videoIn);
+	//bright = upbright(videoIn);
+	//contrast = upcontrast(videoIn);
+	//bright = downbright(videoIn);
+	//contrast = downcontrast(videoIn);
 	for (;;) {
 		memset(&message, 0, sizeof(struct client_t));
 		ret =
@@ -262,27 +383,27 @@ void service(void *ir)
 		if (message.updobright) {
 			switch (message.updobright) {
 			case 1:
-				//bright = upbright(&videoIn);
+				//bright = upbright(videoIn);
 				break;
 			case 2:
-				//bright = downbright(&videoIn);
+				//bright = downbright(videoIn);
 				break;
 			}
 			ack = 1;
 		} else if (message.updocontrast) {
 			switch (message.updocontrast) {
 			case 1:
-				//contrast = upcontrast(&videoIn);
+				//contrast = upcontrast(videoIn);
 				break;
 			case 2:
-				//contrast = downcontrast(&videoIn);
+				//contrast = downcontrast(videoIn);
 				break;
 			}
 			ack = 1;
 		} else if (message.updoexposure) {
 			switch (message.updoexposure) {
 			case 1:
-				//spcaSetAutoExpo(&videoIn);
+				//spcaSetAutoExpo(videoIn);
 				break;
 			case 2:;
 				break;
@@ -291,20 +412,20 @@ void service(void *ir)
 		} else if (message.updosize) {	//compatibility FIX chg quality factor ATM
 			switch (message.updosize) {
 			case 1:
-				//qualityUp(&videoIn);
+				//qualityUp(videoIn);
 				break;
 			case 2:
-				//qualityDown(&videoIn);
+				//qualityDown(videoIn);
 				break;
 			}
 			ack = 1;
 		} else if (message.fps) {
 			switch (message.fps) {
 			case 1:
-				//timeDown(&videoIn);
+				//timeDown(videoIn);
 				break;
 			case 2:
-				//timeUp(&videoIn);
+				//timeUp(videoIn);
 				break;
 			}
 			ack = 1;
@@ -313,12 +434,12 @@ void service(void *ir)
 			ack = 1;
 		} else
 			ack = 0;
-		while ((frameout == videoIn.frame_cour) && videoIn.signalquit)
+		while ((frameout == videoIn->frame_cour) && videoIn->signalquit)
 			usleep(1000);
-		if (videoIn.signalquit) {
-			videoIn.framelock[frameout]++;
+		if (videoIn->signalquit) {
+			videoIn->framelock[frameout]++;
 			headerframe =
-			    (struct frame_t *)videoIn.ptframe[frameout];
+			    (struct frame_t *)videoIn->ptframe[frameout];
 			//headerframe->nbframe = framecount++;
 			//if(debug) printf ("reader %d key %s width %d height %d times %dms size %d \n", sock,headerframe->header,
 			//headerframe->w,headerframe->h,headerframe->deltatimes,headerframe->size);
@@ -326,23 +447,18 @@ void service(void *ir)
 			headerframe->bright = bright;
 			headerframe->contrast = contrast;
 			headerframe->wakeup = wakeup;
-			ret =
+			/**ret =
 			    write_sock(sock, (unsigned char *)headerframe,
 				       sizeof(struct frame_t));
 
 			if (!wakeup)
-				ret =
-				    write_sock(sock,
-					       (unsigned char *)(videoIn.
-								 ptframe
-								 [frameout] +
-								 sizeof(struct
-									frame_t)),
-					       headerframe->size);
+				ret = write_sock(sock,
+					   (unsigned char *)(videoIn->ptframe[frameout] +sizeof(struct frame_t)),
+					    headerframe->size);
+			**/
+			// ret = write_sock(sock,(unsigned char*)(videoIn->ptframe[frameout]+sizeof(struct frame_t)),headerframe->size);
 
-			// ret = write_sock(sock,(unsigned char*)(videoIn.ptframe[frameout]+sizeof(struct frame_t)),headerframe->size);
-
-			videoIn.framelock[frameout]--;
+			videoIn->framelock[frameout]--;
 			frameout = (frameout + 1) % 4;
 		} else {
 			if (debug)
@@ -356,5 +472,5 @@ void service(void *ir)
 
 void sigchld_handler(int s)
 {
-	videoIn.signalquit = 0;
+	videoIn->signalquit = 0;
 }

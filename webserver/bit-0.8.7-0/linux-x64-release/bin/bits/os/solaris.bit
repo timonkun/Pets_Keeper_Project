@@ -1,0 +1,11 @@
+/*
+    solaris.bit -- Solaris Settings
+ */
+
+Bit.load({
+    blend: [    
+        'unix.bit',
+        'gcc.bit',
+    ],
+})
+

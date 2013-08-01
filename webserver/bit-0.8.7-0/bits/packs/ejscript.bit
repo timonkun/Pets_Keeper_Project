@@ -1,0 +1,11 @@
+/*
+    ejscript.bit - Ejscript package
+ */
+
+Bit.pack({
+    ejscript: {
+        description: 'Ejscript Language',
+        path: probe(bit.dir.src.join('src/deps/ejs/ejsLib.c')),
+        depends: [ 'sqlite', 'libmpr', 'libhttp', 'libpcre' ],
+    },
+})

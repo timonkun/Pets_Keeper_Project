@@ -1,28 +1,27 @@
-/****************************************************************************
-#	 	spcaview: Sdl video recorder and viewer with sound.         #
-#This package work with the spca5xx based webcam with the raw jpeg feature. #
-#All the decoding is in user space with the help of libjpeg.                #
-#.                                                                          #
-# 		Copyright (C) 2003 2004 2005 Michel Xhaard                  #
-#                                                                           #
-# This program is free software; you can redistribute it and/or modify      #
-# it under the terms of the GNU General Public License as published by      #
-# the Free Software Foundation; either version 2 of the License, or         #
-# (at your option) any later version.                                       #
-#                                                                           #
-# This program is distributed in the hope that it will be useful,           #
-# but WITHOUT ANY WARRANTY; without even the implied warranty of            #
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the             #
-# GNU General Public License for more details.                              #
-#                                                                           #
-# You should have received a copy of the GNU General Public License         #
-# along with this program; if not, write to the Free Software               #
-# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA #
-#                                                                           #
-****************************************************************************/
- 
-#ifndef UTILS_H
-#define UTILS_H
+/*******************************************************************************
+#	 	luvcview: Sdl video Usb Video Class grabber          .         #
+#This package work with the Logitech UVC based webcams with the mjpeg feature. #
+#All the decoding is in user space with the embedded jpeg decoder              #
+#.                                                                             #
+# 		Copyright (C) 2005 2006Laurent Pinchart &&  Michel Xhaard      #
+#                                                                              #
+# This program is free software; you can redistribute it and/or modify         #
+# it under the terms of the GNU General Public License as published by         #
+# the Free Software Foundation; either version 2 of the License, or            #
+# (at your option) any later version.                                          #
+#                                                                              #
+# This program is distributed in the hope that it will be useful,              #
+# but WITHOUT ANY WARRANTY; without even the implied warranty of               #
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the                #
+# GNU General Public License for more details.                                 #
+#                                                                              #
+# You should have received a copy of the GNU General Public License            #
+# along with this program; if not, write to the Free Software                  #
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA    #
+#                                                                              #
+*******************************************************************************/
+#ifndef _UTILS_H
+#define _UTILS_H
 
 #define ERR_NO_SOI 1
 #define ERR_NOT_8BIT 2
@@ -42,19 +41,9 @@
 
 int jpeg_decode(unsigned char **pic, unsigned char *buf, int *width,
 		int *height);
-int 
-get_picture(unsigned char *buf,int size);
-int
-get_pictureYV2(unsigned char *buf,int width,int height);
+int get_picture(unsigned char *buf,int size);
+int get_pictureYV2(unsigned char *buf,int width,int height);
 
+void exit_fatal(char *messages);
 
-int
-get_jpegsize (unsigned char *buf, int insize);
- 
-void
-exit_fatal(char *messages);
-
-double
-ms_time (void);
-
-#endif // UTILS_H
+#endif

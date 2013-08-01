@@ -15,6 +15,8 @@ struct frame_t{
 	unsigned char wakeup;
 	int acknowledge;
 	} __attribute__ ((packed));  
+
+	
 struct client_t{
 	char message[4];
 	unsigned char x;

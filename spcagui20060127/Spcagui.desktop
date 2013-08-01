@@ -1,9 +1,0 @@
- 
-[Desktop Entry]
-Name=Spcagui
-Comment=SpcaGui SDL
-Exec=spcagui -d /dev/video1
-Icon=/usr/local/share/spcagui/spca5xx.png
-Terminal=false
-MultipleArgs=true
-Type=Application

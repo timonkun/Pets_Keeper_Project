@@ -1,0 +1,10 @@
+/*
+    start.bit -- Startup Bit File for Embedthis Appweb
+ */
+
+Bit.load({
+    platforms: [
+        "linux-x64-release",
+        "linux-arm-release",
+    ],
+})

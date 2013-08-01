@@ -17,6 +17,10 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA #
 #                                                                           #
 ****************************************************************************/ 
+
+#ifndef _COLOR_H
+#define _COLOR_H
+
 typedef struct Myrgb16 {
 	unsigned short blue:5;
 	unsigned short green:6;
@@ -76,3 +80,5 @@ B_FROMYU(unsigned char y, unsigned char u);
 
 void initLut(void);
 void freeLut(void);
+
+#endif

@@ -1,0 +1,10 @@
+/*
+    freebsd.bit -- FreeBSD Settings
+ */
+
+Bit.load({
+    blend: [    
+        'unix.bit',
+        'gcc.bit',
+    ],
+})

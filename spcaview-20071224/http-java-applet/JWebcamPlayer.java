@@ -49,7 +49,7 @@ public class JWebcamPlayer extends javax.swing.JApplet implements MouseListener,
         if (m_strColor==null || m_strColor=="") m_strColor = "#FFFFFF";
 
         m_strServer = getCodeBase().getHost();//getParameter("Server");
-        if (m_strServer==null || m_strServer=="") m_strServer = "127.0.0.1";
+        if (m_strServer==null || m_strServer=="") m_strServer = "192.168.1.103";
 
         m_strPort = getParameter("Port");
         if (m_strPort==null || m_strPort=="") m_strPort = "7070";

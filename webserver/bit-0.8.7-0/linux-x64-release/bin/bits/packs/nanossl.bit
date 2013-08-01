@@ -1,0 +1,40 @@
+/*
+    nanossl.bit -- Mocana NanoSSL package search
+ */
+
+Bit.pack({
+    nanossl: {
+        description: 'Mocana NanoSSL',
+        generate: function (pack) {
+            pack.path = '/usr/src/nanossl'
+            pack.libraries = [ 'ssls' ]
+            pack.libpaths = [ '$(BIT_PACK_NANOSSL_PATH)/bin' ]
+            pack.includes = [ '$(BIT_PACK_NANOSSL_PATH)/src' ]
+        },
+        path: function (pack) {
+            let path: Path? = pack.withpath
+            if (!path) {
+                if (bit.dir.packs.join('nanossl/latest').exists && Config.OS != 'windows') {
+                    path = bit.dir.packs.join('nanossl/latest')
+                } else {
+                    let versions = sortVersions(bit.dir.packs.join('nanossl').files('nanossl-5*'))
+                    if (!versions.length || versions.length == 0) {
+                        throw 'Can\'t find Mocana NanoSSL'
+                    }
+                    path = versions[0]
+                }
+            }
+            let search = [ path.join('bin') ]
+            let lib = probe('libssls.' + bit.ext.lib, {fullpath: true, search: search}).absolute
+            pack.libpaths = [ lib.parent ]
+            pack.libraries = [ 'ssls' ]
+            pack.imports = [ lib ]
+
+            let incdir = probe('common/moptions.h', {search: [path.join('src')]}).absolute
+            pack.includes = [ incdir ]
+            return path
+        },
+        conflicts: [ 'est', 'matrixssl', 'openssl' ],
+        packs: [ 'ssl' ],
+    },
+})

@@ -26,9 +26,8 @@
 #include "v4l2uvc.h"
 #include "utils.h"
 
+#define OUTFRMNUMB 4
 static int debug = 1;
-
-
 
 static int init_v4l2(struct vdIn *vd);
 
@@ -111,6 +110,7 @@ init_videoIn(struct vdIn *vd, char *device, int width, int height, int fps,
 	printf(" Init v4L2 failed !! exit fatal \n");
 	goto error;;
     }
+    
     /* alloc a temp buffer to reconstruct the pict */
     vd->framesizeIn = (vd->width * vd->height << 1);
     switch (vd->formatIn) {
@@ -135,6 +135,15 @@ init_videoIn(struct vdIn *vd, char *device, int width, int height, int fps,
     }
     if (!vd->framebuffer)
 		goto error;
+
+	for (i = 0; i < OUTFRMNUMB; i++) {
+		vd->ptframe[i] = NULL;
+		/**vd->ptframe[i] =
+		    (unsigned char *)realloc(vd->ptframe[i],
+					     sizeof(struct frame_t) + (size_t) vd->framesizeIn);**/
+		vd->framelock[i] = 0;
+	}
+	vd->frame_cour = 0;
     return 0;
   error:
     free(vd->videodevice);
@@ -143,6 +152,8 @@ init_videoIn(struct vdIn *vd, char *device, int width, int height, int fps,
     close(vd->fd);
     return -1;
 }
+
+
 int enum_controls(int vd) //struct vdIn *vd)
 {    
   struct v4l2_queryctrl queryctrl;
@@ -317,33 +328,34 @@ static int init_v4l2(struct vdIn *vd)
     int ret = 0;
 
     if ((vd->fd = open(vd->videodevice, O_RDWR)) == -1) {
-	perror("ERROR opening V4L interface \n");
-	exit(1);
+		perror("ERROR opening V4L interface \n");
+		exit(1);
     }
     memset(&vd->cap, 0, sizeof(struct v4l2_capability));
     ret = ioctl(vd->fd, VIDIOC_QUERYCAP, &vd->cap);
     if (ret < 0) {
-	printf("Error opening device %s: unable to query device.\n",
+		printf("Error opening device %s: unable to query device.\n",
 	       vd->videodevice);
-	goto fatal;
+		goto fatal;
     }
 
     if ((vd->cap.capabilities & V4L2_CAP_VIDEO_CAPTURE) == 0) {
-	printf("Error opening device %s: video capture not supported.\n",
+		printf("Error opening device %s: video capture not supported.\n",
 	       vd->videodevice);
-	goto fatal;;
+		goto fatal;;
     }
     if (vd->grabmethod) {
-	if (!(vd->cap.capabilities & V4L2_CAP_STREAMING)) {
-	    printf("%s does not support streaming i/o\n", vd->videodevice);
-	    goto fatal;
-	}
+		if (!(vd->cap.capabilities & V4L2_CAP_STREAMING)) {
+	   		printf("%s does not support streaming i/o\n", vd->videodevice);
+	    	goto fatal;
+		}
     } else {
-	if (!(vd->cap.capabilities & V4L2_CAP_READWRITE)) {
-	    printf("%s does not support read i/o\n", vd->videodevice);
-	    goto fatal;
-	}
+		if (!(vd->cap.capabilities & V4L2_CAP_READWRITE)) {
+	    	printf("%s does not support read i/o\n", vd->videodevice);
+	    	goto fatal;
+		}
     }
+    
 	/*Test format it support */
 	memset(&vd->fmt, 0, sizeof(struct v4l2_format));
     vd->fmt.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;	
@@ -370,17 +382,17 @@ static int init_v4l2(struct vdIn *vd)
     vd->fmt.fmt.pix.field = V4L2_FIELD_ANY;
     ret = ioctl(vd->fd, VIDIOC_S_FMT, &vd->fmt);
     if (ret < 0) {
-	printf("Unable to set format: %d.\n", errno);
-	goto fatal;
+		printf("Unable to set format: %d.\n", errno);
+		goto fatal;
     }
     if ((vd->fmt.fmt.pix.width != vd->width) ||
-	(vd->fmt.fmt.pix.height != vd->height)) {
-	printf(" format asked unavailable get width %d height %d \n",
-	       vd->fmt.fmt.pix.width, vd->fmt.fmt.pix.height);
-	vd->width = vd->fmt.fmt.pix.width;
-	vd->height = vd->fmt.fmt.pix.height;
-	/* look the format is not part of the deal ??? */
-	//vd->formatIn = vd->fmt.fmt.pix.pixelformat;
+		(vd->fmt.fmt.pix.height != vd->height)) {
+			printf(" format asked unavailable get width %d height %d \n",
+	        vd->fmt.fmt.pix.width, vd->fmt.fmt.pix.height);
+			vd->width = vd->fmt.fmt.pix.width;
+			vd->height = vd->fmt.fmt.pix.height;
+			/* look the format is not part of the deal ??? */
+			//vd->formatIn = vd->fmt.fmt.pix.pixelformat;
     }
     
         /* set framerate */
@@ -400,44 +412,46 @@ static int init_v4l2(struct vdIn *vd)
 
     ret = ioctl(vd->fd, VIDIOC_REQBUFS, &vd->rb);
     if (ret < 0) {
-	printf("Unable to allocate buffers: %d.\n", errno);
-	goto fatal;
+		printf("Unable to allocate buffers: %d.\n", errno);
+		goto fatal;
     }
+    
     /* map the buffers */
     for (i = 0; i < NB_BUFFER; i++) {
-	memset(&vd->buf, 0, sizeof(struct v4l2_buffer));
-	vd->buf.index = i;
-	vd->buf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-	vd->buf.memory = V4L2_MEMORY_MMAP;
-	ret = ioctl(vd->fd, VIDIOC_QUERYBUF, &vd->buf);
-	if (ret < 0) {
-	    printf("Unable to query buffer (%d).\n", errno);
-	    goto fatal;
-	}
-	if (debug)
-	    printf("length: %u offset: %u\n", vd->buf.length,
-		   vd->buf.m.offset);
-	vd->mem[i] = mmap(0 /* start anywhere */ ,
-			  vd->buf.length, PROT_READ, MAP_SHARED, vd->fd,
-			  vd->buf.m.offset);
-	if (vd->mem[i] == MAP_FAILED) {
-	    printf("Unable to map buffer (%d)\n", errno);
-	    goto fatal;
-	}
-	if (debug)
-	    printf("Buffer mapped at address %p.\n", vd->mem[i]);
+		memset(&vd->buf, 0, sizeof(struct v4l2_buffer));
+		vd->buf.index = i;
+		vd->buf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+		vd->buf.memory = V4L2_MEMORY_MMAP;
+		ret = ioctl(vd->fd, VIDIOC_QUERYBUF, &vd->buf);
+		if (ret < 0) {
+	   		printf("Unable to query buffer (%d).\n", errno);
+	    	goto fatal;
+		}
+		if (debug)
+	    	printf("length: %u offset: %u\n", vd->buf.length,
+		   		vd->buf.m.offset);
+		vd->mem[i] = mmap(0 /* start anywhere */ ,
+			  		vd->buf.length, PROT_READ, MAP_SHARED, vd->fd,
+			  		vd->buf.m.offset);
+		if (vd->mem[i] == MAP_FAILED) {
+	    	printf("Unable to map buffer (%d)\n", errno);
+	    	goto fatal;
+		}
+		if (debug)
+	    	printf("Buffer mapped at address %p.\n", vd->mem[i]);
     }
+    
     /* Queue the buffers. */
     for (i = 0; i < NB_BUFFER; ++i) {
-	memset(&vd->buf, 0, sizeof(struct v4l2_buffer));
-	vd->buf.index = i;
-	vd->buf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-	vd->buf.memory = V4L2_MEMORY_MMAP;
-	ret = ioctl(vd->fd, VIDIOC_QBUF, &vd->buf);
-	if (ret < 0) {
-	    printf("Unable to queue buffer (%d).\n", errno);
-	    goto fatal;;
-	}
+		memset(&vd->buf, 0, sizeof(struct v4l2_buffer));
+		vd->buf.index = i;
+		vd->buf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+		vd->buf.memory = V4L2_MEMORY_MMAP;
+		ret = ioctl(vd->fd, VIDIOC_QBUF, &vd->buf);
+		if (ret < 0) {
+	    	printf("Unable to queue buffer (%d).\n", errno);
+	    	goto fatal;;
+		}
     }
     return 0;
   fatal:
@@ -452,8 +466,8 @@ static int video_enable(struct vdIn *vd)
 
     ret = ioctl(vd->fd, VIDIOC_STREAMON, &type);
     if (ret < 0) {
-	printf("Unable to %s capture: %d.\n", "start", errno);
-	return ret;
+		printf("Unable to %s capture: %d.\n", "start", errno);
+		return ret;
     }
     vd->isstreaming = 1;
     return 0;
@@ -466,8 +480,8 @@ static int video_disable(struct vdIn *vd)
 
     ret = ioctl(vd->fd, VIDIOC_STREAMOFF, &type);
     if (ret < 0) {
-	printf("Unable to %s capture: %d.\n", "stop", errno);
-	return ret;
+		printf("Unable to %s capture: %d.\n", "stop", errno);
+		return ret;
     }
     vd->isstreaming = 0;
     return 0;
@@ -611,8 +625,12 @@ end_capture:
     vd->signalquit = 0;
     return -1;
 }
+
+
 int close_v4l2(struct vdIn *vd)
 {
+	int i;
+	
     if (vd->isstreaming)
 	video_disable(vd);
     if (vd->tmpbuffer)
@@ -626,6 +644,16 @@ int close_v4l2(struct vdIn *vd)
     vd->videodevice = NULL;
     vd->status = NULL;
     vd->pictName = NULL;
+
+    for (i = 0; i < OUTFRMNUMB; i++) {
+		if (vd->ptframe[i]) {
+			free(vd->ptframe[i]);
+			vd->ptframe[i] = NULL;
+			vd->framelock[i] = 0;
+			if (debug)
+				printf("freeing output buffer %d\n", i);
+		}
+	}
 }
 
 /* return >= 0 ok otherwhise -1 */
