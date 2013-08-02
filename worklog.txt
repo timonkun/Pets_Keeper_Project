@@ -8,78 +8,8 @@ export CPP="arm-none-linux-gnueabi-gcc -E"
 ./configure --host=x86_64 --target=arm-linux --prefix=`pwd`/_install --with-ssl=/home/timonkun/Workspace/_install --with-random=/dev/urandom
 
 
-20130716
-域名：
-www.pets-care.com  -- exist
-www.pet-care.com   -- exist
-www.pets-care.cn   -- empty
-www.pet-care.cn    -- exist
-www.petscare.cn    -- exist
-www.pets-keeper.com -- empty
-www.pets-keeper.cn  -- empty
-www.robot-keeper.com  -- empty
-www.robot-keeper.cn   -- empty
-
-
-下面是一个关于产品的新想法:
-智能宠物管家
-一、目的：当宠物独自在家时，用户在任意地点可以通过手机（3G/WIFI）察看宠物状态，并遥控本产品和宠物互动。
-
-二、功能：
-	1.视频监控；
-	2.离家远程遥控；
-	3.自动充电；
-	4.居家空调、电扇遥控；
-	5.空气检测；
-	6.遥控喂食、喂水；
-	7.激光笔（逗宠物互动）；
-	8.主人录音播放；
-	9.空间感应，绘制室内地图，在地图上察看当前位置（辅助遥控）；（超声波、激光）
-	10.宠物医疗方向；
-    安全性考虑：视频是否安全不被窃取。是否有伤害宠物的设计。
-
-三、市场，客户需求
-
-四、销售
-	1.网络直销，淘宝店
-	2.宠物淘宝店代理
-	3.论坛推广，微博推广
-	4.实体宠物医院、商店推广
-
-五、技术选型，难点
-
-六、资金需求
-
-七、周期
-
-厂家合作
-电信webcam系统
-
-还有另外一款产品的想法：
-自动清理猫厕所,目前市面上已经有产品了，但是价格较贵，有待继续研究。
-
-	养宠物的人有个特点：勤快,他们可能觉得亲自动手是爱的体现。因此向他们推销自动化产品可能有阻力。反过来，倒是会吸引那些懒人来养宠物。
-
-	调查：
-	会考虑 2000以内
-
 20130715
-专利搜索： search.cnipr.com
-www.sipo.gov.cn/zljs
-www.pss-system.gov.cn
 
-一种宠物看护机器人系统
-CN200710077355.0  CN101278654
-特征点：控制系统+机器人本体，无线发射控制指令信号，驱动行走系统，喂食模块，监视功能，PC C-S体系控制。
-
-球形机器人设计
-CN200710077352.7  CN101278653
-
-深圳先进技术研究院
-专利问题咨询同学。
-1.是否构成侵权
-2.解决方案，谈判，还是怎样。
-3.能否申请自有专利，避开别人的。
 
 20130712
 Unix编程艺术 - 笔记
