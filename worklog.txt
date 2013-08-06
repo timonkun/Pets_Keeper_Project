@@ -1,3 +1,265 @@
+20130806
+
+更换了TPLINK路由的加密方式WPA2--》WPA，可以不稳定的连上。
+但是隔3s掉线，无法ping通路由。log显示：
+cfg80211: Calling CRDA to update world regulatory domain
+wpa_supplicant -iwlan0 -c/etc/wpa_supplicant.conf -B
+
+考虑换respbarry Pi.
+
+                                                                     
+^Cwlan0: Removing interface wlan0                                               
+wlan0: Request to deauthenticate - bssid=00:00:00:00:00:00 pending_bssid=f4:ec:G
+wpa_driver_wext_deauthenticate                                                  
+ioctl[SIOCSIWMLME]: Invalid argument                                            
+wlan0: Event DEAUTH (12) received                                               
+wlan0: Deauthentication notification                                            
+wlan0:  * reason 3 (locally generated)                                          
+Deauthentication frame IE(s) - hexdump(len=0): [NULL]                           
+wlan0: CTRL-EVENT-DISCONNECTED bssid=f4:ec:38:6b:eb:6e reason=3 locally_generat1
+wlan0: Auto connect enabled: try to reconnect (wps=0 wpa_state=5)               
+wlan0: Setting scan request: 0 sec 100000 usec                                  
+Added BSSID f4:ec:38:6b:eb:6e into blacklist                                    
+wlan0: Blacklist count 7 --> request scan in 10000 ms                           
+wlan0: Setting scan request: 10 sec 0 usec                                      
+wlan0: Disconnect event - remove keys                                           
+wpa_driver_wext_set_key: alg=0 key_idx=0 set_tx=0 seq_len=0 key_len=0           
+wpa_driver_wext_set_key: alg=0 key_idx=1 set_tx=0 seq_len=0 key_len=0           
+wpa_driver_wext_set_key: alg=0 key_idx=2 set_tx=0 seq_len=0 key_len=0           
+wpa_driver_wext_set_key: alg=0 key_idx=3 set_tx=0 seq_len=0 key_len=0           
+wpa_driver_wext_set_key: alg=0 key_idx=0 set_tx=0 seq_len=0 key_len=0           
+wlan0: State: ASSOCIATING -> DISCONNECTED                                       
+wpa_driver_wext_set_operstate: operstate 0->0 (DORMANT)                         
+netlink: Operstate: linkmode=-1, operstate=5                                    
+EAPOL: External notification - portEnabled=0                                    
+EAPOL: Supplicant port status: Unauthorized                                     
+EAPOL: External notification - portValid=0                                      
+EAPOL: Supplicant port status: Unauthorized                                     
+EAPOL: External notification - EAP success=0                                    
+EAPOL: Supplicant port status: Unauthorized                                     
+wlan0: No keys have been configured - skip key clearing                         
+wlan0: State: DISCONNECTED -> DISCONNECTED                                      
+wpa_driver_wext_set_operstate: operstate 0->0 (DORMANT)                         
+netlink: Operstate: linkmode=-1, operstate=5                                    
+EAPOL: External notification - portEnabled=0                                    
+EAPOL: Supplicant port status: Unauthorized                                     
+EAPOL: External notification - portValid=0                                      
+EAPOL: Supplicant port status: Unauthorized                                     
+wpa_driver_wext_set_countermeasures                                             
+wlan0: No keys have been configured - skip key clearing                         
+Removed BSSID f4:ec:38:6b:eb:6e from blacklist (clear)                          
+wlan0: BSS: Remove id 9 BSSID 5c:63:bf:cd:ca:78 SSID '' due to wpa_bss_flush    
+wlan0: BSS: Remove id 13 BSSID ec:17:2f:66:c4:dc SSID '2012' due to wpa_bss_fluh
+wlan0: BSS: Remove id 14 BSSID c8:3a:35:28:6b:58 SSID 'Tenda_286B58' due to wpah
+wlan0: BSS: Remove id 5 BSSID d4:ee:07:01:ab:60 SSID 'HiWiFi_01AB60' due to wpah
+wlan0: BSS: Remove id 8 BSSID 20:dc:e6:86:7b:16 SSID 'haihai' due to wpa_bss_flh
+wlan0: BSS: Remove id 6 BSSID 00:25:86:1f:34:2c SSID 'bang' due to wpa_bss_flush
+wlan0: BSS: Remove id 7 BSSID 5c:63:bf:bf:98:3e SSID 'TP-LINK_BF983E' due to wph
+wlan0: BSS: Remove id 0 BSSID f4:ec:38:6b:eb:6e SSID 'HOME' due to wpa_bss_flush
+wlan0: BSS: Remove id 15 BSSID 00:1c:f0:4b:17:70 SSID 'apollo' due to wpa_bss_fh
+wlan0: Cancelling scan request                                                  
+wlan0: Cancelling authentication timeout                                        
+netlink: Operstate: linkmode=0, operstate=6                                     
+wlan0: CTRL-EVENT-TERMINATING
+
+changed from -Dwext to -Dnl80211
+
+对比nandflash系统，是动态加载方式：
+/ # lsmod                                                                       
+8192cu 425694 0 - Live 0xbf02d000                                               
+rtl8192c_common 55791 0 - Live 0xbf018000                                       
+rtlwifi 62602 0 - Live 0xbf000000
+
+
+init.rc
+service wpa_supplicant /system/bin/wpa_supplicant \                             
+    -Dwext -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf -dd                    
+# we will start as root and wpa_supplicant will switch to user wifi             
+# after setting up the capabilities required for WEXT                           
+#   user wifi                                                                   
+    group system wifi inet                                                      
+    socket wpa_wlan0 dgram 660 wifi wifi                                        
+    disabled                                                                    
+    oneshot    
+    
+# load wifi drivers                                                             
+    insmod system/lib/modules/rtlwifi.ko                                        
+    insmod system/lib/modules/rtl8192c-common.ko   
+    
+    
+成功信息：
+[   57.650000] 802.11n WIFI Module Powered by Qinyan Electronics Technology Co..
+[   57.650000] All Rights Reserved.                                             
+[   57.650000] No Copy is Allowed.                                              
+[   57.650000]                                                                  
+[   57.650000] rtl8192cu 1-1.4:1.0: usb_probe_interface                         
+[   57.650000] rtl8192cu 1-1.4:1.0: usb_probe_interface - got id                
+[   57.815000] usbcore: registered new interface driver rtl8192cu               
+[   58.405000] ADDRCONF(NETDEV_UP): wlan0: link is not ready                    
+[   68.520000] ADDRCONF(NETDEV_CHANGE): wlan0: link becomes ready               
+[   79.410000] wlan0: no IPv6 routers present 
+
+
+失败信息1：
+# wpa_supplicant -iwlan0 -c/etc/wpa_supplicant.conf                             
+Successfully initialized wpa_supplicant                                         
+ioctl[SIOCSIWSCAN]: Device or resource busy                                     
+wlan0: Failed to initiate AP scan                                               
+wlan0: Trying to associate with d4:ee:07:01:ab:60 (SSID='HiWiFi_01AB60' freq=24)
+[   91.295000] ADDRCONF(NETDEV_CHANGE): wlan0: link becomes ready               
+wlan0: Associated with d4:ee:07:01:ab:60                                        
+wlan0: WPA: Key negotiation completed with d4:ee:07:01:ab:60 [PTK=CCMP GTK=CCMP]
+wlan0: CTRL-EVENT-CONNECTED - Connection to d4:ee:07:01:ab:60 completed [id=0 i]
+
+对应的内核信息：
+[   42.545000] rtl8192cu: MAC auto ON okay!                                     
+[   42.580000] rtl8192cu: Tx queue select: 0x05                                 
+[   42.580000] rtl8192cu: Loading firmware file rtlwifi/rtl8192cufw.bin         
+[   43.005000] ADDRCONF(NETDEV_UP): wlan0: link is not ready                    
+[   91.265000] wlan0: direct probe to d4:ee:07:01:ab:60 (try 1)                 
+[   91.270000] wlan0: direct probe responded                                    
+[   91.270000] wlan0: authenticate with d4:ee:07:01:ab:60 (try 1)               
+[   91.275000] wlan0: authenticated                                             
+[   91.275000] wlan0: associate with d4:ee:07:01:ab:60 (try 1)                  
+[   91.280000] wlan0: RX AssocResp from d4:ee:07:01:ab:60 (capab=0x431 status=0)
+[   91.280000] wlan0: associated                                                
+[   91.295000] ADDRCONF(NETDEV_CHANGE): wlan0: link becomes ready               
+[   91.305000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:                    
+[   91.305000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:                    
+[  102.310000] wlan0: no IPv6 routers present                                   
+[  123.540000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:                    
+[  123.540000] wlan0: deauthenticating from d4:ee:07:01:ab:60 by local choice ()
+[  123.540000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:                    
+[  123.540000] cfg80211: Calling CRDA to update world regulatory domain 
+
+失败信息2：
+# wpa_supplicant -iwlan0 -c/etc/wpa_supplicant.conf &                           
+# Successfully initialized wpa_supplicant                                       
+ioctl[SIOCSIWSCAN]: Device or resource busy                                     
+wlan0: Failed to initiate AP scan                                               
+wlan0: Trying to associate with f4:ec:38:6b:eb:6e (SSID='HOME' freq=2437 MHz)   
+[   45.765000] ADDRCONF(NETDEV_CHANGE): wlan0: link becomes ready               
+[   45.765000] cfg80211: Calling CRDA for country: US                           
+wlan0: Associated with f4:ec:38:6b:eb:6e                                        
+wlan0: WPA: Key negotiation completed with f4:ec:38:6b:eb:6e [PTK=CCMP GTK=CCMP]
+wlan0: CTRL-EVENT-CONNECTED - Connection to f4:ec:38:6b:eb:6e completed [id=0 i]
+                                                                       
+wlan0: CTRL-EVENT-DISCONNECTED bssid=f4:ec:38:6b:eb:6e reason=3 locally_generat1
+wlan0: CTRL-EVENT-TERMINATING                                                   
+                        
+                     
+对应的内核信息：             
+[    8.515000] rtl8192cu: MAC auto ON okay!                                     
+[    8.550000] rtl8192cu: Tx queue select: 0x05                                 
+[    8.550000] rtl8192cu: Loading firmware file rtlwifi/rtl8192cufw.bin         
+[    8.975000] ADDRCONF(NETDEV_UP): wlan0: link is not ready                    
+[   45.755000] wlan0: authenticate with f4:ec:38:6b:eb:6e (try 1)               
+[   45.760000] wlan0: authenticated                                             
+[   45.760000] wlan0: associate with f4:ec:38:6b:eb:6e (try 1)                  
+[   45.765000] wlan0: RX AssocResp from f4:ec:38:6b:eb:6e (capab=0x431 status=0)
+[   45.765000] wlan0: associated                                                
+[   45.765000] ADDRCONF(NETDEV_CHANGE): wlan0: link becomes ready               
+[   45.765000] cfg80211: Calling CRDA for country: US                           
+[   45.910000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:                    
+[   45.910000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:
+
+当前版本：比较老了。
+ wpa_supplicant -v                                                             
+wpa_supplicant v0.7.3                                                           
+Copyright (c) 2003-2010, Jouni Malinen <j@w1.fi> and contributors  
+
+换成2.0版本。
+
+Cell 03 - Address: D4:EE:07:01:AB:60                                  
+                    Channel:1                                                   
+                    Frequency:2.412 GHz (Channel 1)                             
+                    Quality=37/70  Signal level=-73 dBm                         
+                    Encryption key:on                                           
+                    ESSID:"HiWiFi_01AB60"                                       
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 11 Mb/s; 6 Mb/s         
+                              9 Mb/s; 12 Mb/s; 18 Mb/s                          
+                    Bit Rates:24 Mb/s; 36 Mb/s; 48 Mb/s; 54 Mb/s                
+                    Mode:Master                                                 
+                    Extra:tsf=00000026b438f6f7                                  
+                    Extra: Last beacon: 835ms ago                               
+                    IE: Unknown: 000D4869576946695F303141423630                 
+                    IE: Unknown: 010882848B960C121824                           
+                    IE: Unknown: 030101                                         
+                    IE: Unknown: 2A0100                                         
+                    IE: Unknown: 32043048606C                                   
+                    IE: Unknown: 2D1A6E101BFF00000000000000000000000000000000000
+                    IE: Unknown: 3D160105110000000000000000000000000000000000000
+                    IE: IEEE 802.11i/WPA2 Version 1                             
+                        Group Cipher : CCMP                                     
+                        Pairwise Ciphers (1) : CCMP                             
+                        Authentication Suites (1) : PSK                         
+                    IE: WPA Version 1                                           
+                        Group Cipher : CCMP                                     
+                        Pairwise Ciphers (1) : CCMP                             
+                        Authentication Suites (1) : PSK                         
+                    IE: Unknown: DD180050F2020101000003A4000027A4000042435E00620
+                    IE: Unknown: DD06D4EE07010100 
+                    
+[   29.190000] rtl8192cu: MAC auto ON okay!                                     
+[   29.225000] rtl8192cu: Tx queue select: 0x05                                 
+[   29.225000] rtl8192cu: Loading firmware file rtlwifi/rtl8192cufw.bin         
+[   29.650000] ADDRCONF(NETDEV_UP): wlan0: link is not ready                    
+[   82.405000] cfg80211: Found new beacon on frequency: 2467 MHz (Ch 12) on phy0
+[ 1344.100000] wlan0: authenticate with f4:ec:38:6b:eb:6e (try 1)               
+[ 1344.110000] wlan0: authenticated                                             
+[ 1344.110000] wlan0: associate with f4:ec:38:6b:eb:6e (try 1)                  
+[ 1344.120000] wlan0: RX AssocResp from f4:ec:38:6b:eb:6e (capab=0x431 status=0)
+[ 1344.120000] wlan0: associated                                                
+[ 1344.125000] ADDRCONF(NETDEV_CHANGE): wlan0: link becomes ready               
+[ 1344.125000] cfg80211: Calling CRDA for country: US                           
+[ 1344.270000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:                    
+[ 1344.270000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:                    
+[ 1354.810000] wlan0: no IPv6 routers present 
+
+20130801
+http://2fz1.com
+Mjpg-streamer
+
+
+20130731
+
+参考了网上关于arm linux的web server选型，决定尝试appweb。
+在官网下载源码和编译工具bit：
+http://embedthis.com/downloads/appweb/download.ejs
+http://embedthis.com/downloads/bit/download.ejs
+
+先编译安装bit，没啥要注意的，按照Readme做就行。
+网上关于appweb的编译都是老版本，基本不适用于最新版。
+先执行env_setup.sh，根据网上做得脚本，配置环境变量。
+配置：基于我们的板子需要用openssl，不过没有体现在下面的配置中，以后再支持，先跑起来再说。
+./configure --release --without all --platform linux-arm
+修改project/appweb-linux-default.mk 中的CC，LD，注释掉ARCH，CC_ARCH
+查看配置：bit configuration
+编译：bit
+最后会在linux-arm-release下生成
+copy到开发板，运行显示以下错误：
+# appweb --config /etc/appweb/appweb.conf 
+appweb: Error: Cannot read user credentials: 0. Check your /etc/passwd file.
+appweb: Error: Cannot read group credentials: 0. Check your /etc/group file
+appweb: Error: Cannot find module "libmod_cgi", cwd: "/etc/appweb", search path "/bin:/bin:/usr/local/lib/appweb/4.3.4/bin"
+appweb: Error: Error with directive "LoadModule"
+At line 161 in /etc/appweb/appweb.conf
+
+
+看样子还要配置用户组，密码
+明天继续
+相关资料：
+http://www.chinaunix.net/old_jh/4/919694.html
+http://blog.sina.com.cn/s/blog_484572870100e98a.html
+http://outdoego.blog.163.com/blog/static/16930182200772494859999/
+http://www.360doc.com/content/12/0530/10/9484405_214681762.shtml
+
+
+另外，发现网上有人已经移植好了goahead,
+http://blog.csdn.net/reille/article/details/6784809
+用他提供的源码重新编译，考到板子上就能用了。省事不少。
+
+
 20130722
 由于yeelink需要用到curl进行设备更新，因此移植curl到开发板：
 ~/Workspace/Linux设备驱动光盘/sd-card/source/programs/curl-7.31.0
