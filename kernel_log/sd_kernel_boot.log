@@ -1,0 +1,524 @@
+[    0.000000] Initializing cgroup subsys cpu
+[    0.000000] Linux version 2.6.35.7-gbb44106-dirty (timonkun@timonkun-ROC) (gcc version 4.4.1 (Sourcery G++ Lite 2009q3-67) ) #30 PREEMPT Sun Aug 4 23:00:29 HKT 2013
+[    0.000000] CPU: ARMv7 Processor [412fc082] revision 2 (ARMv7), cr=10c53c7f
+[    0.000000] CPU: VIPT nonaliasing data cache, VIPT nonaliasing instruction cache
+[    0.000000] Machine: SMDKV210
+[    0.000000] Ignoring unrecognised tag 0x41001099
+[    0.000000] Memory policy: ECC disabled, Data cache writeback
+[    0.000000] On node 0 totalpages: 131072
+[    0.000000]   Normal zone: 1024 pages used for memmap
+[    0.000000]   Normal zone: 0 pages reserved
+[    0.000000]   Normal zone: 130048 pages, LIFO batch:31
+[    0.000000] CPU S5PV210/S5PC110 (id 0x43110220)
+[    0.000000] s5pv210_init_clocks: initializing clocks
+[    0.000000] S3C24XX Clocks, Copyright 2004 Simtec Electronics
+[    0.000000] s5pv210_setup_clocks: registering clocks
+[    0.000000] s5pv210_setup_clocks: clkdiv0 = 14131440, clkdiv1 = 00000400
+[    0.000000] s5pv210_setup_clocks: xtal is 24000000
+[    0.000000] S5PV210: PLL settings, A=1000000000, M=667000000, E=80000000 V=54000000
+[    0.000000] S5PV210: ARMCLK=1000000000, HCLKM=200000000, HCLKD=166750000
+[    0.000000] HCLKP=133400000, PCLKM=100000000, PCLKD=83375000, PCLKP=66700000
+[    0.000000] sclk_dmc: source is sclk_a2m (0), rate is 200000000
+[    0.000000] sclk_onenand: source is hclk_dsys (1), rate is 166750000
+[    0.000000] sclk: source is mout_mpll (6), rate is 66700000
+[    0.000000] sclk: source is mout_mpll (6), rate is 66700000
+[    0.000000] sclk: source is mout_mpll (6), rate is 66700000
+[    0.000000] sclk: source is mout_mpll (6), rate is 66700000
+[    0.000000] sclk_mixer: source is sclk_dac (0), rate is 54000000
+[    0.000000] sclk_spdif: source is sclk_audio (0), rate is 24000000
+[    0.000000] sclk_fimc: source is ext_xtal (0), rate is 24000000
+[    0.000000] sclk_fimc: source is ext_xtal (0), rate is 24000000
+[    0.000000] sclk_fimc: source is ext_xtal (0), rate is 24000000
+[    0.000000] sclk_cam0: source is ext_xtal (0), rate is 24000000
+[    0.000000] sclk_cam1: source is ext_xtal (0), rate is 24000000
+[    0.000000] sclk_fimd: source is ext_xtal (0), rate is 24000000
+[    0.000000] sclk_mmc: source is mout_mpll (6), rate is 47642857
+[    0.000000] sclk_mmc: source is mout_epll (7), rate is 80000000
+[    0.000000] sclk_mmc: source is mout_mpll (6), rate is 47642857
+[    0.000000] sclk_mmc: source is mout_epll (7), rate is 80000000
+[    0.000000] sclk_mfc: source is sclk_a2m (0), rate is 200000000
+[    0.000000] sclk_g2d: source is sclk_a2m (0), rate is 200000000
+[    0.000000] sclk: source is sclk_a2m (0), rate is 200000000
+[    0.000000] sclk_csis: source is ext_xtal (0), rate is 24000000
+[    0.000000] sclk_spi: source is ext_xtal (0), rate is 24000000
+[    0.000000] sclk_spi: source is ext_xtal (0), rate is 24000000
+[    0.000000] sclk_pwi: source is ext_xtal (0), rate is 24000000
+[    0.000000] sclk_pwm: source is ext_xtal (0), rate is 24000000
+[    0.000000] sclk_mdnie: source is ext_xtal (0), rate is 24000000
+[    0.000000] sclk_mdnie_pwm: source is ext_xtal (0), rate is 24000000
+[    0.000000] s5pv210: 37748736 bytes system memory reserved for mfc at 0x20bc0000
+[    0.000000] s5pv210: 37748736 bytes system memory reserved for mfc at 0x22fc0000
+[    0.000000] s5pv210: 25165824 bytes system memory reserved for fimc0 at 0x253c0000
+[    0.000000] s5pv210: 10137600 bytes system memory reserved for fimc1 at 0x26bc0000
+[    0.000000] s5pv210: 25165824 bytes system memory reserved for fimc2 at 0x2756b000
+[    0.000000] s5pv210: 8388608 bytes system memory reserved for jpeg at 0x28d6b000
+[    0.000000] s5pv210: 6144000 bytes system memory reserved for fimd at 0x2956b000
+[    0.000000] s5pv210: 3072000 bytes system memory reserved for texstream at 0x29b47000
+[    0.000000] s5pv210: 3379200 bytes system memory reserved for pmem_gpu1 at 0x29e35000
+[    0.000000] s5pv210: 8388608 bytes system memory reserved for g2d at 0x2a16e000
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 130048
+[    0.000000] Kernel command line: noinitrd root=/dev/mmcblk0p1 rootfstype=ext3 rootwait console=ttySAC0,115200 init=/linuxrc mem=512M
+[    0.000000] PID hash table entries: 2048 (order: 1, 8192 bytes)
+[    0.000000] Dentry cache hash table entries: 65536 (order: 6, 262144 bytes)
+[    0.000000] Inode-cache hash table entries: 32768 (order: 5, 131072 bytes)
+[    0.000000] Memory: 512MB = 512MB total
+[    0.000000] Memory: 350416k/350416k available, 173872k reserved, 0K highmem
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+[    0.000000]     fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+[    0.000000]     DMA     : 0xff000000 - 0xffe00000   (  14 MB)
+[    0.000000]     vmalloc : 0xe0800000 - 0xfc000000   ( 440 MB)
+[    0.000000]     lowmem  : 0xc0000000 - 0xe0000000   ( 512 MB)
+[    0.000000]     modules : 0xbf000000 - 0xc0000000   (  16 MB)
+[    0.000000]       .init : 0xc0008000 - 0xc0031000   ( 164 kB)
+[    0.000000]       .text : 0xc0031000 - 0xc06aa000   (6628 kB)
+[    0.000000]       .data : 0xc06aa000 - 0xc06fa380   ( 321 kB)
+[    0.000000] SLUB: Genslabs=9, HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] Hierarchical RCU implementation.
+[    0.000000] 	RCU-based detection of stalled CPUs is disabled.
+[    0.000000] 	Verbose stalled-CPUs detection is disabled.
+[    0.000000] NR_IRQS:393
+[    0.000000] VIC @fd000000: id 0x00041192, vendor 0x41
+[    0.000000] VIC @fd010000: id 0x00041192, vendor 0x41
+[    0.000000] VIC @fd020000: id 0x00041192, vendor 0x41
+[    0.000000] VIC @fd030000: id 0x00041192, vendor 0x41
+[    0.000000] timer tcon=00500000, tcnt d91e, tcfg 00000200,00010000, usec 00001707
+[    0.000000] console [ttySAC0] enabled
+[    0.010000] Calibrating delay loop... 996.14 BogoMIPS (lpj=2490368)
+[    0.140000] pid_max: default: 32768 minimum: 301
+[    0.140000] Mount-cache hash table entries: 512
+[    0.140000] Initializing cgroup subsys debug
+[    0.140000] Initializing cgroup subsys cpuacct
+[    0.140000] Initializing cgroup subsys freezer
+[    0.140000] CPU: Testing write buffer coherency: ok
+[    0.145000] regulator: core version 0.5
+[    0.150000] regulator: dummy: 
+[    0.150000] NET: Registered protocol family 16
+[    0.160000] S3C Power Management, Copyright 2004 Simtec Electronics
+[    0.160000] pmstats at 00000000
+[    0.165000] smdkc110_setup_clocks: sclk_mmc: source is mout_mpll, rate is 47642857
+[    0.170000] smdkc110_setup_clocks: sclk_mmc: source is mout_mpll, rate is 47642857
+[    0.175000] smdkc110_setup_clocks: sclk_mmc: source is mout_mpll, rate is 47642857
+[    0.180000] smdkc110_setup_clocks: sclk_mmc: source is mout_mpll, rate is 47642857
+[    0.185000] S5PV210: Initializing architecture
+[    0.190000] s3c24xx-pwm s3c24xx-pwm.0: tin at 66700000, tdiv at 66700000, tin=divclk, base 0
+[    0.195000] s3c24xx-pwm s3c24xx-pwm.1: tin at 66700000, tdiv at 66700000, tin=divclk, base 8
+[    0.200000] s3c24xx-pwm s3c24xx-pwm.2: tin at 22233333, tdiv at 22233333, tin=divclk, base 12
+[    0.205000] s3c24xx-pwm s3c24xx-pwm.3: tin at 22233333, tdiv at 22233333, tin=divclk, base 16
+[    0.210000] machine_constraints_voltage: override 'pd_audio_supply' min_uV, 1 -> 5000000
+[    0.210000] machine_constraints_voltage: override 'pd_audio_supply' max_uV, 2147483647 -> 5000000
+[    0.210000] regulator: pd_audio_supply: 5000 mV normal 
+[    0.215000] machine_constraints_voltage: override 'pd_cam_supply' min_uV, 1 -> 5000000
+[    0.215000] machine_constraints_voltage: override 'pd_cam_supply' max_uV, 2147483647 -> 5000000
+[    0.215000] regulator: pd_cam_supply: 5000 mV normal 
+[    0.220000] machine_constraints_voltage: override 'pd_tv_supply' min_uV, 1 -> 5000000
+[    0.220000] machine_constraints_voltage: override 'pd_tv_supply' max_uV, 2147483647 -> 5000000
+[    0.220000] regulator: pd_tv_supply: 5000 mV normal 
+[    0.225000] machine_constraints_voltage: override 'pd_lcd_supply' min_uV, 1 -> 5000000
+[    0.225000] machine_constraints_voltage: override 'pd_lcd_supply' max_uV, 2147483647 -> 5000000
+[    0.225000] regulator: pd_lcd_supply: 5000 mV normal 
+[    0.230000] machine_constraints_voltage: override 'pd_g3d_supply' min_uV, 1 -> 5000000
+[    0.230000] machine_constraints_voltage: override 'pd_g3d_supply' max_uV, 2147483647 -> 5000000
+[    0.230000] regulator: pd_g3d_supply: 5000 mV normal 
+[    0.235000] machine_constraints_voltage: override 'pd_mfc_supply' min_uV, 1 -> 5000000
+[    0.235000] machine_constraints_voltage: override 'pd_mfc_supply' max_uV, 2147483647 -> 5000000
+[    0.235000] regulator: pd_mfc_supply: 5000 mV normal 
+[    0.245000] bio: create slab <bio-0> at 0
+[    0.245000] SCSI subsystem initialized
+[    0.245000] usbcore: registered new interface driver usbfs
+[    0.250000] usbcore: registered new interface driver hub
+[    0.255000] usbcore: registered new device driver usb
+[    0.260000] s3c-i2c s3c2440-i2c.0: i2c-0: S3C I2C adapter
+[    0.265000] s3c-i2c s3c2440-i2c.1: i2c-1: S3C I2C adapter
+[    0.270000] s3c-i2c s3c2440-i2c.2: i2c-2: S3C I2C adapter
+[    0.275000] Advanced Linux Sound Architecture Driver Version 1.0.23.
+[    0.280000] cfg80211: Calling CRDA to update world regulatory domain
+[    0.285000] NET: Registered protocol family 2
+[    0.290000] IP route cache hash table entries: 4096 (order: 2, 16384 bytes)
+[    0.295000] TCP established hash table entries: 16384 (order: 5, 131072 bytes)
+[    0.300000] TCP bind hash table entries: 16384 (order: 6, 327680 bytes)
+[    0.305000] TCP: Hash tables configured (established 16384 bind 16384)
+[    0.310000] TCP reno registered
+[    0.310000] UDP hash table entries: 256 (order: 1, 12288 bytes)
+[    0.315000] UDP-Lite hash table entries: 256 (order: 1, 12288 bytes)
+[    0.320000] NET: Registered protocol family 1
+[    0.325000] RPC: Registered udp transport module.
+[    0.325000] RPC: Registered tcp transport module.
+[    0.330000] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.335000] PMU: registered new PMU device of type 0
+[    0.340000] SMDKC110/V210 RTC, (c) 2010 Samsung Electronics
+[    0.345000] S5PV210 ADC driver, (c) 2010 Samsung Electronics
+[    0.350000] cpuidle: phy_regs_save:0x3fd7d000
+[    0.355000] Loaded driver for PL330 DMAC-0 s3c-pl330
+[    0.360000] 	DBUFF-64x8bytes Num_Chans-8 Num_Peri-2 Num_Events-32
+[    0.365000] Loaded driver for PL330 DMAC-1 s3c-pl330
+[    0.370000] 	DBUFF-8x4bytes Num_Chans-8 Num_Peri-32 Num_Events-32
+[    0.375000] Loaded driver for PL330 DMAC-2 s3c-pl330
+[    0.380000] 	DBUFF-8x4bytes Num_Chans-8 Num_Peri-32 Num_Events-32
+[    0.390000] ashmem: initialized
+[    0.390000] ROMFS MTD (C) 2007 Red Hat, Inc.
+[    0.390000] yaffs built Aug  4 2013 22:58:07 Installing. 
+[    0.390000] msgmni has been set to 684
+[    0.395000] alg: No test for stdrng (krng)
+[    0.395000] io scheduler noop registered
+[    0.400000] io scheduler deadline registered
+[    0.405000] io scheduler cfq registered (default)
+[    0.410000] s3cfb s3cfb: [fb2] dma: 0x2956b000, cpu: 0xe1000000, size: 0x005dc000
+[    0.420000] FIMD src sclk = 166750000
+[    0.540000] s3cfb s3cfb: registered successfully
+[    0.540000] Start display and show logo
+[    0.545000] PA FB = 0x2956B000, bits per pixel = 32
+[    0.545000] screen width=800 height=480 va=0xc956b000 pa=0x2956b000
+[    0.545000] xres_virtual = 800, yres_virtual = 1920, xoffset = 0, yoffset = 0
+[    0.545000] fb_size=6144000
+[    0.550000] Back frameBuffer[0].VAddr=c96e2000 PAddr=296e2000 size=1536000
+[    0.555000] Back frameBuffer[1].VAddr=c9859000 PAddr=29859000 size=1536000
+[    0.560000] Back frameBuffer[2].VAddr=c99d0000 PAddr=299d0000 size=1536000
+[    0.565000] s5pv210-uart.0: s3c2410_serial0 at MMIO 0xe2900000 (irq = 16) is a S3C6400/10
+[    0.570000] s5pv210-uart.1: s3c2410_serial1 at MMIO 0xe2900400 (irq = 20) is a S3C6400/10
+[    0.575000] s5pv210-uart.2: s3c2410_serial2 at MMIO 0xe2900800 (irq = 24) is a S3C6400/10
+[    0.580000] s5pv210-uart.3: s3c2410_serial3 at MMIO 0xe2900c00 (irq = 28) is a S3C6400/10
+[    0.590000] brd: module loaded
+[    0.595000] loop: module loaded
+[    0.595000] pmem_gpu1: 1 init
+[    0.595000] Android kernel panic handler initialized (bind=kpanic)
+[    0.600000] S3C NAND Driver, (c) 2008 Samsung Electronics
+[    0.605000] S3C NAND Driver is using hardware ECC.
+[    0.610000] NAND device: Manufacturer ID: 0xec, Chip ID: 0xda (Samsung NAND 256MiB 3,3V 8-bit)
+[    0.615000] Creating 7 MTD partitions on "s5pv210-nand":
+[    0.620000] 0x0000000c0000-0x000000100000 : "misc"
+[    0.625000] 0x000000100000-0x000000600000 : "recovery"
+[    0.635000] 0x000000600000-0x000000b00000 : "kernel"
+[    0.640000] 0x000000b00000-0x000000e00000 : "ramdisk"
+[    0.645000] 0x000000e00000-0x000007c00000 : "system"
+[    0.665000] 0x000007c00000-0x00000cc00000 : "cache"
+[    0.680000] 0x00000cc00000-0x000010000000 : "userdata"
+[    0.690000] smsc911x: Driver version 2008-10-21.
+[    0.690000] smsc911x: Driver version A2008-10-21.
+[    0.695000] smsc911x: Driver version AA 2008-10-21.
+[    0.695000] smsc911x: Driver version AAA 2008-10-21.
+[    0.695000] LAN base phy in probe: 0xA8000000
+[    0.695000] LAN base virt in probe: 0xE088E000
+[    0.700000] smsc911x-mdio: probed
+[    0.700000] eth0: attached PHY driver [Generic PHY] (mii_bus:phy_addr=0:01, irq=-1)
+[    0.705000] net eth0: MAC Address: 00:09:c0:ff:ec:48
+[    0.710000] usbcore: registered new interface driver rtl8192cu
+[    0.715000] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    0.720000] ehci_hcd: block sizes: qh 60 qtd 96 itd 160 sitd 96
+[    0.720000] s5p-ehci s5p-ehci: s5pv210 EHCI
+[    0.725000] drivers/usb/core/inode.c: creating file 'devices'
+[    0.725000] drivers/usb/core/inode.c: creating file '001'
+[    0.725000] s5p-ehci s5p-ehci: new USB bus registered, assigned bus number 1
+[    0.730000] s5p-ehci s5p-ehci: irq 87, io mem 0xec200000
+[    0.735000] s5p-ehci s5p-ehci: reset command 080002 (park)=0 ithresh=8 period=1024 Reset HALT
+[    0.735000] s5p-ehci s5p-ehci: init command 010001 (park)=0 ithresh=1 period=1024 RUN
+[    0.745000] s5p-ehci s5p-ehci: USB 0.0 started, EHCI 1.00
+[    0.745000] usb usb1: default language 0x0409
+[    0.745000] usb usb1: udev 1, busnum 1, minor = 0
+[    0.745000] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002
+[    0.745000] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    0.750000] usb usb1: Product: s5pv210 EHCI
+[    0.755000] usb usb1: Manufacturer: Linux 2.6.35.7-gbb44106-dirty ehci_hcd
+[    0.760000] usb usb1: SerialNumber: s5pv210
+[    0.760000] usb usb1: usb_probe_device
+[    0.760000] usb usb1: configuration #1 chosen from 1 choice
+[    0.760000] usb usb1: adding 1-0:1.0 (config #1, interface 0)
+[    0.760000] hub 1-0:1.0: usb_probe_interface
+[    0.760000] hub 1-0:1.0: usb_probe_interface - got id
+[    0.760000] hub 1-0:1.0: USB hub found
+[    0.765000] hub 1-0:1.0: 1 port detected
+[    0.770000] hub 1-0:1.0: standalone hub
+[    0.770000] hub 1-0:1.0: individual port power switching
+[    0.770000] hub 1-0:1.0: individual port over-current protection
+[    0.770000] hub 1-0:1.0: power on to power good time: 20ms
+[    0.770000] hub 1-0:1.0: local power source is good
+[    0.770000] hub 1-0:1.0: enabling power on all ports
+[    0.770000] drivers/usb/core/inode.c: creating file '001'
+[    0.770000] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    0.775000] ohci_hcd: block sizes: ed 64 td 64
+[    0.775000] s5p-ohci s5p-ohci: s5pv210 OHCI
+[    0.780000] drivers/usb/core/inode.c: creating file '002'
+[    0.780000] s5p-ohci s5p-ohci: new USB bus registered, assigned bus number 2
+[    0.785000] s5p-ohci s5p-ohci: irq 87, io mem 0xec300000
+[    0.790000] s5p-ohci s5p-ohci: ohci_s5pv210_start, ohci:dfde5cf0
+[    0.790000] s5p-ohci s5p-ohci: created debug files
+[    0.845000] s5p-ohci s5p-ohci: OHCI controller state
+[    0.845000] s5p-ohci s5p-ohci: OHCI 1.0, NO legacy support registers
+[    0.845000] s5p-ohci s5p-ohci: control 0x083 HCFS=operational CBSR=3
+[    0.845000] s5p-ohci s5p-ohci: cmdstatus 0x00000 SOC=0
+[    0.845000] s5p-ohci s5p-ohci: intrstatus 0x00000004 SF
+[    0.845000] s5p-ohci s5p-ohci: intrenable 0x8000001a MIE UE RD WDH
+[    0.845000] s5p-ohci s5p-ohci: hcca frame #0005
+[    0.845000] s5p-ohci s5p-ohci: roothub.a 02000201 POTPGT=2 NPS NDP=1(1)
+[    0.845000] s5p-ohci s5p-ohci: roothub.b 00000000 PPCM=0000 DR=0000
+[    0.845000] s5p-ohci s5p-ohci: roothub.status 00008000 DRWE
+[    0.845000] s5p-ohci s5p-ohci: roothub.portstatus [0] 0x00000100 PPS
+[    0.845000] usb usb2: default language 0x0409
+[    0.845000] usb usb2: udev 1, busnum 2, minor = 128
+[    0.845000] usb usb2: New USB device found, idVendor=1d6b, idProduct=0001
+[    0.845000] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    0.845000] usb usb2: Product: s5pv210 OHCI
+[    0.845000] usb usb2: Manufacturer: Linux 2.6.35.7-gbb44106-dirty ohci_hcd
+[    0.850000] usb usb2: SerialNumber: s5pv210
+[    0.855000] usb usb2: usb_probe_device
+[    0.855000] usb usb2: configuration #1 chosen from 1 choice
+[    0.855000] usb usb2: adding 2-0:1.0 (config #1, interface 0)
+[    0.855000] hub 2-0:1.0: usb_probe_interface
+[    0.855000] hub 2-0:1.0: usb_probe_interface - got id
+[    0.855000] hub 2-0:1.0: USB hub found
+[    0.855000] hub 2-0:1.0: 1 port detected
+[    0.860000] hub 2-0:1.0: standalone hub
+[    0.860000] hub 2-0:1.0: no power switching (usb 1.0)
+[    0.860000] hub 2-0:1.0: global over-current protection
+[    0.860000] hub 2-0:1.0: power on to power good time: 4ms
+[    0.860000] hub 2-0:1.0: local power source is good
+[    0.860000] hub 2-0:1.0: no over-current condition exists
+[    0.860000] hub 2-0:1.0: trying to enable port power on non-switchable hub
+[    0.860000] drivers/usb/core/inode.c: creating file '001'
+[    0.860000] Initializing USB Mass Storage driver...
+[    0.865000] usbcore: registered new interface driver usb-storage
+[    0.870000] USB Mass Storage support registered.
+[    0.875000] s3c-udc : S3C HS USB Device Controller Driver, (c) 2008-2009 Samsung Electronics
+[    0.875000] s3c-udc : version 15 March 2009 (DMA Mode)
+[    0.880000] android init
+[    0.885000] android_probe pdata: c06b7858
+[    0.885000] android_bind
+[    0.890000] android_bind_config
+[    0.890000] android_usb gadget: android_usb ready
+[    0.895000] s5p-ehci s5p-ehci: GetStatus port 1 status 001803 POWER sig=j CSC CONNECT
+[    0.895000] hub 1-0:1.0: port 1: status 0501 change 0001
+[    0.915000] Registered gadget driver 'android_usb'
+[    0.915000] f_acm init
+[    0.915000] android_register_function acm
+[    0.915000] f_adb init
+[    0.915000] android_register_function adb
+[    0.915000] f_mass_storage init
+[    0.915000] fsg_probe pdev: c06b67d8, pdata: c06b787c
+[    0.915000] android_register_function usb_mass_storage
+[    0.920000] f_mtp init
+[    0.920000] android_register_function mtp
+[    0.925000] f_rndis init
+[    0.930000] android_register_function rndis
+[    0.935000] rndis_function_bind_config MAC: 02:02:45:46:4F:48
+[    0.940000] android_usb gadget: using random self ethernet address
+[    0.945000] android_usb gadget: using random host ethernet address
+[    0.950000] usb0: MAC d6:99:97:34:2e:a7
+[    0.955000] usb0: HOST MAC 5a:f7:d1:fb:ac:2c
+[    0.960000] hub 2-0:1.0: state 7 ports 1 chg 0000 evt 0000
+[    0.960000] android_usb gadget: Mass Storage Function, version: 2009/09/11
+[    0.965000] android_usb gadget: Number of LUNs=1
+[    0.970000]  lun0: LUN: removable file: (no medium)
+[    0.975000] adb_bind_config
+[    0.980000] mtp_bind_config
+[    0.980000] mice: PS/2 mouse device common for all mice
+[    0.985000] input: s3c-keypad as /devices/virtual/input/input0
+[    0.990000] s3c-keypad Initialized
+[    1.000000] S3C Keypad Driver
+[    1.000000] S5P Touchscreen driver, (c) 2008 Samsung Electronics
+[    1.005000] S5P TouchScreen got loaded successfully : 12 bits
+[    1.010000] input: S5P TouchScreen as /devices/virtual/input/input1
+[    1.015000] hub 1-0:1.0: state 7 ports 1 chg 0002 evt 0000
+[    1.015000] hub 1-0:1.0: port 1, status 0501, change 0000, 480 Mb/s
+[    1.015000] bma150 2-0038: bma150 found
+[    1.020000] bma150 2-0038: al_version=2, ml_version=1
+[    1.055000] input: bma150 as /devices/virtual/input/input2
+[    1.055000] S3C24XX RTC, (c) 2004,2006 Simtec Electronics
+[    1.055000] s3c_rtc_probe: probe=c06b68e0
+[    1.055000] s3c2410_rtc: tick irq 61, alarm irq 60
+[    1.055000] s3c2410_rtc: RTCCON=00
+[    1.055000] s3c-rtc s3c2410-rtc: rtc disabled, re-enabling
+[    1.055000] read time 2175.08.04 35:02:84
+[    1.055000] using rtc device, s3c, for alarms
+[    1.055000] s3c: dev (254:0)
+[    1.055000] s3c-rtc s3c2410-rtc: rtc core: registered s3c as rtc0
+[    1.060000] i2c /dev entries driver
+[    1.060000] Linux video capture interface: v2.00
+[    1.065000] s3c-csis: Samsung MIPI-CSI2 driver probed successfully
+[    1.070000] mfc_init: <6>S5PC110 MFC Driver, (c) 2009 Samsung Electronics
+[    1.070000] 
+[    1.075000] s5p-ehci s5p-ehci: port 1 high speed
+[    1.075000] s5p-ehci s5p-ehci: GetStatus port 1 status 001005 POWER sig=se0 PE CONNECT
+[    1.075000] S3C JPEG Driver, (c) 2007 Samsung Electronics
+[    1.080000] JPEG driver for S5PV210
+[    1.085000] i2c i2c-1: attached s5p_ddc into i2c adapter successfully
+[    1.090000] S5PC11X HPD Driver, (c) 2009 Samsung Electronics
+[    1.095000] S5PC11X CEC Driver, (c) 2009 Samsung Electronics
+[    1.100000] usbcore: registered new interface driver uvcvideo
+[    1.105000] USB Video Class driver (v0.1.0)
+[    1.110000] s3c_bat_init
+[    1.115000] sec-fake-battery sec-fake-battery: s3c_bat_probe
+[    1.120000] device-mapper: uevent: version 1.0.3
+[    1.125000] device-mapper: ioctl: 4.17.0-ioctl (2010-03-05) initialised: dm-devel@redhat.com
+[    1.130000] cpuidle: using governor ladder
+[    1.130000] sdhci: Secure Digital Host Controller Interface driver
+[    1.135000] sdhci: Copyright(c) Pierre Ossman
+[    1.135000] s3c-sdhci s3c-sdhci.0: clock source 0: hsmmc (133400000 Hz)
+[    1.140000] s3c-sdhci s3c-sdhci.0: clock source 1: hsmmc (133400000 Hz)
+[    1.145000] s3c-sdhci s3c-sdhci.0: clock source 2: sclk_mmc (47642857 Hz)
+[    1.150000] mmc0: SDHCI controller on samsung-hsmmc [s3c-sdhci.0] using ADMA
+[    1.155000] s3c-sdhci s3c-sdhci.1: clock source 0: hsmmc (133400000 Hz)
+[    1.160000] s3c-sdhci s3c-sdhci.1: clock source 1: hsmmc (133400000 Hz)
+[    1.165000] s3c-sdhci s3c-sdhci.1: clock source 2: sclk_mmc (47642857 Hz)
+[    1.170000] mmc1: SDHCI controller on samsung-hsmmc [s3c-sdhci.1] using ADMA
+[    1.175000] s3c-sdhci s3c-sdhci.2: clock source 0: hsmmc (133400000 Hz)
+[    1.180000] s3c-sdhci s3c-sdhci.2: clock source 1: hsmmc (133400000 Hz)
+[    1.185000] s3c-sdhci s3c-sdhci.2: clock source 2: sclk_mmc (47642857 Hz)
+[    1.190000] mmc2: SDHCI controller on samsung-hsmmc [s3c-sdhci.2] using ADMA
+[    1.195000] s3c-sdhci s3c-sdhci.3: clock source 0: hsmmc (133400000 Hz)
+[    1.200000] s3c-sdhci s3c-sdhci.3: clock source 1: hsmmc (133400000 Hz)
+[    1.205000] s3c-sdhci s3c-sdhci.3: clock source 2: sclk_mmc (47642857 Hz)
+[    1.210000] mmc3: SDHCI controller on samsung-hsmmc [s3c-sdhci.3] using ADMA
+[    1.215000] usb 1-1: new high speed USB device using s5p-ehci and address 2
+[    1.220000] usbcore: registered new interface driver usbhid
+[    1.225000] usbhid: USB HID core driver
+[    1.230000] logger: created 64K log 'log_main'
+[    1.235000] logger: created 256K log 'log_events'
+[    1.240000] logger: created 64K log 'log_radio'
+[    1.245000] logger: created 64K log 'log_system'
+[    1.250000] usbcore: registered new interface driver snd-usb-audio
+[    1.255000] asoc: AC97 HiFi <-> s3c-ac97 mapping ok
+[    1.260000] asoc: AC97 HiFi <-> s3c-ac97 mapping ok
+[    1.285000] s5p-ehci s5p-ehci: port 1 high speed
+[    1.285000] s5p-ehci s5p-ehci: GetStatus port 1 status 001005 POWER sig=se0 PE CONNECT
+[    1.310000] mmc0: new high speed SDHC card at address 0001
+[    1.310000] mmcblk0: mmc0:0001 00000 29.2 GiB 
+[    1.310000]  mmcblk0: p1
+[    1.360000] usb 1-1: default language 0x0409
+[    1.360000] usb 1-1: udev 2, busnum 1, minor = 1
+[    1.360000] usb 1-1: New USB device found, idVendor=05e3, idProduct=0608
+[    1.360000] usb 1-1: New USB device strings: Mfr=0, Product=1, SerialNumber=0
+[    1.360000] usb 1-1: Product: USB2.0 Hub
+[    1.360000] usb 1-1: usb_probe_device
+[    1.360000] usb 1-1: configuration #1 chosen from 1 choice
+[    1.360000] usb 1-1: adding 1-1:1.0 (config #1, interface 0)
+[    1.360000] hub 1-1:1.0: usb_probe_interface
+[    1.360000] hub 1-1:1.0: usb_probe_interface - got id
+[    1.360000] hub 1-1:1.0: USB hub found
+[    1.360000] hub 1-1:1.0: 4 ports detected
+[    1.360000] hub 1-1:1.0: standalone hub
+[    1.360000] hub 1-1:1.0: ganged power switching
+[    1.360000] hub 1-1:1.0: global over-current protection
+[    1.360000] hub 1-1:1.0: Single TT
+[    1.360000] hub 1-1:1.0: TT requires at most 32 FS bit times (2664 ns)
+[    1.360000] hub 1-1:1.0: Port indicators are supported
+[    1.360000] hub 1-1:1.0: power on to power good time: 100ms
+[    1.365000] hub 1-1:1.0: local power source is good
+[    1.365000] hub 1-1:1.0: no over-current condition exists
+[    1.365000] hub 1-1:1.0: enabling power on all ports
+[    1.365000] drivers/usb/core/inode.c: creating file '002'
+[    1.435000] android_usb gadget: high speed config #1: Android Composite
+[    1.465000] hub 1-1:1.0: port 2: status 0101 change 0001
+[    1.465000] hub 1-1:1.0: port 3: status 0101 change 0001
+[    1.565000] usb 1-1: link qh256-0001/dfe48c40 start 1 [1/0 us]
+[    1.565000] hub 1-1:1.0: state 7 ports 4 chg 000c evt 0000
+[    1.565000] hub 1-1:1.0: port 2, status 0101, change 0000, 12 Mb/s
+[    1.635000] usb 1-1.2: new high speed USB device using s5p-ehci and address 3
+[    1.725000] usb 1-1.2: default language 0x0409
+[    1.725000] usb 1-1.2: udev 3, busnum 1, minor = 2
+[    1.725000] usb 1-1.2: New USB device found, idVendor=0bda, idProduct=8176
+[    1.725000] usb 1-1.2: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[    1.725000] usb 1-1.2: Product: 802.11n WLAN Adapter
+[    1.725000] usb 1-1.2: Manufacturer: Realtek
+[    1.725000] usb 1-1.2: SerialNumber: 00e04c000001
+[    1.730000] usb 1-1.2: usb_probe_device
+[    1.730000] usb 1-1.2: configuration #1 chosen from 1 choice
+[    1.730000] usb 1-1.2: adding 1-1.2:1.0 (config #1, interface 0)
+[    1.730000] rtl8192cu 1-1.2:1.0: usb_probe_interface
+[    1.730000] rtl8192cu 1-1.2:1.0: usb_probe_interface - got id
+[    1.810000] rtl8192cu: MAC address: 00:e0:4c:03:78:73
+[    1.810000] rtl8192cu: Board Type 0
+[    1.810000] rtl8192cu: rx_max_size 15360, rx_urb_num 8, in_ep 1
+[    1.810000] phy0: Selected rate control algorithm 'rtl_rc'
+[    1.815000] drivers/usb/core/inode.c: creating file '003'
+[    1.815000] hub 1-1:1.0: port 3, status 0101, change 0000, 12 Mb/s
+[    1.885000] usb 1-1.3: new high speed USB device using s5p-ehci and address 4
+[    2.020000] s5p-ohci s5p-ohci: auto-stop root hub
+[    2.185000] usb 1-1.3: skipped 1 descriptor after configuration
+[    2.185000] usb 1-1.3: skipped 8 descriptors after interface
+[    2.185000] usb 1-1.3: skipped 1 descriptor after endpoint
+[    2.185000] usb 1-1.3: skipped 43 descriptors after interface
+[    2.185000] usb 1-1.3: skipped 1 descriptor after endpoint
+[    2.185000] usb 1-1.3: skipped 4 descriptors after interface
+[    2.185000] usb 1-1.3: skipped 2 descriptors after interface
+[    2.185000] usb 1-1.3: skipped 1 descriptor after endpoint
+[    2.185000] usb 1-1.3: skipped 2 descriptors after interface
+[    2.185000] usb 1-1.3: skipped 1 descriptor after endpoint
+[    2.185000] usb 1-1.3: skipped 2 descriptors after interface
+[    2.185000] usb 1-1.3: skipped 1 descriptor after endpoint
+[    2.185000] usb 1-1.3: skipped 2 descriptors after interface
+[    2.185000] usb 1-1.3: skipped 1 descriptor after endpoint
+[    2.190000] usb 1-1.3: default language 0x0409
+[    2.190000] usb 1-1.3: udev 4, busnum 1, minor = 3
+[    2.190000] usb 1-1.3: New USB device found, idVendor=046d, idProduct=0825
+[    2.190000] usb 1-1.3: New USB device strings: Mfr=0, Product=0, SerialNumber=2
+[    2.190000] usb 1-1.3: SerialNumber: 5DD09CE0
+[    2.190000] usb 1-1.3: usb_probe_device
+[    2.190000] usb 1-1.3: configuration #1 chosen from 1 choice
+[    2.190000] usb 1-1.3: adding 1-1.3:1.0 (config #1, interface 0)
+[    2.190000] uvcvideo 1-1.3:1.0: usb_probe_interface
+[    2.190000] uvcvideo 1-1.3:1.0: usb_probe_interface - got id
+[    2.190000] uvcvideo: Found UVC 1.00 device <unnamed> (046d:0825)
+[    2.285000] AC97: Unable to activate!
+[    2.290000] input: UVC Camera (046d:0825) as /devices/platform/s5p-ehci/usb1/1-1/1-1.3/1-1.3:1.0/input/input3
+[    2.290000] usb 1-1.3: adding 1-1.3:1.1 (config #1, interface 1)
+[    2.290000] usb 1-1.3: adding 1-1.3:1.2 (config #1, interface 2)
+[    2.290000] snd-usb-audio 1-1.3:1.2: usb_probe_interface
+[    2.290000] snd-usb-audio 1-1.3:1.2: usb_probe_interface - got id
+[    3.285000] AC97: Unable to read!
+[    3.290000] usb 1-1.3: khubd timed out on ep0in len=3/3
+[    3.290000] 4:3:1: cannot get freq at ep 0x86
+[    3.325000] ALSA device list:
+[    3.325000]   #0: SMDK (WM9713)
+[    3.325000] GACT probability NOT on
+[    3.325000] Mirror/redirect action on
+[    3.325000] u32 classifier
+[    3.325000]     Actions configured
+[    3.325000] Netfilter messages via NETLINK v0.30.
+[    3.325000] nf_conntrack version 0.5.0 (5475 buckets, 21900 max)
+[    3.330000] CONFIG_NF_CT_ACCT is deprecated and will be removed soon. Please use
+[    3.335000] nf_conntrack.acct=1 kernel parameter, acct=1 nf_conntrack module option or
+[    3.340000] sysctl net.netfilter.nf_conntrack_acct=1 to enable it.
+[    3.345000] ctnetlink v0.93: registering with nfnetlink.
+[    3.350000] xt_time: kernel timezone is -0000
+[    3.355000] ip_tables: (C) 2000-2006 Netfilter Core Team
+[    3.360000] arp_tables: (C) 2002 David S. Miller
+[    3.365000] TCP cubic registered
+[    3.365000] NET: Registered protocol family 10
+[    3.375000] lo: Disabled Privacy Extensions
+[    3.380000] Mobile IPv6
+[    3.380000] IPv6 over IPv4 tunneling driver
+[    3.385000] sit0: Disabled Privacy Extensions
+[    3.390000] ip6tnl0: Disabled Privacy Extensions
+[    3.395000] NET: Registered protocol family 17
+[    3.395000] NET: Registered protocol family 15
+[    3.400000] lib80211: common routines for IEEE802.11 drivers
+[    3.405000] lib80211_crypt: registered algorithm 'NULL'
+[    3.405000] ThumbEE CPU extension supported.
+[    3.410000] VFP support v0.3: implementor 41 architecture 3 part 30 variant c rev 2
+[    3.420000] regulator_init_complete: disabling pd_mfc_supply
+[    3.425000] regulator_init_complete: disabling pd_tv_supply
+[    3.430000] regulator_init_complete: disabling pd_cam_supply
+[    3.435000] s3c-rtc s3c2410-rtc: rtc disabled, re-enabling
+[    3.440000] read time 2175.08.04 35:02:86
+[    3.440000] s3c-rtc s3c2410-rtc: setting system clock to 2013-08-04 23:02:56 UTC (1375657376)
+[    3.445000] FIMC0 registered successfully
+[    3.450000] FIMC1 registered successfully
+[    3.450000] FIMC2 registered successfully
+[    3.455000] <6>S5PC1XX TVOUT Driver, (c) 2009 Samsung Electronics
+[    3.460000] s5p-tvout s5p-tvout: hpd status is cable removed
+[    3.475000] DBUG_PORT must not use AFC!
+[    3.500000] usb 1-1.3: adding 1-1.3:1.3 (config #1, interface 3)
+[    3.500000] drivers/usb/core/inode.c: creating file '004'
+[    3.500000] hub 1-1:1.0: state 7 ports 4 chg 0000 evt 0008
+[    3.500000] EXT3-fs: barriers not enabled
+[    3.505000] kjournald starting.  Commit interval 5 seconds
+[    3.515000] EXT3-fs (mmcblk0p1): using internal journal
+[    3.515000] EXT3-fs (mmcblk0p1): mounted filesystem with writeback data mode
+[    3.515000] VFS: Mounted root (ext3 filesystem) on device 179:1.
+[    3.515000] Freeing init memory: 164K
+[    3.945000] net eth0: SMSC911x/921x identified at 0xe088e000, IRQ: 41
+[   10.235000] set time 2013.07.04 23:03:03
+[   10.235000] s3c-rtc s3c2410-rtc: rtc disabled, re-enabling
+[   10.235000] set time to:35.3.3
+[   10.235000] year 113
+[   14.810000] eth0: no IPv6 routers present

@@ -1,0 +1,1731 @@
+wpa_supplicant v2.0
+random: Trying to read entropy from /dev/random
+Successfully initialized wpa_supplicant
+Initializing interface 'wlan0' conf '/etc/wpa_supplicant.conf' driver 'nl80211' ctrl_interface 'N/A' bridge 'N/A'
+Configuration file '/etc/wpa_supplicant.conf' -> '/etc/wpa_supplicant.conf'
+Reading configuration file '/etc/wpa_supplicant.conf'
+ctrl_interface='/var/run/wpa_supplicant'
+ctrl_interface_group='0'
+update_config=1
+ap_scan=1
+Line: 19 - start of a new network block
+ssid - hexdump_ascii(len=4):
+     48 4f 4d 45                                       HOME            
+key_mgmt: 0x3
+proto: 0x3
+pairwise: 0x18
+group: 0x1e
+PSK - hexdump(len=32): [REMOVED]
+priority=5 (0x5)
+Priority group 5
+   id=0 ssid='HOME'
+Could not open file /sys/class/net/wlan0/phy80211/name: No such file or directory
+rfkill: initial event: idx=0 type=1 op=0 soft=0 hard=0
+nl80211: Set mode ifindex 6 iftype 2 (STATION)
+nl80211: Subscribe to mgmt frames with non-AP handle 0x193158
+nl80211: Register frame type=0xd0 nl_handle=0x193158
+nl80211: Register frame match - hexdump(len=1): 06
+nl80211: Register frame type=0xd0 nl_handle=0x193158
+nl80211: Register frame match - hexdump(len=2): 0a 07
+nl80211: Register frame type=0xd0 nl_handle=0x193158
+nl80211: Register frame match - hexdump(len=2): 0a 11
+netlink: Operstate: linkmode=1, operstate=5
+nl80211: driver param='(null)'
+nl80211: Regulatory information - country=00
+nl80211: 2402-2472 @ 40 MHz
+nl80211: 2457-2482 @ 20 MHz
+nl80211: 2474-2494 @ 20 MHz
+nl80211: 5170-5250 @ 40 MHz
+nl80211: 5735-5835 @ 40 MHz
+nl80211: Added 802.11b mode based on 802.11g information
+wlan0: Own MAC address: 00:e0:4c:03:78:73
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=0 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=1 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=2 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=3 set_tx=0 seq_len=0 key_len=0
+wlan0: RSN: flushing PMKID list in the driver
+nl80211: Flush PMKIDs
+wlan0: Setting scan request: 0 sec 100000 usec
+EAPOL: SUPP_PAE entering state DISCONNECTED
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: KEY_RX entering state NO_KEY_RECEIVE
+EAPOL: SUPP_BE entering state INITIALIZE
+EAP: EAP entering state DISABLED
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: Supplicant port status: Unauthorized
+Using existing control interface directory.
+ctrl_interface_group=0
+wlan0: Added interface wlan0
+wlan0: State: DISCONNECTED -> DISCONNECTED
+wpa_driver_nl80211_set_operstate: operstate 0->0 (DORMANT)
+netlink: Operstate: linkmode=-1, operstate=5
+random: Got 14/20 bytes from /dev/random
+wlan0: State: DISCONNECTED -> SCANNING
+wlan0: Starting AP scan for wildcard SSID
+nl80211: Scan SSID - hexdump_ascii(len=0): [NULL]
+Scan requested (ret=0) - scan timeout 10 seconds
+nl80211: Event message available
+nl80211: Scan trigger
+EAPOL: disable timer tick
+EAPOL: Supplicant port status: Unauthorized
+nl80211: Event message available
+nl80211: New scan results available
+wlan0: Event SCAN_RESULTS (3) received
+nl80211: Received scan results (16 BSSes)
+wlan0: BSS: Start scan result update 1
+wlan0: BSS: Add new id 0 BSSID d4:ee:07:01:ab:60 SSID 'HiWiFi_01AB60'
+wlan0: BSS: Add new id 1 BSSID 8c:21:0a:8b:40:9c SSID 'TP-LINK_Harry'
+wlan0: BSS: Add new id 2 BSSID f4:ec:38:6b:eb:6e SSID 'HOME'
+wlan0: BSS: Add new id 3 BSSID 00:06:25:00:96:86 SSID 'NG_Home'
+wlan0: BSS: Add new id 4 BSSID 00:25:86:1f:34:2c SSID 'bang'
+wlan0: BSS: Add new id 5 BSSID f8:df:a8:b9:93:63 SSID 'ChinaNet-NHJE'
+wlan0: BSS: Add new id 6 BSSID 70:b9:21:46:58:71 SSID 'CU_z3it'
+wlan0: BSS: Add new id 7 BSSID 5c:d9:98:e6:c5:a6 SSID 'CCK'
+wlan0: BSS: Add new id 8 BSSID d8:5d:4c:1a:d6:62 SSID 'TP-LINK_WR941N'
+wlan0: BSS: Add new id 9 BSSID c8:3a:35:3a:12:d8 SSID '66668888'
+wlan0: BSS: Add new id 10 BSSID 00:11:50:35:3c:3c SSID '13828431106'
+wlan0: BSS: Add new id 11 BSSID 5c:63:bf:bf:98:3e SSID 'TP-LINK_BF983E'
+wlan0: BSS: Add new id 12 BSSID 8c:21:0a:3f:e8:32 SSID 'MERCURY_3FE832'
+wlan0: BSS: Add new id 13 BSSID 34:6b:d3:c8:34:00 SSID '1010'
+wlan0: BSS: Add new id 14 BSSID 28:5f:db:72:5c:4c SSID 'ChinaNet-3uif'
+wlan0: BSS: Add new id 15 BSSID 5c:63:bf:6a:06:82 SSID 'hyl'
+BSS: last_scan_res_used=16/32 last_scan_full=0
+wlan0: New scan results available
+wlan0: Selecting BSS from priority group 5
+wlan0: 0: d4:ee:07:01:ab:60 ssid='HiWiFi_01AB60' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-83
+wlan0:    skip - SSID mismatch
+wlan0: 1: 8c:21:0a:8b:40:9c ssid='TP-LINK_Harry' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-83 wps
+wlan0:    skip - SSID mismatch
+wlan0: 2: f4:ec:38:6b:eb:6e ssid='HOME' wpa_ie_len=22 rsn_ie_len=0 caps=0x431 level=-83 wps
+wlan0:    selected based on WPA IE
+wlan0:    selected BSS f4:ec:38:6b:eb:6e ssid='HOME'
+wlan0: Request association: reassociate: 0  selected: f4:ec:38:6b:eb:6e  bssid: 00:00:00:00:00:00  pending: 00:00:00:00:00:00  wpa_state: SCANNING
+wlan0: Automatic auth_alg selection: 0x1
+RSN: PMKSA cache search - network_ctx=(nil) try_opportunistic=0
+RSN: Search for BSSID f4:ec:38:6b:eb:6e
+RSN: No PMKSA cache entry found
+wlan0: WPA: using IEEE 802.11i/D3.0
+wlan0: WPA: Selected cipher suites: group 16 pairwise 16 key_mgmt 2 proto 1
+WPA: set AP WPA IE - hexdump(len=24): dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+wlan0: WPA: clearing AP RSN IE
+wlan0: WPA: using GTK CCMP
+wlan0: WPA: using PTK CCMP
+wlan0: WPA: using KEY_MGMT WPA-PSK
+WPA: Set own WPA IE default - hexdump(len=24): dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+wlan0: Cancelling scan request
+wlan0: SME: Trying to authenticate with f4:ec:38:6b:eb:6e (SSID='HOME' freq=2437 MHz)
+wlan0: No keys have been configured - skip key clearing
+wlan0: State: SCANNING -> AUTHENTICATING
+EAPOL: External notification - EAP success=0
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - EAP fail=0
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - portControl=Auto
+EAPOL: Supplicant port status: Unauthorized
+nl80211: Authenticate (ifindex=6)
+  * bssid=f4:ec:38:6b:eb:6e
+  * freq=2437
+  * SSID - hexdump_ascii(len=4):
+     48 4f 4d 45                                       HOME            
+  * IEs - hexdump(len=0): [NULL]
+  * Auth Type 0
+nl80211: Authentication request send successfully
+RTM_NEWLINK: operstate=0 ifi_flags=0x1003 ([UP])
+RTM_NEWLINK, IFLA_IFNAME: Interface 'wlan0' added
+nl80211: if_removed already cleared - ignore event
+nl80211: Event message available
+nl80211: MLME event 37
+nl80211: MLME event frame - hexdump(len=30): b0 00 3a 01 00 e0 4c 03 78 73 f4 ec 38 6b eb 6e f4 ec 38 6b eb 6e 00 00 00 00 02 00 00 00
+nl80211: Authenticate event
+wlan0: Event AUTH (11) received
+wlan0: SME: Authentication response: peer=f4:ec:38:6b:eb:6e auth_type=0 auth_transaction=2 status_code=0
+SME: Authentication response IEs - hexdump(len=0): [NULL]
+wlan0: Trying to associate with f4:ec:38:6b:eb:6e (SSID='HOME' freq=2437 MHz)
+wlan0: State: AUTHENTICATING -> ASSOCIATING
+wpa_driver_nl80211_set_operstate: operstate 0->0 (DORMANT)
+netlink: Operstate: linkmode=-1, operstate=5
+WPA: set own WPA/RSN IE - hexdump(len=24): dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+nl80211: Associate (ifindex=6)
+  * bssid=f4:ec:38:6b:eb:6e
+  * freq=2437
+  * SSID - hexdump_ascii(len=4):
+     48 4f 4d 45                                       HOME            
+  * IEs - hexdump(len=24): dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+  * pairwise=0xfac04
+  * group=0xfac04
+nl80211: Association request send successfully
+nl80211: Event message available
+nl80211: New station f4:ec:38:6b:eb:6e
+RTM_NEWLINK: operstate=0 ifi_flags=0x11003 ([UP][LOWER_UP])
+RTM_NEWLINK, IFLA_IFNAME: Interface 'wlan0' added
+nl80211: if_removed already cleared - ignore event
+nl80211: Event message available
+nl80211: MLME event 38
+nl80211: MLME event frame - hexdump(len=72): 10 00 3a 01 00 e0 4c 03 78 73 f4 ec 38 6b eb 6e f4 ec 38 6b eb 6e 10 00 31 04 00 00 03 c0 01 08 02 04 0b 0c 12 16 18 24 32 04 30 48 60 6c dd 18 00 50 f2 02 01 01 03 00 03 a4 00 00 27 a4 00 00 42 43 5e 00 62 32 2f 00
+nl80211: Associate event
+wlan0: Event ASSOC (0) received
+wlan0: Association info event
+resp_ies - hexdump(len=42): 01 08 02 04 0b 0c 12 16 18 24 32 04 30 48 60 6c dd 18 00 50 f2 02 01 01 03 00 03 a4 00 00 27 a4 00 00 42 43 5e 00 62 32 2f 00
+wlan0: freq=2437 MHz
+wlan0: State: ASSOCIATING -> ASSOCIATED
+wpa_driver_nl80211_set_operstate: operstate 0->0 (DORMANT)
+netlink: Operstate: linkmode=-1, operstate=5
+wlan0: Associated to a new BSS: BSSID=f4:ec:38:6b:eb:6e
+wlan0: No keys have been configured - skip key clearing
+wlan0: Associated with f4:ec:38:6b:eb:6e
+wlan0: WPA: Association event - clear replay counter
+wlan0: WPA: Clear old PTK
+EAPOL: External notification - portEnabled=0
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - portValid=0
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - EAP success=0
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - portEnabled=1
+EAPOL: SUPP_PAE entering state CONNECTING
+EAPOL: enable timer tick
+EAPOL: SUPP_BE entering state IDLE
+wlan0: Setting authentication timeout: 10 sec 0 usec
+wlan0: Cancelling scan request
+nl80211: Event message available
+nl80211: Ignore connect event (cmd=46) when using userspace SME
+RTM_NEWLINK: operstate=0 ifi_flags=0x11003 ([UP][LOWER_UP])
+RTM_NEWLINK, IFLA_IFNAME: Interface 'wlan0' added
+nl80211: if_removed already cleared - ignore event
+RTM_NEWLINK: operstate=0 ifi_flags=0x11003 ([UP][LOWER_UP])
+RTM_NEWLINK, IFLA_IFNAME: Interface 'wlan0' added
+nl80211: if_removed already cleared - ignore event
+wlan0: RX EAPOL from f4:ec:38:6b:eb:6e
+RX EAPOL - hexdump(len=99): 02 03 00 5f fe 00 8a 00 10 00 00 00 00 00 00 00 01 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3d 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+wlan0: Setting authentication timeout: 10 sec 0 usec
+wlan0: IEEE 802.1X RX: version=2 type=3 length=95
+wlan0:   EAPOL-Key type=254
+wlan0:   key_info 0x8a (ver=2 keyidx=0 rsvd=0 Pairwise Ack)
+wlan0:   key_length=16 key_data_length=0
+  replay_counter - hexdump(len=8): 00 00 00 00 00 00 00 01
+  key_nonce - hexdump(len=32): b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3d
+  key_iv - hexdump(len=16): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  key_rsc - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_id (reserved) - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_mic - hexdump(len=16): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+WPA: RX EAPOL-Key - hexdump(len=99): 02 03 00 5f fe 00 8a 00 10 00 00 00 00 00 00 00 01 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3d 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+wlan0: State: ASSOCIATED -> 4WAY_HANDSHAKE
+wlan0: WPA: RX message 1 of 4-Way Handshake from f4:ec:38:6b:eb:6e (ver=2)
+Get randomness: len=32 entropy=11
+WPA: Renewed SNonce - hexdump(len=32): 81 93 46 bf 3e 89 f5 da 46 7c a6 b7 c8 d1 ad 69 4d dc 56 71 21 c3 4a 66 6a c7 08 2d bb 5e b6 25
+WPA: PTK derivation - A1=00:e0:4c:03:78:73 A2=f4:ec:38:6b:eb:6e
+WPA: Nonce1 - hexdump(len=32): 81 93 46 bf 3e 89 f5 da 46 7c a6 b7 c8 d1 ad 69 4d dc 56 71 21 c3 4a 66 6a c7 08 2d bb 5e b6 25
+WPA: Nonce2 - hexdump(len=32): b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3d
+WPA: PMK - hexdump(len=32): [REMOVED]
+WPA: PTK - hexdump(len=48): [REMOVED]
+WPA: WPA IE for msg 2/4 - hexdump(len=24): dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+WPA: Replay Counter - hexdump(len=8): 00 00 00 00 00 00 00 01
+wlan0: WPA: Sending EAPOL-Key 2/4
+WPA: KCK - hexdump(len=16): [REMOVED]
+WPA: Derived Key MIC - hexdump(len=16): c7 1c 22 a2 d0 3d 36 ae 7d 24 f5 f3 ab d7 76 66
+WPA: TX EAPOL-Key - hexdump(len=123): 01 03 00 77 fe 01 0a 00 10 00 00 00 00 00 00 00 01 81 93 46 bf 3e 89 f5 da 46 7c a6 b7 c8 d1 ad 69 4d dc 56 71 21 c3 4a 66 6a c7 08 2d bb 5e b6 25 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 c7 1c 22 a2 d0 3d 36 ae 7d 24 f5 f3 ab d7 76 66 00 18 dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+wlan0: RX EAPOL from f4:ec:38:6b:eb:6e
+RX EAPOL - hexdump(len=123): 02 03 00 77 fe 01 ca 00 10 00 00 00 00 00 00 00 02 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3d 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 62 67 cc 15 dd a3 a4 76 ff 96 8b bc 86 e1 e2 2f 00 18 dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+wlan0: IEEE 802.1X RX: version=2 type=3 length=119
+wlan0:   EAPOL-Key type=254
+wlan0:   key_info 0x1ca (ver=2 keyidx=0 rsvd=0 Pairwise Install Ack MIC)
+wlan0:   key_length=16 key_data_length=24
+  replay_counter - hexdump(len=8): 00 00 00 00 00 00 00 02
+  key_nonce - hexdump(len=32): b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3d
+  key_iv - hexdump(len=16): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  key_rsc - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_id (reserved) - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_mic - hexdump(len=16): 62 67 cc 15 dd a3 a4 76 ff 96 8b bc 86 e1 e2 2f
+WPA: RX EAPOL-Key - hexdump(len=123): 02 03 00 77 fe 01 ca 00 10 00 00 00 00 00 00 00 02 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3d 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 62 67 cc 15 dd a3 a4 76 ff 96 8b bc 86 e1 e2 2f 00 18 dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+wlan0: State: 4WAY_HANDSHAKE -> 4WAY_HANDSHAKE
+wlan0: WPA: RX message 3 of 4-Way Handshake from f4:ec:38:6b:eb:6e (ver=2)
+WPA: IE KeyData - hexdump(len=24): dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+WPA: WPA IE in EAPOL-Key - hexdump(len=24): dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+wlan0: WPA: Sending EAPOL-Key 4/4
+WPA: KCK - hexdump(len=16): [REMOVED]
+WPA: Derived Key MIC - hexdump(len=16): d4 c6 87 2b df 8b 8d da f6 fd cf 74 4c 90 24 34
+WPA: TX EAPOL-Key - hexdump(len=99): 01 03 00 5f fe 01 0a 00 10 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 d4 c6 87 2b df 8b 8d da f6 fd cf 74 4c 90 24 34 00 00
+wlan0: WPA: Installing PTK to the driver
+WPA: RSC - hexdump(len=6): 00 00 00 00 00 00
+wpa_driver_nl80211_set_key: ifindex=6 alg=3 addr=0x1933ac key_idx=0 set_tx=1 seq_len=6 key_len=16
+   addr=f4:ec:38:6b:eb:6e
+wlan0: State: 4WAY_HANDSHAKE -> GROUP_HANDSHAKE
+wlan0: RX EAPOL from f4:ec:38:6b:eb:6e
+RX EAPOL - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 03 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 a5 4b c2 0a a2 ab 4f 9c a5 2a 32 f1 60 0e 4e 6c 00 18 5e fd 72 dd 73 c7 5a 03 2f d3 d7 95 4b 56 9e be dd c1 39 90 a9 65 d9 fe
+wlan0: IEEE 802.1X RX: version=2 type=3 length=119
+wlan0:   EAPOL-Key type=254
+wlan0:   key_info 0x3a2 (ver=2 keyidx=2 rsvd=0 Group Ack MIC Secure)
+wlan0:   key_length=16 key_data_length=24
+  replay_counter - hexdump(len=8): 00 00 00 00 00 00 00 03
+  key_nonce - hexdump(len=32): b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c
+  key_iv - hexdump(len=16): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  key_rsc - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_id (reserved) - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_mic - hexdump(len=16): a5 4b c2 0a a2 ab 4f 9c a5 2a 32 f1 60 0e 4e 6c
+WPA: RX EAPOL-Key - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 03 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 a5 4b c2 0a a2 ab 4f 9c a5 2a 32 f1 60 0e 4e 6c 00 18 5e fd 72 dd 73 c7 5a 03 2f d3 d7 95 4b 56 9e be dd c1 39 90 a9 65 d9 fe
+wlan0: WPA: RX message 1 of Group Key Handshake from f4:ec:38:6b:eb:6e (ver=2)
+wlan0: State: GROUP_HANDSHAKE -> GROUP_HANDSHAKE
+WPA: Group Key - hexdump(len=16): [REMOVED]
+wlan0: WPA: Installing GTK to the driver (keyidx=2 tx=0 len=16)
+WPA: RSC - hexdump(len=6): 00 00 00 00 00 00
+wpa_driver_nl80211_set_key: ifindex=6 alg=3 addr=0x12659c key_idx=2 set_tx=0 seq_len=6 key_len=16
+   broadcast key
+wlan0: WPA: Sending EAPOL-Key 2/2
+WPA: KCK - hexdump(len=16): [REMOVED]
+WPA: Derived Key MIC - hexdump(len=16): 84 9a 35 1d 70 f7 0c 22 c3 f0 0d 7a c9 6f 47 c4
+WPA: TX EAPOL-Key - hexdump(len=99): 01 03 00 5f fe 03 22 00 10 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 84 9a 35 1d 70 f7 0c 22 c3 f0 0d 7a c9 6f 47 c4 00 00
+wlan0: WPA: Key negotiation completed with f4:ec:38:6b:eb:6e [PTK=CCMP GTK=CCMP]
+wlan0: Cancelling authentication timeout
+wlan0: State: GROUP_HANDSHAKE -> COMPLETED
+wlan0: CTRL-EVENT-CONNECTED - Connection to f4:ec:38:6b:eb:6e completed [id=0 id_str=]
+wpa_driver_nl80211_set_operstate: operstate 0->1 (UP)
+netlink: Operstate: linkmode=-1, operstate=6
+EAPOL: External notification - portValid=1
+EAPOL: External notification - EAP success=1
+EAPOL: SUPP_PAE entering state AUTHENTICATING
+EAPOL: SUPP_BE entering state SUCCESS
+EAP: EAP entering state DISABLED
+EAPOL: SUPP_PAE entering state AUTHENTICATED
+EAPOL: Supplicant port status: Authorized
+EAPOL: SUPP_BE entering state IDLE
+EAPOL authentication completed successfully
+RTM_NEWLINK: operstate=1 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+RTM_NEWLINK, IFLA_IFNAME: Interface 'wlan0' added
+nl80211: if_removed already cleared - ignore event
+wlan0: RX EAPOL from f4:ec:38:6b:eb:6e
+RX EAPOL - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 04 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 b7 4d 10 21 d1 7d 1d d5 05 61 45 cc 86 19 34 23 00 18 5e fd 72 dd 73 c7 5a 03 2f d3 d7 95 4b 56 9e be dd c1 39 90 a9 65 d9 fe
+wlan0: IEEE 802.1X RX: version=2 type=3 length=119
+wlan0:   EAPOL-Key type=254
+wlan0:   key_info 0x3a2 (ver=2 keyidx=2 rsvd=0 Group Ack MIC Secure)
+wlan0:   key_length=16 key_data_length=24
+  replay_counter - hexdump(len=8): 00 00 00 00 00 00 00 04
+  key_nonce - hexdump(len=32): b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c
+  key_iv - hexdump(len=16): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  key_rsc - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_id (reserved) - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_mic - hexdump(len=16): b7 4d 10 21 d1 7d 1d d5 05 61 45 cc 86 19 34 23
+WPA: RX EAPOL-Key - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 04 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 b7 4d 10 21 d1 7d 1d d5 05 61 45 cc 86 19 34 23 00 18 5e fd 72 dd 73 c7 5a 03 2f d3 d7 95 4b 56 9e be dd c1 39 90 a9 65 d9 fe
+wlan0: WPA: RX message 1 of Group Key Handshake from f4:ec:38:6b:eb:6e (ver=2)
+wlan0: State: COMPLETED -> GROUP_HANDSHAKE
+WPA: Group Key - hexdump(len=16): [REMOVED]
+wlan0: WPA: Installing GTK to the driver (keyidx=2 tx=0 len=16)
+WPA: RSC - hexdump(len=6): 00 00 00 00 00 00
+wpa_driver_nl80211_set_key: ifindex=6 alg=3 addr=0x12659c key_idx=2 set_tx=0 seq_len=6 key_len=16
+   broadcast key
+wlan0: WPA: Sending EAPOL-Key 2/2
+WPA: KCK - hexdump(len=16): [REMOVED]
+WPA: Derived Key MIC - hexdump(len=16): f0 f5 ad 03 26 8b 4f 24 65 01 45 aa ad df 69 e8
+WPA: TX EAPOL-Key - hexdump(len=99): 01 03 00 5f fe 03 22 00 10 00 00 00 00 00 00 00 04 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 f0 f5 ad 03 26 8b 4f 24 65 01 45 aa ad df 69 e8 00 00
+wlan0: WPA: Group rekeying completed with f4:ec:38:6b:eb:6e [GTK=CCMP]
+wlan0: Cancelling authentication timeout
+wlan0: State: GROUP_HANDSHAKE -> COMPLETED
+wlan0: RX EAPOL from f4:ec:38:6b:eb:6e
+RX EAPOL - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 05 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 bc 1d 48 6a 55 f5 fc fe d0 f2 c9 92 ba d9 cd 9b 00 18 5e fd 72 dd 73 c7 5a 03 2f d3 d7 95 4b 56 9e be dd c1 39 90 a9 65 d9 fe
+wlan0: IEEE 802.1X RX: version=2 type=3 length=119
+wlan0:   EAPOL-Key type=254
+wlan0:   key_info 0x3a2 (ver=2 keyidx=2 rsvd=0 Group Ack MIC Secure)
+wlan0:   key_length=16 key_data_length=24
+  replay_counter - hexdump(len=8): 00 00 00 00 00 00 00 05
+  key_nonce - hexdump(len=32): b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c
+  key_iv - hexdump(len=16): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  key_rsc - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_id (reserved) - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_mic - hexdump(len=16): bc 1d 48 6a 55 f5 fc fe d0 f2 c9 92 ba d9 cd 9b
+WPA: RX EAPOL-Key - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 05 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 bc 1d 48 6a 55 f5 fc fe d0 f2 c9 92 ba d9 cd 9b 00 18 5e fd 72 dd 73 c7 5a 03 2f d3 d7 95 4b 56 9e be dd c1 39 90 a9 65 d9 fe
+wlan0: WPA: RX message 1 of Group Key Handshake from f4:ec:38:6b:eb:6e (ver=2)
+wlan0: State: COMPLETED -> GROUP_HANDSHAKE
+WPA: Group Key - hexdump(len=16): [REMOVED]
+wlan0: WPA: Installing GTK to the driver (keyidx=2 tx=0 len=16)
+WPA: RSC - hexdump(len=6): 00 00 00 00 00 00
+wpa_driver_nl80211_set_key: ifindex=6 alg=3 addr=0x12659c key_idx=2 set_tx=0 seq_len=6 key_len=16
+   broadcast key
+wlan0: WPA: Sending EAPOL-Key 2/2
+WPA: KCK - hexdump(len=16): [REMOVED]
+WPA: Derived Key MIC - hexdump(len=16): 83 13 7d 65 3a 6e 40 fd d4 a5 d9 60 13 62 6b 3d
+WPA: TX EAPOL-Key - hexdump(len=99): 01 03 00 5f fe 03 22 00 10 00 00 00 00 00 00 00 05 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 83 13 7d 65 3a 6e 40 fd d4 a5 d9 60 13 62 6b 3d 00 00
+wlan0: WPA: Group rekeying completed with f4:ec:38:6b:eb:6e [GTK=CCMP]
+wlan0: Cancelling authentication timeout
+wlan0: State: GROUP_HANDSHAKE -> COMPLETED
+EAPOL: startWhen --> 0
+EAPOL: disable timer tick
+wlan0: RX EAPOL from f4:ec:38:6b:eb:6e
+RX EAPOL - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 06 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 f2 95 a8 34 07 a8 c0 e3 73 58 3c 6d e7 f3 23 6c 00 18 5e fd 72 dd 73 c7 5a 03 2f d3 d7 95 4b 56 9e be dd c1 39 90 a9 65 d9 fe
+wlan0: IEEE 802.1X RX: version=2 type=3 length=119
+wlan0:   EAPOL-Key type=254
+wlan0:   key_info 0x3a2 (ver=2 keyidx=2 rsvd=0 Group Ack MIC Secure)
+wlan0:   key_length=16 key_data_length=24
+  replay_counter - hexdump(len=8): 00 00 00 00 00 00 00 06
+  key_nonce - hexdump(len=32): b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c
+  key_iv - hexdump(len=16): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  key_rsc - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_id (reserved) - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_mic - hexdump(len=16): f2 95 a8 34 07 a8 c0 e3 73 58 3c 6d e7 f3 23 6c
+WPA: RX EAPOL-Key - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 06 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 f2 95 a8 34 07 a8 c0 e3 73 58 3c 6d e7 f3 23 6c 00 18 5e fd 72 dd 73 c7 5a 03 2f d3 d7 95 4b 56 9e be dd c1 39 90 a9 65 d9 fe
+wlan0: WPA: RX message 1 of Group Key Handshake from f4:ec:38:6b:eb:6e (ver=2)
+wlan0: State: COMPLETED -> GROUP_HANDSHAKE
+WPA: Group Key - hexdump(len=16): [REMOVED]
+wlan0: WPA: Installing GTK to the driver (keyidx=2 tx=0 len=16)
+WPA: RSC - hexdump(len=6): 00 00 00 00 00 00
+wpa_driver_nl80211_set_key: ifindex=6 alg=3 addr=0x12659c key_idx=2 set_tx=0 seq_len=6 key_len=16
+   broadcast key
+wlan0: WPA: Sending EAPOL-Key 2/2
+WPA: KCK - hexdump(len=16): [REMOVED]
+WPA: Derived Key MIC - hexdump(len=16): 81 ef 08 cd a7 4a 6f 04 09 ed 02 4b 0b 61 53 f7
+WPA: TX EAPOL-Key - hexdump(len=99): 01 03 00 5f fe 03 22 00 10 00 00 00 00 00 00 00 06 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 81 ef 08 cd a7 4a 6f 04 09 ed 02 4b 0b 61 53 f7 00 00
+wlan0: WPA: Group rekeying completed with f4:ec:38:6b:eb:6e [GTK=CCMP]
+wlan0: Cancelling authentication timeout
+wlan0: State: GROUP_HANDSHAKE -> COMPLETED
+RTM_NEWLINK: operstate=1 ifi_flags=0x1003 ([UP])
+RTM_NEWLINK, IFLA_IFNAME: Interface 'wlan0' added
+nl80211: if_removed already cleared - ignore event
+RTM_NEWLINK: operstate=1 ifi_flags=0x1003 ([UP])
+RTM_NEWLINK, IFLA_IFNAME: Interface 'wlan0' added
+nl80211: if_removed already cleared - ignore event
+nl80211: Event message available
+nl80211: MLME event 40
+nl80211: MLME event frame - hexdump(len=26): a0 00 3a 01 00 e0 4c 03 78 73 f4 ec 38 6b eb 6e f4 ec 38 6b eb 6e 20 00 02 00
+
+nl80211: Disassociate event
+wlan0: Event DISASSOC (1) received
+wlan0: Disassociation notification
+wlan0:  * reason 2
+wlan0:  * address f4:ec:38:6b:eb:6e
+Disassociation frame IE(s) - hexdump(len=0): [NULL]
+
+wlan0: SME: Disassociation event received
+wlan0: SME: Deauthenticate to clear driver state
+wpa_driver_nl80211_deauthenticate(addr=f4:ec:38:6b:eb:6e reason_code=3)
+wlan0: CTRL-EVENT-DISCONNECTED bssid=f4:ec:38:6b:eb:6e reason=2
+wlan0: Auto connect enabled: try to reconnect (wps=0 wpa_state=9)
+wlan0: Setting scan request: 0 sec 100000 usec
+Added BSSID f4:ec:38:6b:eb:6e into blacklist
+wlan0: Blacklist count 1 --> request scan in 100 ms
+wlan0: Setting scan request: 0 sec 100000 usec
+wlan0: Disconnect event - remove keys
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=0 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=1 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=2 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=3 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=0x192540 key_idx=0 set_tx=0 seq_len=0 key_len=0
+   addr=f4:ec:38:6b:eb:6e
+wlan0: State: COMPLETED -> DISCONNECTED
+wpa_driver_nl80211_set_operstate: operstate 1->0 (DORMANT)
+netlink: Operstate: linkmode=-1, operstate=5
+EAPOL: External notification - portEnabled=0
+EAPOL: SUPP_PAE entering state DISCONNECTED
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: SUPP_BE entering state INITIALIZE
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - portValid=0
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - EAP success=0
+EAPOL: Supplicant port status: Unauthorized
+nl80211: Event message available
+nl80211: Ignore disconnect event when using userspace SME
+nl80211: Event message available
+nl80211: MLME event 39
+nl80211: MLME event frame - hexdump(len=26): c0 00 00 00 f4 ec 38 6b eb 6e 00 e0 4c 03 78 73 f4 ec 38 6b eb 6e 00 00 03 00
+nl80211: Deauthenticate event
+wlan0: Event DEAUTH (12) received
+wlan0: Deauthentication notification
+wlan0:  * reason 3 (locally generated)
+wlan0:  * address f4:ec:38:6b:eb:6e
+Deauthentication frame IE(s) - hexdump(len=0): [NULL]
+wlan0: Auto connect enabled: try to reconnect (wps=0 wpa_state=0)
+wlan0: Do not request new immediate scan
+wlan0: Disconnect event - remove keys
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=0 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=1 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=2 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=3 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=0x192540 key_idx=0 set_tx=0 seq_len=0 key_len=0
+   addr=00:00:00:00:00:00
+wlan0: State: DISCONNECTED -> DISCONNECTED
+wpa_driver_nl80211_set_operstate: operstate 0->0 (DORMANT)
+netlink: Operstate: linkmode=-1, operstate=5
+EAPOL: External notification - portEnabled=0
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - portValid=0
+EAPOL: Supplicant port status: Unauthorized
+wlan0: State: DISCONNECTED -> SCANNING
+wlan0: Starting AP scan for wildcard SSID
+nl80211: Scan SSID - hexdump_ascii(len=0): [NULL]
+Scan requested (ret=0) - scan timeout 30 seconds
+nl80211: Event message available
+nl80211: Scan trigger
+nl80211: Event message available
+nl80211: New scan results available
+wlan0: Event SCAN_RESULTS (3) received
+nl80211: Received scan results (17 BSSes)
+wlan0: BSS: Start scan result update 2
+wlan0: BSS: Add new id 16 BSSID d8:5d:4c:28:bd:98 SSID 'TP-LINK_28BD98'
+BSS: last_scan_res_used=17/32 last_scan_full=0
+wlan0: New scan results available
+wlan0: Selecting BSS from priority group 5
+wlan0: 0: f8:df:a8:b9:93:63 ssid='ChinaNet-NHJE' wpa_ie_len=22 rsn_ie_len=20 caps=0x411 level=-76 wps
+wlan0:    skip - SSID mismatch
+wlan0: 1: 70:b9:21:46:58:71 ssid='CU_z3it' wpa_ie_len=28 rsn_ie_len=0 caps=0x411 level=-76
+wlan0:    skip - SSID mismatch
+wlan0: 2: d8:5d:4c:28:bd:98 ssid='TP-LINK_28BD98' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-76 wps
+wlan0:    skip - SSID mismatch
+wlan0: 3: d4:ee:07:01:ab:60 ssid='HiWiFi_01AB60' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-77
+wlan0:    skip - SSID mismatch
+wlan0: 4: 8c:21:0a:8b:40:9c ssid='TP-LINK_Harry' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-77 wps
+wlan0:    skip - SSID mismatch
+wlan0: 5: f4:ec:38:6b:eb:6e ssid='HOME' wpa_ie_len=22 rsn_ie_len=0 caps=0x431 level=-77 wps
+wlan0:    skip - blacklisted (count=1 limit=0)
+wlan0: 6: 00:06:25:00:96:86 ssid='NG_Home' wpa_ie_len=28 rsn_ie_len=0 caps=0x411 level=-78
+wlan0:    skip - SSID mismatch
+wlan0: 7: 00:25:86:1f:34:2c ssid='bang' wpa_ie_len=26 rsn_ie_len=0 caps=0x431 level=-78
+wlan0:    skip - SSID mismatch
+wlan0: 8: d8:5d:4c:1a:d6:62 ssid='TP-LINK_WR941N' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-78 wps
+wlan0:    skip - SSID mismatch
+wlan0: 9: 00:11:50:35:3c:3c ssid='13828431106' wpa_ie_len=0 rsn_ie_len=20 caps=0x431 level=-79
+wlan0:    skip - SSID mismatch
+wlan0: 10: 8c:21:0a:3f:e8:32 ssid='MERCURY_3FE832' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-79 wps
+wlan0:    skip - SSID mismatch
+wlan0: 11: 34:6b:d3:c8:34:00 ssid='1010' wpa_ie_len=0 rsn_ie_len=20 caps=0x431 level=-79 wps
+wlan0:    skip - SSID mismatch
+wlan0: 12: 5c:d9:98:e6:c5:a6 ssid='CCK' wpa_ie_len=26 rsn_ie_len=24 caps=0x431 level=-83
+wlan0:    skip - SSID mismatch
+wlan0: 13: c8:3a:35:3a:12:d8 ssid='66668888' wpa_ie_len=22 rsn_ie_len=0 caps=0x411 level=-84 wps
+wlan0:    skip - SSID mismatch
+wlan0: 14: 5c:63:bf:bf:98:3e ssid='TP-LINK_BF983E' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-84 wps
+wlan0:    skip - SSID mismatch
+wlan0: 15: 28:5f:db:72:5c:4c ssid='ChinaNet-3uif' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-84
+wlan0:    skip - SSID mismatch
+wlan0: 16: 5c:63:bf:6a:06:82 ssid='hyl' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-84
+wlan0:    skip - SSID mismatch
+wlan0: No APs found - clear blacklist and try again
+Removed BSSID f4:ec:38:6b:eb:6e from blacklist (clear)
+wlan0: Selecting BSS from priority group 5
+wlan0: 0: f8:df:a8:b9:93:63 ssid='ChinaNet-NHJE' wpa_ie_len=22 rsn_ie_len=20 caps=0x411 level=-76 wps
+wlan0:    skip - SSID mismatch
+wlan0: 1: 70:b9:21:46:58:71 ssid='CU_z3it' wpa_ie_len=28 rsn_ie_len=0 caps=0x411 level=-76
+wlan0:    skip - SSID mismatch
+wlan0: 2: d8:5d:4c:28:bd:98 ssid='TP-LINK_28BD98' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-76 wps
+wlan0:    skip - SSID mismatch
+wlan0: 3: d4:ee:07:01:ab:60 ssid='HiWiFi_01AB60' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-77
+wlan0:    skip - SSID mismatch
+wlan0: 4: 8c:21:0a:8b:40:9c ssid='TP-LINK_Harry' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-77 wps
+wlan0:    skip - SSID mismatch
+wlan0: 5: f4:ec:38:6b:eb:6e ssid='HOME' wpa_ie_len=22 rsn_ie_len=0 caps=0x431 level=-77 wps
+wlan0:    selected based on WPA IE
+wlan0:    selected BSS f4:ec:38:6b:eb:6e ssid='HOME'
+wlan0: Request association: reassociate: 0  selected: f4:ec:38:6b:eb:6e  bssid: 00:00:00:00:00:00  pending: 00:00:00:00:00:00  wpa_state: SCANNING
+wlan0: Automatic auth_alg selection: 0x1
+RSN: PMKSA cache search - network_ctx=(nil) try_opportunistic=0
+RSN: Search for BSSID f4:ec:38:6b:eb:6e
+RSN: No PMKSA cache entry found
+wlan0: WPA: using IEEE 802.11i/D3.0
+wlan0: WPA: Selected cipher suites: group 16 pairwise 16 key_mgmt 2 proto 1
+WPA: set AP WPA IE - hexdump(len=24): dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+wlan0: WPA: clearing AP RSN IE
+wlan0: WPA: using GTK CCMP
+wlan0: WPA: using PTK CCMP
+wlan0: WPA: using KEY_MGMT WPA-PSK
+WPA: Set own WPA IE default - hexdump(len=24): dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+wlan0: Cancelling scan request
+wlan0: SME: Trying to authenticate with f4:ec:38:6b:eb:6e (SSID='HOME' freq=2437 MHz)
+wlan0: No keys have been configured - skip key clearing
+wlan0: State: SCANNING -> AUTHENTICATING
+EAPOL: External notification - EAP success=0
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - EAP fail=0
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - portControl=Auto
+EAPOL: Supplicant port status: Unauthorized
+nl80211: Authenticate (ifindex=6)
+  * bssid=f4:ec:38:6b:eb:6e
+  * freq=2437
+  * SSID - hexdump_ascii(len=4):
+     48 4f 4d 45                                       HOME            
+  * IEs - hexdump(len=0): [NULL]
+  * Auth Type 0
+nl80211: Authentication request send successfully
+RTM_NEWLINK: operstate=0 ifi_flags=0x1003 ([UP])
+RTM_NEWLINK, IFLA_IFNAME: Interface 'wlan0' added
+nl80211: if_removed already cleared - ignore event
+nl80211: Event message available
+nl80211: MLME event 37
+nl80211: MLME event frame - hexdump(len=30): b0 00 3a 01 00 e0 4c 03 78 73 f4 ec 38 6b eb 6e f4 ec 38 6b eb 6e 00 00 00 00 02 00 00 00
+nl80211: Authenticate event
+wlan0: Event AUTH (11) received
+wlan0: SME: Authentication response: peer=f4:ec:38:6b:eb:6e auth_type=0 auth_transaction=2 status_code=0
+SME: Authentication response IEs - hexdump(len=0): [NULL]
+wlan0: Trying to associate with f4:ec:38:6b:eb:6e (SSID='HOME' freq=2437 MHz)
+wlan0: State: AUTHENTICATING -> ASSOCIATING
+wpa_driver_nl80211_set_operstate: operstate 0->0 (DORMANT)
+netlink: Operstate: linkmode=-1, operstate=5
+WPA: set own WPA/RSN IE - hexdump(len=24): dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+nl80211: Associate (ifindex=6)
+  * bssid=f4:ec:38:6b:eb:6e
+  * freq=2437
+  * SSID - hexdump_ascii(len=4):
+     48 4f 4d 45                                       HOME            
+  * IEs - hexdump(len=24): dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+  * pairwise=0xfac04
+  * group=0xfac04
+nl80211: Association request send successfully
+nl80211: Event message available
+nl80211: New station f4:ec:38:6b:eb:6e
+RTM_NEWLINK: operstate=0 ifi_flags=0x11003 ([UP][LOWER_UP])
+RTM_NEWLINK, IFLA_IFNAME: Interface 'wlan0' added
+nl80211: if_removed already cleared - ignore event
+nl80211: Event message available
+nl80211: MLME event 38
+nl80211: MLME event frame - hexdump(len=72): 10 00 3a 01 00 e0 4c 03 78 73 f4 ec 38 6b eb 6e f4 ec 38 6b eb 6e 10 00 31 04 00 00 03 c0 01 08 02 04 0b 0c 12 16 18 24 32 04 30 48 60 6c dd 18 00 50 f2 02 01 01 03 00 03 a4 00 00 27 a4 00 00 42 43 5e 00 62 32 2f 00
+nl80211: Associate event
+wlan0: Event ASSOC (0) received
+wlan0: Association info event
+resp_ies - hexdump(len=42): 01 08 02 04 0b 0c 12 16 18 24 32 04 30 48 60 6c dd 18 00 50 f2 02 01 01 03 00 03 a4 00 00 27 a4 00 00 42 43 5e 00 62 32 2f 00
+wlan0: freq=2437 MHz
+wlan0: State: ASSOCIATING -> ASSOCIATED
+wpa_driver_nl80211_set_operstate: operstate 0->0 (DORMANT)
+netlink: Operstate: linkmode=-1, operstate=5
+wlan0: Associated to a new BSS: BSSID=f4:ec:38:6b:eb:6e
+wlan0: No keys have been configured - skip key clearing
+wlan0: Associated with f4:ec:38:6b:eb:6e
+wlan0: WPA: Association event - clear replay counter
+wlan0: WPA: Clear old PTK
+EAPOL: External notification - portEnabled=0
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - portValid=0
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - EAP success=0
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - portEnabled=1
+EAPOL: SUPP_PAE entering state CONNECTING
+EAPOL: enable timer tick
+EAPOL: SUPP_BE entering state IDLE
+wlan0: Setting authentication timeout: 10 sec 0 usec
+wlan0: Cancelling scan request
+nl80211: Event message available
+nl80211: Ignore connect event (cmd=46) when using userspace SME
+RTM_NEWLINK: operstate=0 ifi_flags=0x11003 ([UP][LOWER_UP])
+RTM_NEWLINK, IFLA_IFNAME: Interface 'wlan0' added
+nl80211: if_removed already cleared - ignore event
+RTM_NEWLINK: operstate=0 ifi_flags=0x11003 ([UP][LOWER_UP])
+RTM_NEWLINK, IFLA_IFNAME: Interface 'wlan0' added
+nl80211: if_removed already cleared - ignore event
+wlan0: RX EAPOL from f4:ec:38:6b:eb:6e
+RX EAPOL - hexdump(len=99): 02 03 00 5f fe 00 8a 00 10 00 00 00 00 00 00 00 01 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3e 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+wlan0: Setting authentication timeout: 10 sec 0 usec
+wlan0: IEEE 802.1X RX: version=2 type=3 length=95
+wlan0:   EAPOL-Key type=254
+wlan0:   key_info 0x8a (ver=2 keyidx=0 rsvd=0 Pairwise Ack)
+wlan0:   key_length=16 key_data_length=0
+  replay_counter - hexdump(len=8): 00 00 00 00 00 00 00 01
+  key_nonce - hexdump(len=32): b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3e
+  key_iv - hexdump(len=16): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  key_rsc - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_id (reserved) - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_mic - hexdump(len=16): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+WPA: RX EAPOL-Key - hexdump(len=99): 02 03 00 5f fe 00 8a 00 10 00 00 00 00 00 00 00 01 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3e 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+wlan0: State: ASSOCIATED -> 4WAY_HANDSHAKE
+wlan0: WPA: RX message 1 of 4-Way Handshake from f4:ec:38:6b:eb:6e (ver=2)
+Get randomness: len=32 entropy=11
+WPA: Renewed SNonce - hexdump(len=32): 12 e0 e8 08 1b 46 a1 0f 35 e5 4a 62 70 94 60 71 73 23 86 c7 7d 25 2b 05 b8 30 70 8c e7 22 14 bd
+WPA: PTK derivation - A1=00:e0:4c:03:78:73 A2=f4:ec:38:6b:eb:6e
+WPA: Nonce1 - hexdump(len=32): 12 e0 e8 08 1b 46 a1 0f 35 e5 4a 62 70 94 60 71 73 23 86 c7 7d 25 2b 05 b8 30 70 8c e7 22 14 bd
+WPA: Nonce2 - hexdump(len=32): b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3e
+WPA: PMK - hexdump(len=32): [REMOVED]
+WPA: PTK - hexdump(len=48): [REMOVED]
+WPA: WPA IE for msg 2/4 - hexdump(len=24): dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+WPA: Replay Counter - hexdump(len=8): 00 00 00 00 00 00 00 01
+wlan0: WPA: Sending EAPOL-Key 2/4
+WPA: KCK - hexdump(len=16): [REMOVED]
+WPA: Derived Key MIC - hexdump(len=16): 52 25 c3 4e ee ce 74 54 8e 48 4d 76 94 9f 0f 2d
+WPA: TX EAPOL-Key - hexdump(len=123): 01 03 00 77 fe 01 0a 00 10 00 00 00 00 00 00 00 01 12 e0 e8 08 1b 46 a1 0f 35 e5 4a 62 70 94 60 71 73 23 86 c7 7d 25 2b 05 b8 30 70 8c e7 22 14 bd 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 52 25 c3 4e ee ce 74 54 8e 48 4d 76 94 9f 0f 2d 00 18 dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+wlan0: RX EAPOL from f4:ec:38:6b:eb:6e
+RX EAPOL - hexdump(len=123): 02 03 00 77 fe 01 ca 00 10 00 00 00 00 00 00 00 02 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3e 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 fa 13 f8 b6 50 93 60 54 22 e5 e1 3f c0 2a 76 25 00 18 dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+wlan0: IEEE 802.1X RX: version=2 type=3 length=119
+wlan0:   EAPOL-Key type=254
+wlan0:   key_info 0x1ca (ver=2 keyidx=0 rsvd=0 Pairwise Install Ack MIC)
+wlan0:   key_length=16 key_data_length=24
+  replay_counter - hexdump(len=8): 00 00 00 00 00 00 00 02
+  key_nonce - hexdump(len=32): b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3e
+  key_iv - hexdump(len=16): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  key_rsc - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_id (reserved) - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_mic - hexdump(len=16): fa 13 f8 b6 50 93 60 54 22 e5 e1 3f c0 2a 76 25
+WPA: RX EAPOL-Key - hexdump(len=123): 02 03 00 77 fe 01 ca 00 10 00 00 00 00 00 00 00 02 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3e 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 fa 13 f8 b6 50 93 60 54 22 e5 e1 3f c0 2a 76 25 00 18 dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+wlan0: State: 4WAY_HANDSHAKE -> 4WAY_HANDSHAKE
+wlan0: WPA: RX message 3 of 4-Way Handshake from f4:ec:38:6b:eb:6e (ver=2)
+WPA: IE KeyData - hexdump(len=24): dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+WPA: WPA IE in EAPOL-Key - hexdump(len=24): dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+wlan0: WPA: Sending EAPOL-Key 4/4
+WPA: KCK - hexdump(len=16): [REMOVED]
+WPA: Derived Key MIC - hexdump(len=16): e1 70 8c 86 6b 09 38 24 53 77 7a 5c 74 a5 d7 47
+WPA: TX EAPOL-Key - hexdump(len=99): 01 03 00 5f fe 01 0a 00 10 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 e1 70 8c 86 6b 09 38 24 53 77 7a 5c 74 a5 d7 47 00 00
+wlan0: WPA: Installing PTK to the driver
+WPA: RSC - hexdump(len=6): 00 00 00 00 00 00
+wpa_driver_nl80211_set_key: ifindex=6 alg=3 addr=0x1933ac key_idx=0 set_tx=1 seq_len=6 key_len=16
+   addr=f4:ec:38:6b:eb:6e
+wlan0: State: 4WAY_HANDSHAKE -> GROUP_HANDSHAKE
+wlan0: RX EAPOL from f4:ec:38:6b:eb:6e
+RX EAPOL - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 03 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 9d 79 48 22 42 47 bf a4 ab 60 47 fa e1 ce 0c 6d 00 18 3e fd 98 a4 32 af e6 2b 32 37 08 5b 8b ae c9 34 c7 64 f1 5a d1 d0 f9 22
+wlan0: IEEE 802.1X RX: version=2 type=3 length=119
+wlan0:   EAPOL-Key type=254
+wlan0:   key_info 0x3a2 (ver=2 keyidx=2 rsvd=0 Group Ack MIC Secure)
+wlan0:   key_length=16 key_data_length=24
+  replay_counter - hexdump(len=8): 00 00 00 00 00 00 00 03
+  key_nonce - hexdump(len=32): b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c
+  key_iv - hexdump(len=16): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  key_rsc - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_id (reserved) - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_mic - hexdump(len=16): 9d 79 48 22 42 47 bf a4 ab 60 47 fa e1 ce 0c 6d
+WPA: RX EAPOL-Key - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 03 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 9d 79 48 22 42 47 bf a4 ab 60 47 fa e1 ce 0c 6d 00 18 3e fd 98 a4 32 af e6 2b 32 37 08 5b 8b ae c9 34 c7 64 f1 5a d1 d0 f9 22
+wlan0: WPA: RX message 1 of Group Key Handshake from f4:ec:38:6b:eb:6e (ver=2)
+wlan0: State: GROUP_HANDSHAKE -> GROUP_HANDSHAKE
+WPA: Group Key - hexdump(len=16): [REMOVED]
+wlan0: WPA: Installing GTK to the driver (keyidx=2 tx=0 len=16)
+WPA: RSC - hexdump(len=6): 00 00 00 00 00 00
+wpa_driver_nl80211_set_key: ifindex=6 alg=3 addr=0x12659c key_idx=2 set_tx=0 seq_len=6 key_len=16
+   broadcast key
+wlan0: WPA: Sending EAPOL-Key 2/2
+WPA: KCK - hexdump(len=16): [REMOVED]
+WPA: Derived Key MIC - hexdump(len=16): ce 84 1d 04 d3 5d b6 a4 df 44 8c 59 50 c3 75 2c
+WPA: TX EAPOL-Key - hexdump(len=99): 01 03 00 5f fe 03 22 00 10 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ce 84 1d 04 d3 5d b6 a4 df 44 8c 59 50 c3 75 2c 00 00
+wlan0: WPA: Key negotiation completed with f4:ec:38:6b:eb:6e [PTK=CCMP GTK=CCMP]
+wlan0: Cancelling authentication timeout
+wlan0: State: GROUP_HANDSHAKE -> COMPLETED
+wlan0: CTRL-EVENT-CONNECTED - Connection to f4:ec:38:6b:eb:6e completed [id=0 id_str=]
+wpa_driver_nl80211_set_operstate: operstate 0->1 (UP)
+netlink: Operstate: linkmode=-1, operstate=6
+EAPOL: External notification - portValid=1
+EAPOL: External notification - EAP success=1
+EAPOL: SUPP_PAE entering state AUTHENTICATING
+EAPOL: SUPP_BE entering state SUCCESS
+EAP: EAP entering state DISABLED
+EAPOL: SUPP_PAE entering state AUTHENTICATED
+EAPOL: Supplicant port status: Authorized
+EAPOL: SUPP_BE entering state IDLE
+EAPOL authentication completed successfully
+RTM_NEWLINK: operstate=1 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+RTM_NEWLINK, IFLA_IFNAME: Interface 'wlan0' added
+nl80211: if_removed already cleared - ignore event
+wlan0: RX EAPOL from f4:ec:38:6b:eb:6e
+RX EAPOL - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 04 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 16 f6 ad 55 88 19 1e f8 f0 35 e6 3f 94 64 19 d1 00 18 3e fd 98 a4 32 af e6 2b 32 37 08 5b 8b ae c9 34 c7 64 f1 5a d1 d0 f9 22
+wlan0: IEEE 802.1X RX: version=2 type=3 length=119
+wlan0:   EAPOL-Key type=254
+wlan0:   key_info 0x3a2 (ver=2 keyidx=2 rsvd=0 Group Ack MIC Secure)
+wlan0:   key_length=16 key_data_length=24
+  replay_counter - hexdump(len=8): 00 00 00 00 00 00 00 04
+  key_nonce - hexdump(len=32): b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c
+  key_iv - hexdump(len=16): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  key_rsc - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_id (reserved) - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_mic - hexdump(len=16): 16 f6 ad 55 88 19 1e f8 f0 35 e6 3f 94 64 19 d1
+WPA: RX EAPOL-Key - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 04 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 16 f6 ad 55 88 19 1e f8 f0 35 e6 3f 94 64 19 d1 00 18 3e fd 98 a4 32 af e6 2b 32 37 08 5b 8b ae c9 34 c7 64 f1 5a d1 d0 f9 22
+wlan0: WPA: RX message 1 of Group Key Handshake from f4:ec:38:6b:eb:6e (ver=2)
+wlan0: State: COMPLETED -> GROUP_HANDSHAKE
+WPA: Group Key - hexdump(len=16): [REMOVED]
+wlan0: WPA: Installing GTK to the driver (keyidx=2 tx=0 len=16)
+WPA: RSC - hexdump(len=6): 00 00 00 00 00 00
+wpa_driver_nl80211_set_key: ifindex=6 alg=3 addr=0x12659c key_idx=2 set_tx=0 seq_len=6 key_len=16
+   broadcast key
+wlan0: WPA: Sending EAPOL-Key 2/2
+WPA: KCK - hexdump(len=16): [REMOVED]
+WPA: Derived Key MIC - hexdump(len=16): 3a 7e bb 06 cd a2 44 b4 db df 84 b3 1d b6 2b 8d
+WPA: TX EAPOL-Key - hexdump(len=99): 01 03 00 5f fe 03 22 00 10 00 00 00 00 00 00 00 04 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 3a 7e bb 06 cd a2 44 b4 db df 84 b3 1d b6 2b 8d 00 00
+wlan0: WPA: Group rekeying completed with f4:ec:38:6b:eb:6e [GTK=CCMP]
+wlan0: Cancelling authentication timeout
+wlan0: State: GROUP_HANDSHAKE -> COMPLETED
+wlan0: RX EAPOL from f4:ec:38:6b:eb:6e
+RX EAPOL - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 05 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 f5 c3 83 b2 51 52 1a 71 c7 21 ad 4a e2 95 58 54 00 18 3e fd 98 a4 32 af e6 2b 32 37 08 5b 8b ae c9 34 c7 64 f1 5a d1 d0 f9 22
+wlan0: IEEE 802.1X RX: version=2 type=3 length=119
+wlan0:   EAPOL-Key type=254
+wlan0:   key_info 0x3a2 (ver=2 keyidx=2 rsvd=0 Group Ack MIC Secure)
+wlan0:   key_length=16 key_data_length=24
+  replay_counter - hexdump(len=8): 00 00 00 00 00 00 00 05
+  key_nonce - hexdump(len=32): b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c
+  key_iv - hexdump(len=16): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  key_rsc - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_id (reserved) - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_mic - hexdump(len=16): f5 c3 83 b2 51 52 1a 71 c7 21 ad 4a e2 95 58 54
+WPA: RX EAPOL-Key - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 05 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 f5 c3 83 b2 51 52 1a 71 c7 21 ad 4a e2 95 58 54 00 18 3e fd 98 a4 32 af e6 2b 32 37 08 5b 8b ae c9 34 c7 64 f1 5a d1 d0 f9 22
+wlan0: WPA: RX message 1 of Group Key Handshake from f4:ec:38:6b:eb:6e (ver=2)
+wlan0: State: COMPLETED -> GROUP_HANDSHAKE
+WPA: Group Key - hexdump(len=16): [REMOVED]
+wlan0: WPA: Installing GTK to the driver (keyidx=2 tx=0 len=16)
+WPA: RSC - hexdump(len=6): 00 00 00 00 00 00
+wpa_driver_nl80211_set_key: ifindex=6 alg=3 addr=0x12659c key_idx=2 set_tx=0 seq_len=6 key_len=16
+   broadcast key
+wlan0: WPA: Sending EAPOL-Key 2/2
+WPA: KCK - hexdump(len=16): [REMOVED]
+WPA: Derived Key MIC - hexdump(len=16): 48 d7 3f 9f 09 07 8b 59 bd f3 11 3a cc b9 87 76
+WPA: TX EAPOL-Key - hexdump(len=99): 01 03 00 5f fe 03 22 00 10 00 00 00 00 00 00 00 05 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 48 d7 3f 9f 09 07 8b 59 bd f3 11 3a cc b9 87 76 00 00
+wlan0: WPA: Group rekeying completed with f4:ec:38:6b:eb:6e [GTK=CCMP]
+wlan0: Cancelling authentication timeout
+wlan0: State: GROUP_HANDSHAKE -> COMPLETED
+EAPOL: startWhen --> 0
+EAPOL: disable timer tick
+wlan0: RX EAPOL from f4:ec:38:6b:eb:6e
+RX EAPOL - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 06 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 fb ed fc c1 e6 fd 9c 5c a4 53 7c f8 71 3c f6 6a 00 18 3e fd 98 a4 32 af e6 2b 32 37 08 5b 8b ae c9 34 c7 64 f1 5a d1 d0 f9 22
+wlan0: IEEE 802.1X RX: version=2 type=3 length=119
+wlan0:   EAPOL-Key type=254
+wlan0:   key_info 0x3a2 (ver=2 keyidx=2 rsvd=0 Group Ack MIC Secure)
+wlan0:   key_length=16 key_data_length=24
+  replay_counter - hexdump(len=8): 00 00 00 00 00 00 00 06
+  key_nonce - hexdump(len=32): b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c
+  key_iv - hexdump(len=16): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  key_rsc - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_id (reserved) - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_mic - hexdump(len=16): fb ed fc c1 e6 fd 9c 5c a4 53 7c f8 71 3c f6 6a
+WPA: RX EAPOL-Key - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 06 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 fb ed fc c1 e6 fd 9c 5c a4 53 7c f8 71 3c f6 6a 00 18 3e fd 98 a4 32 af e6 2b 32 37 08 5b 8b ae c9 34 c7 64 f1 5a d1 d0 f9 22
+wlan0: WPA: RX message 1 of Group Key Handshake from f4:ec:38:6b:eb:6e (ver=2)
+wlan0: State: COMPLETED -> GROUP_HANDSHAKE
+WPA: Group Key - hexdump(len=16): [REMOVED]
+wlan0: WPA: Installing GTK to the driver (keyidx=2 tx=0 len=16)
+WPA: RSC - hexdump(len=6): 00 00 00 00 00 00
+wpa_driver_nl80211_set_key: ifindex=6 alg=3 addr=0x12659c key_idx=2 set_tx=0 seq_len=6 key_len=16
+   broadcast key
+wlan0: WPA: Sending EAPOL-Key 2/2
+WPA: KCK - hexdump(len=16): [REMOVED]
+WPA: Derived Key MIC - hexdump(len=16): a7 2d 4e 64 83 61 c7 64 f2 00 8c 5c 52 9b 19 e5
+WPA: TX EAPOL-Key - hexdump(len=99): 01 03 00 5f fe 03 22 00 10 00 00 00 00 00 00 00 06 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 a7 2d 4e 64 83 61 c7 64 f2 00 8c 5c 52 9b 19 e5 00 00
+wlan0: WPA: Group rekeying completed with f4:ec:38:6b:eb:6e [GTK=CCMP]
+wlan0: Cancelling authentication timeout
+wlan0: State: GROUP_HANDSHAKE -> COMPLETED
+RTM_NEWLINK: operstate=1 ifi_flags=0x1003 ([UP])
+RTM_NEWLINK, IFLA_IFNAME: Interface 'wlan0' added
+nl80211: if_removed already cleared - ignore event
+RTM_NEWLINK: operstate=1 ifi_flags=0x1003 ([UP])
+RTM_NEWLINK, IFLA_IFNAME: Interface 'wlan0' added
+nl80211: if_removed already cleared - ignore event
+nl80211: Event message available
+nl80211: MLME event 40
+nl80211: MLME event frame - hexdump(len=26): a0 00 3a 01 00 e0 4c 03 78 73 f4 ec 38 6b eb 6e f4 ec 38 6b eb 6e 20 00 02 00
+nl80211: Disassociate event
+wlan0: Event DISASSOC (1) received
+wlan0: Disassociation notification
+wlan0:  * reason 2
+wlan0:  * address f4:ec:38:6b:eb:6e
+Disassociation frame IE(s) - hexdump(len=0): [NULL]
+wlan0: SME: Disassociation event received
+wlan0: SME: Deauthenticate to clear driver state
+wpa_driver_nl80211_deauthenticate(addr=f4:ec:38:6b:eb:6e reason_code=3)
+wlan0: CTRL-EVENT-DISCONNECTED bssid=f4:ec:38:6b:eb:6e reason=2
+wlan0: Auto connect enabled: try to reconnect (wps=0 wpa_state=9)
+wlan0: Setting scan request: 0 sec 100000 usec
+Added BSSID f4:ec:38:6b:eb:6e into blacklist
+wlan0: Blacklist count 1 --> request scan in 100 ms
+wlan0: Setting scan request: 0 sec 100000 usec
+wlan0: Disconnect event - remove keys
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=0 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=1 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=2 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=3 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=0x192540 key_idx=0 set_tx=0 seq_len=0 key_len=0
+   addr=f4:ec:38:6b:eb:6e
+wlan0: State: COMPLETED -> DISCONNECTED
+wpa_driver_nl80211_set_operstate: operstate 1->0 (DORMANT)
+netlink: Operstate: linkmode=-1, operstate=5
+EAPOL: External notification - portEnabled=0
+EAPOL: SUPP_PAE entering state DISCONNECTED
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: SUPP_BE entering state INITIALIZE
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - portValid=0
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - EAP success=0
+EAPOL: Supplicant port status: Unauthorized
+nl80211: Event message available
+nl80211: Ignore disconnect event when using userspace SME
+nl80211: Event message available
+nl80211: MLME event 39
+nl80211: MLME event frame - hexdump(len=26): c0 00 00 00 f4 ec 38 6b eb 6e 00 e0 4c 03 78 73 f4 ec 38 6b eb 6e 00 00 03 00
+nl80211: Deauthenticate event
+wlan0: Event DEAUTH (12) received
+wlan0: Deauthentication notification
+wlan0:  * reason 3 (locally generated)
+wlan0:  * address f4:ec:38:6b:eb:6e
+Deauthentication frame IE(s) - hexdump(len=0): [NULL]
+wlan0: Auto connect enabled: try to reconnect (wps=0 wpa_state=0)
+wlan0: Do not request new immediate scan
+wlan0: Disconnect event - remove keys
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=0 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=1 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=2 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=3 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=0x192540 key_idx=0 set_tx=0 seq_len=0 key_len=0
+   addr=00:00:00:00:00:00
+wlan0: State: DISCONNECTED -> DISCONNECTED
+wpa_driver_nl80211_set_operstate: operstate 0->0 (DORMANT)
+netlink: Operstate: linkmode=-1, operstate=5
+EAPOL: External notification - portEnabled=0
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - portValid=0
+EAPOL: Supplicant port status: Unauthorized
+wlan0: State: DISCONNECTED -> SCANNING
+wlan0: Starting AP scan for wildcard SSID
+nl80211: Scan SSID - hexdump_ascii(len=0): [NULL]
+Scan requested (ret=0) - scan timeout 30 seconds
+nl80211: Event message available
+nl80211: Scan trigger
+nl80211: Event message available
+nl80211: New scan results available
+wlan0: Event SCAN_RESULTS (3) received
+nl80211: Received scan results (17 BSSes)
+wlan0: BSS: Start scan result update 3
+BSS: last_scan_res_used=17/32 last_scan_full=0
+wlan0: New scan results available
+wlan0: Selecting BSS from priority group 5
+wlan0: 0: 00:11:50:35:3c:3c ssid='13828431106' wpa_ie_len=0 rsn_ie_len=20 caps=0x431 level=-73
+wlan0:    skip - SSID mismatch
+wlan0: 1: d8:5d:4c:1a:d6:62 ssid='TP-LINK_WR941N' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-73 wps
+wlan0:    skip - SSID mismatch
+wlan0: 2: 5c:63:bf:bf:98:3e ssid='TP-LINK_BF983E' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-74 wps
+wlan0:    skip - SSID mismatch
+wlan0: 3: d4:ee:07:01:ab:60 ssid='HiWiFi_01AB60' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-74
+wlan0:    skip - SSID mismatch
+wlan0: 4: 34:6b:d3:c8:34:00 ssid='1010' wpa_ie_len=0 rsn_ie_len=20 caps=0x431 level=-74 wps
+wlan0:    skip - SSID mismatch
+wlan0: 5: 8c:21:0a:8b:40:9c ssid='TP-LINK_Harry' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-74 wps
+wlan0:    skip - SSID mismatch
+wlan0: 6: f4:ec:38:6b:eb:6e ssid='HOME' wpa_ie_len=22 rsn_ie_len=0 caps=0x431 level=-74 wps
+wlan0:    skip - blacklisted (count=1 limit=0)
+wlan0: 7: 00:25:86:1f:34:2c ssid='bang' wpa_ie_len=26 rsn_ie_len=0 caps=0x431 level=-74
+wlan0:    skip - SSID mismatch
+wlan0: 8: f8:df:a8:b9:93:63 ssid='ChinaNet-NHJE' wpa_ie_len=22 rsn_ie_len=20 caps=0x411 level=-74 wps
+wlan0:    skip - SSID mismatch
+wlan0: 9: 70:b9:21:46:58:71 ssid='CU_z3it' wpa_ie_len=28 rsn_ie_len=0 caps=0x411 level=-74
+wlan0:    skip - SSID mismatch
+wlan0: 10: d8:5d:4c:28:bd:98 ssid='TP-LINK_28BD98' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-75 wps
+wlan0:    skip - SSID mismatch
+wlan0: 11: 00:06:25:00:96:86 ssid='NG_Home' wpa_ie_len=28 rsn_ie_len=0 caps=0x411 level=-78
+wlan0:    skip - SSID mismatch
+wlan0: 12: 8c:21:0a:3f:e8:32 ssid='MERCURY_3FE832' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-79 wps
+wlan0:    skip - SSID mismatch
+wlan0: 13: 5c:d9:98:e6:c5:a6 ssid='CCK' wpa_ie_len=26 rsn_ie_len=24 caps=0x431 level=-83
+wlan0:    skip - SSID mismatch
+wlan0: 14: c8:3a:35:3a:12:d8 ssid='66668888' wpa_ie_len=22 rsn_ie_len=0 caps=0x411 level=-84 wps
+wlan0:    skip - SSID mismatch
+wlan0: 15: 28:5f:db:72:5c:4c ssid='ChinaNet-3uif' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-84
+wlan0:    skip - SSID mismatch
+wlan0: 16: 5c:63:bf:6a:06:82 ssid='hyl' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-84
+wlan0:    skip - SSID mismatch
+wlan0: No APs found - clear blacklist and try again
+Removed BSSID f4:ec:38:6b:eb:6e from blacklist (clear)
+wlan0: Selecting BSS from priority group 5
+wlan0: 0: 00:11:50:35:3c:3c ssid='13828431106' wpa_ie_len=0 rsn_ie_len=20 caps=0x431 level=-73
+wlan0:    skip - SSID mismatch
+wlan0: 1: d8:5d:4c:1a:d6:62 ssid='TP-LINK_WR941N' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-73 wps
+wlan0:    skip - SSID mismatch
+wlan0: 2: 5c:63:bf:bf:98:3e ssid='TP-LINK_BF983E' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-74 wps
+wlan0:    skip - SSID mismatch
+wlan0: 3: d4:ee:07:01:ab:60 ssid='HiWiFi_01AB60' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-74
+wlan0:    skip - SSID mismatch
+wlan0: 4: 34:6b:d3:c8:34:00 ssid='1010' wpa_ie_len=0 rsn_ie_len=20 caps=0x431 level=-74 wps
+wlan0:    skip - SSID mismatch
+wlan0: 5: 8c:21:0a:8b:40:9c ssid='TP-LINK_Harry' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-74 wps
+wlan0:    skip - SSID mismatch
+wlan0: 6: f4:ec:38:6b:eb:6e ssid='HOME' wpa_ie_len=22 rsn_ie_len=0 caps=0x431 level=-74 wps
+wlan0:    selected based on WPA IE
+wlan0:    selected BSS f4:ec:38:6b:eb:6e ssid='HOME'
+wlan0: Request association: reassociate: 0  selected: f4:ec:38:6b:eb:6e  bssid: 00:00:00:00:00:00  pending: 00:00:00:00:00:00  wpa_state: SCANNING
+wlan0: Automatic auth_alg selection: 0x1
+RSN: PMKSA cache search - network_ctx=(nil) try_opportunistic=0
+RSN: Search for BSSID f4:ec:38:6b:eb:6e
+RSN: No PMKSA cache entry found
+wlan0: WPA: using IEEE 802.11i/D3.0
+wlan0: WPA: Selected cipher suites: group 16 pairwise 16 key_mgmt 2 proto 1
+WPA: set AP WPA IE - hexdump(len=24): dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+wlan0: WPA: clearing AP RSN IE
+wlan0: WPA: using GTK CCMP
+wlan0: WPA: using PTK CCMP
+wlan0: WPA: using KEY_MGMT WPA-PSK
+WPA: Set own WPA IE default - hexdump(len=24): dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+wlan0: Cancelling scan request
+wlan0: SME: Trying to authenticate with f4:ec:38:6b:eb:6e (SSID='HOME' freq=2437 MHz)
+wlan0: No keys have been configured - skip key clearing
+wlan0: State: SCANNING -> AUTHENTICATING
+EAPOL: External notification - EAP success=0
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - EAP fail=0
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - portControl=Auto
+EAPOL: Supplicant port status: Unauthorized
+nl80211: Authenticate (ifindex=6)
+  * bssid=f4:ec:38:6b:eb:6e
+  * freq=2437
+  * SSID - hexdump_ascii(len=4):
+     48 4f 4d 45                                       HOME            
+  * IEs - hexdump(len=0): [NULL]
+  * Auth Type 0
+nl80211: Authentication request send successfully
+RTM_NEWLINK: operstate=0 ifi_flags=0x1003 ([UP])
+RTM_NEWLINK, IFLA_IFNAME: Interface 'wlan0' added
+nl80211: if_removed already cleared - ignore event
+nl80211: Event message available
+nl80211: MLME event 37
+nl80211: MLME event frame - hexdump(len=30): b0 08 3a 01 00 e0 4c 03 78 73 f4 ec 38 6b eb 6e f4 ec 38 6b eb 6e 00 00 00 00 02 00 00 00
+nl80211: Authenticate event
+wlan0: Event AUTH (11) received
+wlan0: SME: Authentication response: peer=f4:ec:38:6b:eb:6e auth_type=0 auth_transaction=2 status_code=0
+SME: Authentication response IEs - hexdump(len=0): [NULL]
+wlan0: Trying to associate with f4:ec:38:6b:eb:6e (SSID='HOME' freq=2437 MHz)
+wlan0: State: AUTHENTICATING -> ASSOCIATING
+wpa_driver_nl80211_set_operstate: operstate 0->0 (DORMANT)
+netlink: Operstate: linkmode=-1, operstate=5
+WPA: set own WPA/RSN IE - hexdump(len=24): dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+nl80211: Associate (ifindex=6)
+  * bssid=f4:ec:38:6b:eb:6e
+  * freq=2437
+  * SSID - hexdump_ascii(len=4):
+     48 4f 4d 45                                       HOME            
+  * IEs - hexdump(len=24): dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+  * pairwise=0xfac04
+  * group=0xfac04
+nl80211: Association request send successfully
+nl80211: Event message available
+nl80211: New station f4:ec:38:6b:eb:6e
+RTM_NEWLINK: operstate=0 ifi_flags=0x11003 ([UP][LOWER_UP])
+RTM_NEWLINK, IFLA_IFNAME: Interface 'wlan0' added
+nl80211: if_removed already cleared - ignore event
+nl80211: Event message available
+nl80211: MLME event 38
+nl80211: MLME event frame - hexdump(len=72): 10 00 3a 01 00 e0 4c 03 78 73 f4 ec 38 6b eb 6e f4 ec 38 6b eb 6e 10 00 31 04 00 00 03 c0 01 08 02 04 0b 0c 12 16 18 24 32 04 30 48 60 6c dd 18 00 50 f2 02 01 01 03 00 03 a4 00 00 27 a4 00 00 42 43 5e 00 62 32 2f 00
+nl80211: Associate event
+wlan0: Event ASSOC (0) received
+wlan0: Association info event
+resp_ies - hexdump(len=42): 01 08 02 04 0b 0c 12 16 18 24 32 04 30 48 60 6c dd 18 00 50 f2 02 01 01 03 00 03 a4 00 00 27 a4 00 00 42 43 5e 00 62 32 2f 00
+wlan0: freq=2437 MHz
+wlan0: State: ASSOCIATING -> ASSOCIATED
+wpa_driver_nl80211_set_operstate: operstate 0->0 (DORMANT)
+netlink: Operstate: linkmode=-1, operstate=5
+wlan0: Associated to a new BSS: BSSID=f4:ec:38:6b:eb:6e
+wlan0: No keys have been configured - skip key clearing
+wlan0: Associated with f4:ec:38:6b:eb:6e
+wlan0: WPA: Association event - clear replay counter
+wlan0: WPA: Clear old PTK
+EAPOL: External notification - portEnabled=0
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - portValid=0
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - EAP success=0
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - portEnabled=1
+EAPOL: SUPP_PAE entering state CONNECTING
+EAPOL: enable timer tick
+EAPOL: SUPP_BE entering state IDLE
+wlan0: Setting authentication timeout: 10 sec 0 usec
+wlan0: Cancelling scan request
+RTM_NEWLINK: operstate=0 ifi_flags=0x11003 ([UP][LOWER_UP])
+RTM_NEWLINK, IFLA_IFNAME: Interface 'wlan0' added
+nl80211: if_removed already cleared - ignore event
+RTM_NEWLINK: operstate=0 ifi_flags=0x11003 ([UP][LOWER_UP])
+RTM_NEWLINK, IFLA_IFNAME: Interface 'wlan0' added
+nl80211: if_removed already cleared - ignore event
+nl80211: Event message available
+nl80211: Ignore connect event (cmd=46) when using userspace SME
+wlan0: RX EAPOL from f4:ec:38:6b:eb:6e
+RX EAPOL - hexdump(len=99): 02 03 00 5f fe 00 8a 00 10 00 00 00 00 00 00 00 01 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+wlan0: Setting authentication timeout: 10 sec 0 usec
+wlan0: IEEE 802.1X RX: version=2 type=3 length=95
+wlan0:   EAPOL-Key type=254
+wlan0:   key_info 0x8a (ver=2 keyidx=0 rsvd=0 Pairwise Ack)
+wlan0:   key_length=16 key_data_length=0
+  replay_counter - hexdump(len=8): 00 00 00 00 00 00 00 01
+  key_nonce - hexdump(len=32): b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3f
+  key_iv - hexdump(len=16): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  key_rsc - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_id (reserved) - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_mic - hexdump(len=16): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+WPA: RX EAPOL-Key - hexdump(len=99): 02 03 00 5f fe 00 8a 00 10 00 00 00 00 00 00 00 01 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+wlan0: State: ASSOCIATED -> 4WAY_HANDSHAKE
+wlan0: WPA: RX message 1 of 4-Way Handshake from f4:ec:38:6b:eb:6e (ver=2)
+Get randomness: len=32 entropy=11
+WPA: Renewed SNonce - hexdump(len=32): 48 c8 bf 2c ff a3 c7 10 f5 07 64 89 59 3c 40 c8 2f f4 c1 e8 c0 bb 27 e9 1b 2d a8 a0 51 ab 87 dd
+WPA: PTK derivation - A1=00:e0:4c:03:78:73 A2=f4:ec:38:6b:eb:6e
+WPA: Nonce1 - hexdump(len=32): 48 c8 bf 2c ff a3 c7 10 f5 07 64 89 59 3c 40 c8 2f f4 c1 e8 c0 bb 27 e9 1b 2d a8 a0 51 ab 87 dd
+WPA: Nonce2 - hexdump(len=32): b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3f
+WPA: PMK - hexdump(len=32): [REMOVED]
+WPA: PTK - hexdump(len=48): [REMOVED]
+WPA: WPA IE for msg 2/4 - hexdump(len=24): dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+WPA: Replay Counter - hexdump(len=8): 00 00 00 00 00 00 00 01
+wlan0: WPA: Sending EAPOL-Key 2/4
+WPA: KCK - hexdump(len=16): [REMOVED]
+WPA: Derived Key MIC - hexdump(len=16): 55 ed e0 ef c0 69 56 09 ca 4e c8 eb 54 a1 c2 67
+WPA: TX EAPOL-Key - hexdump(len=123): 01 03 00 77 fe 01 0a 00 10 00 00 00 00 00 00 00 01 48 c8 bf 2c ff a3 c7 10 f5 07 64 89 59 3c 40 c8 2f f4 c1 e8 c0 bb 27 e9 1b 2d a8 a0 51 ab 87 dd 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 55 ed e0 ef c0 69 56 09 ca 4e c8 eb 54 a1 c2 67 00 18 dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+wlan0: RX EAPOL from f4:ec:38:6b:eb:6e
+RX EAPOL - hexdump(len=123): 02 03 00 77 fe 01 ca 00 10 00 00 00 00 00 00 00 02 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ca 07 69 5d b1 2b fb 32 50 e5 83 56 2f 0f e5 c0 00 18 dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+wlan0: IEEE 802.1X RX: version=2 type=3 length=119
+wlan0:   EAPOL-Key type=254
+wlan0:   key_info 0x1ca (ver=2 keyidx=0 rsvd=0 Pairwise Install Ack MIC)
+wlan0:   key_length=16 key_data_length=24
+  replay_counter - hexdump(len=8): 00 00 00 00 00 00 00 02
+  key_nonce - hexdump(len=32): b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3f
+  key_iv - hexdump(len=16): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  key_rsc - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_id (reserved) - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_mic - hexdump(len=16): ca 07 69 5d b1 2b fb 32 50 e5 83 56 2f 0f e5 c0
+WPA: RX EAPOL-Key - hexdump(len=123): 02 03 00 77 fe 01 ca 00 10 00 00 00 00 00 00 00 02 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ca 07 69 5d b1 2b fb 32 50 e5 83 56 2f 0f e5 c0 00 18 dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+wlan0: State: 4WAY_HANDSHAKE -> 4WAY_HANDSHAKE
+wlan0: WPA: RX message 3 of 4-Way Handshake from f4:ec:38:6b:eb:6e (ver=2)
+WPA: IE KeyData - hexdump(len=24): dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+WPA: WPA IE in EAPOL-Key - hexdump(len=24): dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+wlan0: WPA: Sending EAPOL-Key 4/4
+WPA: KCK - hexdump(len=16): [REMOVED]
+WPA: Derived Key MIC - hexdump(len=16): ab 97 8c 88 ec 0d 29 36 ad d0 f1 eb 21 fe 45 75
+WPA: TX EAPOL-Key - hexdump(len=99): 01 03 00 5f fe 01 0a 00 10 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ab 97 8c 88 ec 0d 29 36 ad d0 f1 eb 21 fe 45 75 00 00
+wlan0: WPA: Installing PTK to the driver
+WPA: RSC - hexdump(len=6): 00 00 00 00 00 00
+wpa_driver_nl80211_set_key: ifindex=6 alg=3 addr=0x1933ac key_idx=0 set_tx=1 seq_len=6 key_len=16
+   addr=f4:ec:38:6b:eb:6e
+wlan0: State: 4WAY_HANDSHAKE -> GROUP_HANDSHAKE
+wlan0: RX EAPOL from f4:ec:38:6b:eb:6e
+RX EAPOL - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 03 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 2c cd 62 8e a2 4c 67 13 60 1c cc 40 23 d8 8d e6 00 18 01 21 e4 b3 c3 22 fc b1 80 43 9c 28 cb 2e ac 3c 94 20 b8 19 73 a3 33 54
+wlan0: IEEE 802.1X RX: version=2 type=3 length=119
+wlan0:   EAPOL-Key type=254
+wlan0:   key_info 0x3a2 (ver=2 keyidx=2 rsvd=0 Group Ack MIC Secure)
+wlan0:   key_length=16 key_data_length=24
+  replay_counter - hexdump(len=8): 00 00 00 00 00 00 00 03
+  key_nonce - hexdump(len=32): b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c
+  key_iv - hexdump(len=16): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  key_rsc - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_id (reserved) - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_mic - hexdump(len=16): 2c cd 62 8e a2 4c 67 13 60 1c cc 40 23 d8 8d e6
+WPA: RX EAPOL-Key - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 03 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 2c cd 62 8e a2 4c 67 13 60 1c cc 40 23 d8 8d e6 00 18 01 21 e4 b3 c3 22 fc b1 80 43 9c 28 cb 2e ac 3c 94 20 b8 19 73 a3 33 54
+wlan0: WPA: RX message 1 of Group Key Handshake from f4:ec:38:6b:eb:6e (ver=2)
+wlan0: State: GROUP_HANDSHAKE -> GROUP_HANDSHAKE
+WPA: Group Key - hexdump(len=16): [REMOVED]
+wlan0: WPA: Installing GTK to the driver (keyidx=2 tx=0 len=16)
+WPA: RSC - hexdump(len=6): 00 00 00 00 00 00
+wpa_driver_nl80211_set_key: ifindex=6 alg=3 addr=0x12659c key_idx=2 set_tx=0 seq_len=6 key_len=16
+   broadcast key
+wlan0: WPA: Sending EAPOL-Key 2/2
+WPA: KCK - hexdump(len=16): [REMOVED]
+WPA: Derived Key MIC - hexdump(len=16): db ed 64 15 30 cd f4 e7 7e 29 f8 af 12 98 4e 1c
+WPA: TX EAPOL-Key - hexdump(len=99): 01 03 00 5f fe 03 22 00 10 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 db ed 64 15 30 cd f4 e7 7e 29 f8 af 12 98 4e 1c 00 00
+wlan0: WPA: Key negotiation completed with f4:ec:38:6b:eb:6e [PTK=CCMP GTK=CCMP]
+wlan0: Cancelling authentication timeout
+wlan0: State: GROUP_HANDSHAKE -> COMPLETED
+wlan0: CTRL-EVENT-CONNECTED - Connection to f4:ec:38:6b:eb:6e completed [id=0 id_str=]
+wpa_driver_nl80211_set_operstate: operstate 0->1 (UP)
+netlink: Operstate: linkmode=-1, operstate=6
+EAPOL: External notification - portValid=1
+EAPOL: External notification - EAP success=1
+EAPOL: SUPP_PAE entering state AUTHENTICATING
+EAPOL: SUPP_BE entering state SUCCESS
+EAP: EAP entering state DISABLED
+EAPOL: SUPP_PAE entering state AUTHENTICATED
+EAPOL: Supplicant port status: Authorized
+EAPOL: SUPP_BE entering state IDLE
+EAPOL authentication completed successfully
+RTM_NEWLINK: operstate=1 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+RTM_NEWLINK, IFLA_IFNAME: Interface 'wlan0' added
+nl80211: if_removed already cleared - ignore event
+wlan0: RX EAPOL from f4:ec:38:6b:eb:6e
+RX EAPOL - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 04 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 78 56 5f d0 e1 61 f8 e3 5b 4d 7b 8d 37 27 4c 22 00 18 01 21 e4 b3 c3 22 fc b1 80 43 9c 28 cb 2e ac 3c 94 20 b8 19 73 a3 33 54
+wlan0: IEEE 802.1X RX: version=2 type=3 length=119
+wlan0:   EAPOL-Key type=254
+wlan0:   key_info 0x3a2 (ver=2 keyidx=2 rsvd=0 Group Ack MIC Secure)
+wlan0:   key_length=16 key_data_length=24
+  replay_counter - hexdump(len=8): 00 00 00 00 00 00 00 04
+  key_nonce - hexdump(len=32): b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c
+  key_iv - hexdump(len=16): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  key_rsc - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_id (reserved) - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_mic - hexdump(len=16): 78 56 5f d0 e1 61 f8 e3 5b 4d 7b 8d 37 27 4c 22
+WPA: RX EAPOL-Key - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 04 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 78 56 5f d0 e1 61 f8 e3 5b 4d 7b 8d 37 27 4c 22 00 18 01 21 e4 b3 c3 22 fc b1 80 43 9c 28 cb 2e ac 3c 94 20 b8 19 73 a3 33 54
+wlan0: WPA: RX message 1 of Group Key Handshake from f4:ec:38:6b:eb:6e (ver=2)
+wlan0: State: COMPLETED -> GROUP_HANDSHAKE
+WPA: Group Key - hexdump(len=16): [REMOVED]
+wlan0: WPA: Installing GTK to the driver (keyidx=2 tx=0 len=16)
+WPA: RSC - hexdump(len=6): 00 00 00 00 00 00
+wpa_driver_nl80211_set_key: ifindex=6 alg=3 addr=0x12659c key_idx=2 set_tx=0 seq_len=6 key_len=16
+   broadcast key
+wlan0: WPA: Sending EAPOL-Key 2/2
+WPA: KCK - hexdump(len=16): [REMOVED]
+WPA: Derived Key MIC - hexdump(len=16): 15 e9 93 58 08 96 80 24 74 9c 66 bb d8 3e a5 f6
+WPA: TX EAPOL-Key - hexdump(len=99): 01 03 00 5f fe 03 22 00 10 00 00 00 00 00 00 00 04 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 15 e9 93 58 08 96 80 24 74 9c 66 bb d8 3e a5 f6 00 00
+wlan0: WPA: Group rekeying completed with f4:ec:38:6b:eb:6e [GTK=CCMP]
+wlan0: Cancelling authentication timeout
+wlan0: State: GROUP_HANDSHAKE -> COMPLETED
+wlan0: RX EAPOL from f4:ec:38:6b:eb:6e
+RX EAPOL - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 05 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 7c c7 80 10 94 b2 4b d3 b3 f3 9f 94 62 fa 79 71 00 18 01 21 e4 b3 c3 22 fc b1 80 43 9c 28 cb 2e ac 3c 94 20 b8 19 73 a3 33 54
+wlan0: IEEE 802.1X RX: version=2 type=3 length=119
+wlan0:   EAPOL-Key type=254
+wlan0:   key_info 0x3a2 (ver=2 keyidx=2 rsvd=0 Group Ack MIC Secure)
+wlan0:   key_length=16 key_data_length=24
+  replay_counter - hexdump(len=8): 00 00 00 00 00 00 00 05
+  key_nonce - hexdump(len=32): b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c
+  key_iv - hexdump(len=16): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  key_rsc - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_id (reserved) - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_mic - hexdump(len=16): 7c c7 80 10 94 b2 4b d3 b3 f3 9f 94 62 fa 79 71
+WPA: RX EAPOL-Key - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 05 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 7c c7 80 10 94 b2 4b d3 b3 f3 9f 94 62 fa 79 71 00 18 01 21 e4 b3 c3 22 fc b1 80 43 9c 28 cb 2e ac 3c 94 20 b8 19 73 a3 33 54
+wlan0: WPA: RX message 1 of Group Key Handshake from f4:ec:38:6b:eb:6e (ver=2)
+wlan0: State: COMPLETED -> GROUP_HANDSHAKE
+WPA: Group Key - hexdump(len=16): [REMOVED]
+wlan0: WPA: Installing GTK to the driver (keyidx=2 tx=0 len=16)
+WPA: RSC - hexdump(len=6): 00 00 00 00 00 00
+wpa_driver_nl80211_set_key: ifindex=6 alg=3 addr=0x12659c key_idx=2 set_tx=0 seq_len=6 key_len=16
+   broadcast key
+wlan0: WPA: Sending EAPOL-Key 2/2
+WPA: KCK - hexdump(len=16): [REMOVED]
+WPA: Derived Key MIC - hexdump(len=16): 37 ed 88 fb a9 89 93 89 2a ab 97 b4 7c 00 a3 e4
+WPA: TX EAPOL-Key - hexdump(len=99): 01 03 00 5f fe 03 22 00 10 00 00 00 00 00 00 00 05 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 37 ed 88 fb a9 89 93 89 2a ab 97 b4 7c 00 a3 e4 00 00
+wlan0: WPA: Group rekeying completed with f4:ec:38:6b:eb:6e [GTK=CCMP]
+wlan0: Cancelling authentication timeout
+wlan0: State: GROUP_HANDSHAKE -> COMPLETED
+EAPOL: startWhen --> 0
+EAPOL: disable timer tick
+wlan0: RX EAPOL from f4:ec:38:6b:eb:6e
+RX EAPOL - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 06 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 4d bf a4 31 66 55 6c 3f 6e 6c e6 c7 a4 44 49 ec 00 18 01 21 e4 b3 c3 22 fc b1 80 43 9c 28 cb 2e ac 3c 94 20 b8 19 73 a3 33 54
+wlan0: IEEE 802.1X RX: version=2 type=3 length=119
+wlan0:   EAPOL-Key type=254
+wlan0:   key_info 0x3a2 (ver=2 keyidx=2 rsvd=0 Group Ack MIC Secure)
+wlan0:   key_length=16 key_data_length=24
+  replay_counter - hexdump(len=8): 00 00 00 00 00 00 00 06
+  key_nonce - hexdump(len=32): b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c
+  key_iv - hexdump(len=16): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  key_rsc - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_id (reserved) - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_mic - hexdump(len=16): 4d bf a4 31 66 55 6c 3f 6e 6c e6 c7 a4 44 49 ec
+WPA: RX EAPOL-Key - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 06 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 4d bf a4 31 66 55 6c 3f 6e 6c e6 c7 a4 44 49 ec 00 18 01 21 e4 b3 c3 22 fc b1 80 43 9c 28 cb 2e ac 3c 94 20 b8 19 73 a3 33 54
+wlan0: WPA: RX message 1 of Group Key Handshake from f4:ec:38:6b:eb:6e (ver=2)
+wlan0: State: COMPLETED -> GROUP_HANDSHAKE
+WPA: Group Key - hexdump(len=16): [REMOVED]
+wlan0: WPA: Installing GTK to the driver (keyidx=2 tx=0 len=16)
+WPA: RSC - hexdump(len=6): 00 00 00 00 00 00
+wpa_driver_nl80211_set_key: ifindex=6 alg=3 addr=0x12659c key_idx=2 set_tx=0 seq_len=6 key_len=16
+   broadcast key
+wlan0: WPA: Sending EAPOL-Key 2/2
+WPA: KCK - hexdump(len=16): [REMOVED]
+WPA: Derived Key MIC - hexdump(len=16): db 9b 87 2b d9 4a 2a f5 9d ae 73 92 59 14 6d 80
+WPA: TX EAPOL-Key - hexdump(len=99): 01 03 00 5f fe 03 22 00 10 00 00 00 00 00 00 00 06 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 db 9b 87 2b d9 4a 2a f5 9d ae 73 92 59 14 6d 80 00 00
+wlan0: WPA: Group rekeying completed with f4:ec:38:6b:eb:6e [GTK=CCMP]
+wlan0: Cancelling authentication timeout
+wlan0: State: GROUP_HANDSHAKE -> COMPLETED
+RTM_NEWLINK: operstate=1 ifi_flags=0x1003 ([UP])
+RTM_NEWLINK, IFLA_IFNAME: Interface 'wlan0' added
+nl80211: if_removed already cleared - ignore event
+RTM_NEWLINK: operstate=1 ifi_flags=0x1003 ([UP])
+RTM_NEWLINK, IFLA_IFNAME: Interface 'wlan0' added
+nl80211: if_removed already cleared - ignore event
+nl80211: Event message available
+nl80211: MLME event 40
+nl80211: MLME event frame - hexdump(len=26): a0 00 3a 01 00 e0 4c 03 78 73 f4 ec 38 6b eb 6e f4 ec 38 6b eb 6e 20 00 02 00
+nl80211: Disassociate event
+wlan0: Event DISASSOC (1) received
+wlan0: Disassociation notification
+wlan0:  * reason 2
+wlan0:  * address f4:ec:38:6b:eb:6e
+Disassociation frame IE(s) - hexdump(len=0): [NULL]
+wlan0: SME: Disassociation event received
+wlan0: SME: Deauthenticate to clear driver state
+wpa_driver_nl80211_deauthenticate(addr=f4:ec:38:6b:eb:6e reason_code=3)
+wlan0: CTRL-EVENT-DISCONNECTED bssid=f4:ec:38:6b:eb:6e reason=2
+wlan0: Auto connect enabled: try to reconnect (wps=0 wpa_state=9)
+wlan0: Setting scan request: 0 sec 100000 usec
+Added BSSID f4:ec:38:6b:eb:6e into blacklist
+wlan0: Blacklist count 1 --> request scan in 100 ms
+wlan0: Setting scan request: 0 sec 100000 usec
+wlan0: Disconnect event - remove keys
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=0 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=1 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=2 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=3 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=0x192540 key_idx=0 set_tx=0 seq_len=0 key_len=0
+   addr=f4:ec:38:6b:eb:6e
+wlan0: State: COMPLETED -> DISCONNECTED
+wpa_driver_nl80211_set_operstate: operstate 1->0 (DORMANT)
+netlink: Operstate: linkmode=-1, operstate=5
+EAPOL: External notification - portEnabled=0
+EAPOL: SUPP_PAE entering state DISCONNECTED
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: SUPP_BE entering state INITIALIZE
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - portValid=0
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - EAP success=0
+EAPOL: Supplicant port status: Unauthorized
+nl80211: Event message available
+nl80211: Ignore disconnect event when using userspace SME
+nl80211: Event message available
+nl80211: MLME event 39
+nl80211: MLME event frame - hexdump(len=26): c0 00 00 00 f4 ec 38 6b eb 6e 00 e0 4c 03 78 73 f4 ec 38 6b eb 6e 00 00 03 00
+nl80211: Deauthenticate event
+wlan0: Event DEAUTH (12) received
+wlan0: Deauthentication notification
+wlan0:  * reason 3 (locally generated)
+wlan0:  * address f4:ec:38:6b:eb:6e
+Deauthentication frame IE(s) - hexdump(len=0): [NULL]
+wlan0: Auto connect enabled: try to reconnect (wps=0 wpa_state=0)
+wlan0: Do not request new immediate scan
+wlan0: Disconnect event - remove keys
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=0 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=1 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=2 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=3 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=0x192540 key_idx=0 set_tx=0 seq_len=0 key_len=0
+   addr=00:00:00:00:00:00
+wlan0: State: DISCONNECTED -> DISCONNECTED
+wpa_driver_nl80211_set_operstate: operstate 0->0 (DORMANT)
+netlink: Operstate: linkmode=-1, operstate=5
+EAPOL: External notification - portEnabled=0
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - portValid=0
+EAPOL: Supplicant port status: Unauthorized
+wlan0: State: DISCONNECTED -> SCANNING
+wlan0: Starting AP scan for wildcard SSID
+nl80211: Scan SSID - hexdump_ascii(len=0): [NULL]
+Scan requested (ret=0) - scan timeout 30 seconds
+nl80211: Event message available
+nl80211: Scan trigger
+nl80211: Event message available
+nl80211: New scan results available
+wlan0: Event SCAN_RESULTS (3) received
+nl80211: Received scan results (17 BSSes)
+wlan0: BSS: Start scan result update 4
+BSS: last_scan_res_used=17/32 last_scan_full=0
+wlan0: New scan results available
+wlan0: Selecting BSS from priority group 5
+wlan0: 0: d8:5d:4c:1a:d6:62 ssid='TP-LINK_WR941N' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-73 wps
+wlan0:    skip - SSID mismatch
+wlan0: 1: d8:5d:4c:28:bd:98 ssid='TP-LINK_28BD98' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-75 wps
+wlan0:    skip - SSID mismatch
+wlan0: 2: 00:11:50:35:3c:3c ssid='13828431106' wpa_ie_len=0 rsn_ie_len=20 caps=0x431 level=-77
+wlan0:    skip - SSID mismatch
+wlan0: 3: 5c:63:bf:bf:98:3e ssid='TP-LINK_BF983E' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-77 wps
+wlan0:    skip - SSID mismatch
+wlan0: 4: 8c:21:0a:3f:e8:32 ssid='MERCURY_3FE832' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-77 wps
+wlan0:    skip - SSID mismatch
+wlan0: 5: 34:6b:d3:c8:34:00 ssid='1010' wpa_ie_len=0 rsn_ie_len=20 caps=0x431 level=-77 wps
+wlan0:    skip - SSID mismatch
+wlan0: 6: d4:ee:07:01:ab:60 ssid='HiWiFi_01AB60' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-78
+wlan0:    skip - SSID mismatch
+wlan0: 7: 00:06:25:00:96:86 ssid='NG_Home' wpa_ie_len=28 rsn_ie_len=0 caps=0x411 level=-78
+wlan0:    skip - SSID mismatch
+wlan0: 8: 00:25:86:1f:34:2c ssid='bang' wpa_ie_len=26 rsn_ie_len=0 caps=0x431 level=-78
+wlan0:    skip - SSID mismatch
+wlan0: 9: 8c:21:0a:8b:40:9c ssid='TP-LINK_Harry' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-79 wps
+wlan0:    skip - SSID mismatch
+wlan0: 10: f4:ec:38:6b:eb:6e ssid='HOME' wpa_ie_len=22 rsn_ie_len=0 caps=0x431 level=-79 wps
+wlan0:    skip - blacklisted (count=1 limit=0)
+wlan0: 11: f8:df:a8:b9:93:63 ssid='ChinaNet-NHJE' wpa_ie_len=22 rsn_ie_len=20 caps=0x411 level=-80 wps
+wlan0:    skip - SSID mismatch
+wlan0: 12: 70:b9:21:46:58:71 ssid='CU_z3it' wpa_ie_len=28 rsn_ie_len=0 caps=0x411 level=-80
+wlan0:    skip - SSID mismatch
+wlan0: 13: 5c:d9:98:e6:c5:a6 ssid='CCK' wpa_ie_len=26 rsn_ie_len=24 caps=0x431 level=-83
+wlan0:    skip - SSID mismatch
+wlan0: 14: c8:3a:35:3a:12:d8 ssid='66668888' wpa_ie_len=22 rsn_ie_len=0 caps=0x411 level=-84 wps
+wlan0:    skip - SSID mismatch
+wlan0: 15: 28:5f:db:72:5c:4c ssid='ChinaNet-3uif' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-84
+wlan0:    skip - SSID mismatch
+wlan0: 16: 5c:63:bf:6a:06:82 ssid='hyl' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-84
+wlan0:    skip - SSID mismatch
+wlan0: No APs found - clear blacklist and try again
+Removed BSSID f4:ec:38:6b:eb:6e from blacklist (clear)
+wlan0: Selecting BSS from priority group 5
+wlan0: 0: d8:5d:4c:1a:d6:62 ssid='TP-LINK_WR941N' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-73 wps
+wlan0:    skip - SSID mismatch
+wlan0: 1: d8:5d:4c:28:bd:98 ssid='TP-LINK_28BD98' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-75 wps
+wlan0:    skip - SSID mismatch
+wlan0: 2: 00:11:50:35:3c:3c ssid='13828431106' wpa_ie_len=0 rsn_ie_len=20 caps=0x431 level=-77
+wlan0:    skip - SSID mismatch
+wlan0: 3: 5c:63:bf:bf:98:3e ssid='TP-LINK_BF983E' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-77 wps
+wlan0:    skip - SSID mismatch
+wlan0: 4: 8c:21:0a:3f:e8:32 ssid='MERCURY_3FE832' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-77 wps
+wlan0:    skip - SSID mismatch
+wlan0: 5: 34:6b:d3:c8:34:00 ssid='1010' wpa_ie_len=0 rsn_ie_len=20 caps=0x431 level=-77 wps
+wlan0:    skip - SSID mismatch
+wlan0: 6: d4:ee:07:01:ab:60 ssid='HiWiFi_01AB60' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-78
+wlan0:    skip - SSID mismatch
+wlan0: 7: 00:06:25:00:96:86 ssid='NG_Home' wpa_ie_len=28 rsn_ie_len=0 caps=0x411 level=-78
+wlan0:    skip - SSID mismatch
+wlan0: 8: 00:25:86:1f:34:2c ssid='bang' wpa_ie_len=26 rsn_ie_len=0 caps=0x431 level=-78
+wlan0:    skip - SSID mismatch
+wlan0: 9: 8c:21:0a:8b:40:9c ssid='TP-LINK_Harry' wpa_ie_len=22 rsn_ie_len=20 caps=0x431 level=-79 wps
+wlan0:    skip - SSID mismatch
+wlan0: 10: f4:ec:38:6b:eb:6e ssid='HOME' wpa_ie_len=22 rsn_ie_len=0 caps=0x431 level=-79 wps
+wlan0:    selected based on WPA IE
+wlan0:    selected BSS f4:ec:38:6b:eb:6e ssid='HOME'
+wlan0: Request association: reassociate: 0  selected: f4:ec:38:6b:eb:6e  bssid: 00:00:00:00:00:00  pending: 00:00:00:00:00:00  wpa_state: SCANNING
+wlan0: Automatic auth_alg selection: 0x1
+RSN: PMKSA cache search - network_ctx=(nil) try_opportunistic=0
+RSN: Search for BSSID f4:ec:38:6b:eb:6e
+RSN: No PMKSA cache entry found
+wlan0: WPA: using IEEE 802.11i/D3.0
+wlan0: WPA: Selected cipher suites: group 16 pairwise 16 key_mgmt 2 proto 1
+WPA: set AP WPA IE - hexdump(len=24): dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+wlan0: WPA: clearing AP RSN IE
+wlan0: WPA: using GTK CCMP
+wlan0: WPA: using PTK CCMP
+wlan0: WPA: using KEY_MGMT WPA-PSK
+WPA: Set own WPA IE default - hexdump(len=24): dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+wlan0: Cancelling scan request
+wlan0: SME: Trying to authenticate with f4:ec:38:6b:eb:6e (SSID='HOME' freq=2437 MHz)
+wlan0: No keys have been configured - skip key clearing
+wlan0: State: SCANNING -> AUTHENTICATING
+EAPOL: External notification - EAP success=0
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - EAP fail=0
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - portControl=Auto
+EAPOL: Supplicant port status: Unauthorized
+nl80211: Authenticate (ifindex=6)
+  * bssid=f4:ec:38:6b:eb:6e
+  * freq=2437
+  * SSID - hexdump_ascii(len=4):
+     48 4f 4d 45                                       HOME            
+  * IEs - hexdump(len=0): [NULL]
+  * Auth Type 0
+nl80211: Authentication request send successfully
+RTM_NEWLINK: operstate=0 ifi_flags=0x1003 ([UP])
+RTM_NEWLINK, IFLA_IFNAME: Interface 'wlan0' added
+nl80211: if_removed already cleared - ignore event
+nl80211: Event message available
+nl80211: MLME event 37
+nl80211: MLME event frame - hexdump(len=30): b0 00 3a 01 00 e0 4c 03 78 73 f4 ec 38 6b eb 6e f4 ec 38 6b eb 6e 00 00 00 00 02 00 00 00
+nl80211: Authenticate event
+wlan0: Event AUTH (11) received
+wlan0: SME: Authentication response: peer=f4:ec:38:6b:eb:6e auth_type=0 auth_transaction=2 status_code=0
+SME: Authentication response IEs - hexdump(len=0): [NULL]
+wlan0: Trying to associate with f4:ec:38:6b:eb:6e (SSID='HOME' freq=2437 MHz)
+wlan0: State: AUTHENTICATING -> ASSOCIATING
+wpa_driver_nl80211_set_operstate: operstate 0->0 (DORMANT)
+netlink: Operstate: linkmode=-1, operstate=5
+WPA: set own WPA/RSN IE - hexdump(len=24): dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+nl80211: Associate (ifindex=6)
+  * bssid=f4:ec:38:6b:eb:6e
+  * freq=2437
+  * SSID - hexdump_ascii(len=4):
+     48 4f 4d 45                                       HOME            
+  * IEs - hexdump(len=24): dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+  * pairwise=0xfac04
+  * group=0xfac04
+nl80211: Association request send successfully
+nl80211: Event message available
+nl80211: New station f4:ec:38:6b:eb:6e
+RTM_NEWLINK: operstate=0 ifi_flags=0x11003 ([UP][LOWER_UP])
+RTM_NEWLINK, IFLA_IFNAME: Interface 'wlan0' added
+nl80211: if_removed already cleared - ignore event
+RTM_NEWLINK: operstate=0 ifi_flags=0x11003 ([UP][LOWER_UP])
+RTM_NEWLINK, IFLA_IFNAME: Interface 'wlan0' added
+nl80211: if_removed already cleared - ignore event
+RTM_NEWLINK: operstate=0 ifi_flags=0x11003 ([UP][LOWER_UP])
+RTM_NEWLINK, IFLA_IFNAME: Interface 'wlan0' added
+nl80211: if_removed already cleared - ignore event
+nl80211: Event message available
+nl80211: MLME event 38
+nl80211: MLME event frame - hexdump(len=72): 10 08 3a 01 00 e0 4c 03 78 73 f4 ec 38 6b eb 6e f4 ec 38 6b eb 6e 10 00 31 04 00 00 03 c0 01 08 02 04 0b 0c 12 16 18 24 32 04 30 48 60 6c dd 18 00 50 f2 02 01 01 03 00 03 a4 00 00 27 a4 00 00 42 43 5e 00 62 32 2f 00
+nl80211: Associate event
+wlan0: Event ASSOC (0) received
+wlan0: Association info event
+resp_ies - hexdump(len=42): 01 08 02 04 0b 0c 12 16 18 24 32 04 30 48 60 6c dd 18 00 50 f2 02 01 01 03 00 03 a4 00 00 27 a4 00 00 42 43 5e 00 62 32 2f 00
+wlan0: freq=2437 MHz
+wlan0: State: ASSOCIATING -> ASSOCIATED
+wpa_driver_nl80211_set_operstate: operstate 0->0 (DORMANT)
+netlink: Operstate: linkmode=-1, operstate=5
+wlan0: Associated to a new BSS: BSSID=f4:ec:38:6b:eb:6e
+wlan0: No keys have been configured - skip key clearing
+wlan0: Associated with f4:ec:38:6b:eb:6e
+wlan0: WPA: Association event - clear replay counter
+wlan0: WPA: Clear old PTK
+EAPOL: External notification - portEnabled=0
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - portValid=0
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - EAP success=0
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - portEnabled=1
+EAPOL: SUPP_PAE entering state CONNECTING
+EAPOL: enable timer tick
+EAPOL: SUPP_BE entering state IDLE
+wlan0: Setting authentication timeout: 10 sec 0 usec
+wlan0: Cancelling scan request
+nl80211: Event message available
+nl80211: Ignore connect event (cmd=46) when using userspace SME
+wlan0: RX EAPOL from f4:ec:38:6b:eb:6e
+RX EAPOL - hexdump(len=99): 02 03 00 5f fe 00 8a 00 10 00 00 00 00 00 00 00 01 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 40 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+wlan0: Setting authentication timeout: 10 sec 0 usec
+wlan0: IEEE 802.1X RX: version=2 type=3 length=95
+wlan0:   EAPOL-Key type=254
+wlan0:   key_info 0x8a (ver=2 keyidx=0 rsvd=0 Pairwise Ack)
+wlan0:   key_length=16 key_data_length=0
+  replay_counter - hexdump(len=8): 00 00 00 00 00 00 00 01
+  key_nonce - hexdump(len=32): b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 40
+  key_iv - hexdump(len=16): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  key_rsc - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_id (reserved) - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_mic - hexdump(len=16): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+WPA: RX EAPOL-Key - hexdump(len=99): 02 03 00 5f fe 00 8a 00 10 00 00 00 00 00 00 00 01 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 40 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+wlan0: State: ASSOCIATED -> 4WAY_HANDSHAKE
+wlan0: WPA: RX message 1 of 4-Way Handshake from f4:ec:38:6b:eb:6e (ver=2)
+Get randomness: len=32 entropy=11
+WPA: Renewed SNonce - hexdump(len=32): be 95 f0 11 9d 21 23 f1 8f 43 36 0a d9 1a 3b c2 6b 44 b1 eb e8 df 88 58 b1 90 4a 5f 34 fe b6 2e
+WPA: PTK derivation - A1=00:e0:4c:03:78:73 A2=f4:ec:38:6b:eb:6e
+WPA: Nonce1 - hexdump(len=32): be 95 f0 11 9d 21 23 f1 8f 43 36 0a d9 1a 3b c2 6b 44 b1 eb e8 df 88 58 b1 90 4a 5f 34 fe b6 2e
+WPA: Nonce2 - hexdump(len=32): b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 40
+WPA: PMK - hexdump(len=32): [REMOVED]
+WPA: PTK - hexdump(len=48): [REMOVED]
+WPA: WPA IE for msg 2/4 - hexdump(len=24): dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+WPA: Replay Counter - hexdump(len=8): 00 00 00 00 00 00 00 01
+wlan0: WPA: Sending EAPOL-Key 2/4
+WPA: KCK - hexdump(len=16): [REMOVED]
+WPA: Derived Key MIC - hexdump(len=16): 0a cc 30 ec 39 ad 4f 49 d5 af 81 da c0 cb a1 4e
+WPA: TX EAPOL-Key - hexdump(len=123): 01 03 00 77 fe 01 0a 00 10 00 00 00 00 00 00 00 01 be 95 f0 11 9d 21 23 f1 8f 43 36 0a d9 1a 3b c2 6b 44 b1 eb e8 df 88 58 b1 90 4a 5f 34 fe b6 2e 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 0a cc 30 ec 39 ad 4f 49 d5 af 81 da c0 cb a1 4e 00 18 dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+wlan0: RX EAPOL from f4:ec:38:6b:eb:6e
+RX EAPOL - hexdump(len=123): 02 03 00 77 fe 01 ca 00 10 00 00 00 00 00 00 00 02 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 40 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 aa fd 91 99 a8 5b c6 3f 6a 0c f5 e6 95 ad 34 16 00 18 dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+wlan0: IEEE 802.1X RX: version=2 type=3 length=119
+wlan0:   EAPOL-Key type=254
+wlan0:   key_info 0x1ca (ver=2 keyidx=0 rsvd=0 Pairwise Install Ack MIC)
+wlan0:   key_length=16 key_data_length=24
+  replay_counter - hexdump(len=8): 00 00 00 00 00 00 00 02
+  key_nonce - hexdump(len=32): b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 40
+  key_iv - hexdump(len=16): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  key_rsc - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_id (reserved) - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_mic - hexdump(len=16): aa fd 91 99 a8 5b c6 3f 6a 0c f5 e6 95 ad 34 16
+WPA: RX EAPOL-Key - hexdump(len=123): 02 03 00 77 fe 01 ca 00 10 00 00 00 00 00 00 00 02 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 40 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 aa fd 91 99 a8 5b c6 3f 6a 0c f5 e6 95 ad 34 16 00 18 dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+wlan0: State: 4WAY_HANDSHAKE -> 4WAY_HANDSHAKE
+wlan0: WPA: RX message 3 of 4-Way Handshake from f4:ec:38:6b:eb:6e (ver=2)
+WPA: IE KeyData - hexdump(len=24): dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+WPA: WPA IE in EAPOL-Key - hexdump(len=24): dd 16 00 50 f2 01 01 00 00 50 f2 04 01 00 00 50 f2 04 01 00 00 50 f2 02
+wlan0: WPA: Sending EAPOL-Key 4/4
+WPA: KCK - hexdump(len=16): [REMOVED]
+WPA: Derived Key MIC - hexdump(len=16): 28 8f 86 9b 49 2c 17 ce f1 b9 96 d0 9a a2 30 73
+WPA: TX EAPOL-Key - hexdump(len=99): 01 03 00 5f fe 01 0a 00 10 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 28 8f 86 9b 49 2c 17 ce f1 b9 96 d0 9a a2 30 73 00 00
+wlan0: WPA: Installing PTK to the driver
+WPA: RSC - hexdump(len=6): 00 00 00 00 00 00
+wpa_driver_nl80211_set_key: ifindex=6 alg=3 addr=0x1933ac key_idx=0 set_tx=1 seq_len=6 key_len=16
+   addr=f4:ec:38:6b:eb:6e
+wlan0: State: 4WAY_HANDSHAKE -> GROUP_HANDSHAKE
+wlan0: RX EAPOL from f4:ec:38:6b:eb:6e
+RX EAPOL - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 03 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 2c 64 75 4f bc 00 85 1d c9 1e bb 54 1b ff 11 5d 00 18 1e 9e 9c 36 a1 eb 89 30 c1 71 bd 17 7b 23 2a 84 a9 67 75 2b 43 1b 1b d9
+wlan0: IEEE 802.1X RX: version=2 type=3 length=119
+wlan0:   EAPOL-Key type=254
+wlan0:   key_info 0x3a2 (ver=2 keyidx=2 rsvd=0 Group Ack MIC Secure)
+wlan0:   key_length=16 key_data_length=24
+  replay_counter - hexdump(len=8): 00 00 00 00 00 00 00 03
+  key_nonce - hexdump(len=32): b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c
+  key_iv - hexdump(len=16): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  key_rsc - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_id (reserved) - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_mic - hexdump(len=16): 2c 64 75 4f bc 00 85 1d c9 1e bb 54 1b ff 11 5d
+WPA: RX EAPOL-Key - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 03 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 2c 64 75 4f bc 00 85 1d c9 1e bb 54 1b ff 11 5d 00 18 1e 9e 9c 36 a1 eb 89 30 c1 71 bd 17 7b 23 2a 84 a9 67 75 2b 43 1b 1b d9
+wlan0: WPA: RX message 1 of Group Key Handshake from f4:ec:38:6b:eb:6e (ver=2)
+wlan0: State: GROUP_HANDSHAKE -> GROUP_HANDSHAKE
+WPA: Group Key - hexdump(len=16): [REMOVED]
+wlan0: WPA: Installing GTK to the driver (keyidx=2 tx=0 len=16)
+WPA: RSC - hexdump(len=6): 00 00 00 00 00 00
+wpa_driver_nl80211_set_key: ifindex=6 alg=3 addr=0x12659c key_idx=2 set_tx=0 seq_len=6 key_len=16
+   broadcast key
+wlan0: WPA: Sending EAPOL-Key 2/2
+WPA: KCK - hexdump(len=16): [REMOVED]
+WPA: Derived Key MIC - hexdump(len=16): a1 e0 9f ec dc 69 98 52 c5 b0 d1 7f 75 4b 38 d2
+WPA: TX EAPOL-Key - hexdump(len=99): 01 03 00 5f fe 03 22 00 10 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 a1 e0 9f ec dc 69 98 52 c5 b0 d1 7f 75 4b 38 d2 00 00
+wlan0: WPA: Key negotiation completed with f4:ec:38:6b:eb:6e [PTK=CCMP GTK=CCMP]
+wlan0: Cancelling authentication timeout
+wlan0: State: GROUP_HANDSHAKE -> COMPLETED
+wlan0: CTRL-EVENT-CONNECTED - Connection to f4:ec:38:6b:eb:6e completed [id=0 id_str=]
+wpa_driver_nl80211_set_operstate: operstate 0->1 (UP)
+netlink: Operstate: linkmode=-1, operstate=6
+EAPOL: External notification - portValid=1
+EAPOL: External notification - EAP success=1
+EAPOL: SUPP_PAE entering state AUTHENTICATING
+EAPOL: SUPP_BE entering state SUCCESS
+EAP: EAP entering state DISABLED
+EAPOL: SUPP_PAE entering state AUTHENTICATED
+EAPOL: Supplicant port status: Authorized
+EAPOL: SUPP_BE entering state IDLE
+EAPOL authentication completed successfully
+RTM_NEWLINK: operstate=1 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+RTM_NEWLINK, IFLA_IFNAME: Interface 'wlan0' added
+nl80211: if_removed already cleared - ignore event
+wlan0: RX EAPOL from f4:ec:38:6b:eb:6e
+RX EAPOL - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 04 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 a9 86 19 ef e1 c7 43 72 f0 8d af 62 f8 0c 41 9e 00 18 1e 9e 9c 36 a1 eb 89 30 c1 71 bd 17 7b 23 2a 84 a9 67 75 2b 43 1b 1b d9
+wlan0: IEEE 802.1X RX: version=2 type=3 length=119
+wlan0:   EAPOL-Key type=254
+wlan0:   key_info 0x3a2 (ver=2 keyidx=2 rsvd=0 Group Ack MIC Secure)
+wlan0:   key_length=16 key_data_length=24
+  replay_counter - hexdump(len=8): 00 00 00 00 00 00 00 04
+  key_nonce - hexdump(len=32): b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c
+  key_iv - hexdump(len=16): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  key_rsc - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_id (reserved) - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_mic - hexdump(len=16): a9 86 19 ef e1 c7 43 72 f0 8d af 62 f8 0c 41 9e
+WPA: RX EAPOL-Key - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 04 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 a9 86 19 ef e1 c7 43 72 f0 8d af 62 f8 0c 41 9e 00 18 1e 9e 9c 36 a1 eb 89 30 c1 71 bd 17 7b 23 2a 84 a9 67 75 2b 43 1b 1b d9
+wlan0: WPA: RX message 1 of Group Key Handshake from f4:ec:38:6b:eb:6e (ver=2)
+wlan0: State: COMPLETED -> GROUP_HANDSHAKE
+WPA: Group Key - hexdump(len=16): [REMOVED]
+wlan0: WPA: Installing GTK to the driver (keyidx=2 tx=0 len=16)
+WPA: RSC - hexdump(len=6): 00 00 00 00 00 00
+wpa_driver_nl80211_set_key: ifindex=6 alg=3 addr=0x12659c key_idx=2 set_tx=0 seq_len=6 key_len=16
+   broadcast key
+wlan0: WPA: Sending EAPOL-Key 2/2
+WPA: KCK - hexdump(len=16): [REMOVED]
+WPA: Derived Key MIC - hexdump(len=16): d9 56 dc 9f 35 57 8d b3 b9 4c 4a aa 87 c8 53 e0
+WPA: TX EAPOL-Key - hexdump(len=99): 01 03 00 5f fe 03 22 00 10 00 00 00 00 00 00 00 04 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 d9 56 dc 9f 35 57 8d b3 b9 4c 4a aa 87 c8 53 e0 00 00
+wlan0: WPA: Group rekeying completed with f4:ec:38:6b:eb:6e [GTK=CCMP]
+wlan0: Cancelling authentication timeout
+wlan0: State: GROUP_HANDSHAKE -> COMPLETED
+wlan0: RX EAPOL from f4:ec:38:6b:eb:6e
+RX EAPOL - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 05 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 f4 9f 62 3a b7 3f 52 4f 93 92 1f c7 c3 17 0a ce 00 18 1e 9e 9c 36 a1 eb 89 30 c1 71 bd 17 7b 23 2a 84 a9 67 75 2b 43 1b 1b d9
+wlan0: IEEE 802.1X RX: version=2 type=3 length=119
+wlan0:   EAPOL-Key type=254
+wlan0:   key_info 0x3a2 (ver=2 keyidx=2 rsvd=0 Group Ack MIC Secure)
+wlan0:   key_length=16 key_data_length=24
+  replay_counter - hexdump(len=8): 00 00 00 00 00 00 00 05
+  key_nonce - hexdump(len=32): b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c
+  key_iv - hexdump(len=16): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  key_rsc - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_id (reserved) - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_mic - hexdump(len=16): f4 9f 62 3a b7 3f 52 4f 93 92 1f c7 c3 17 0a ce
+WPA: RX EAPOL-Key - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 05 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 f4 9f 62 3a b7 3f 52 4f 93 92 1f c7 c3 17 0a ce 00 18 1e 9e 9c 36 a1 eb 89 30 c1 71 bd 17 7b 23 2a 84 a9 67 75 2b 43 1b 1b d9
+wlan0: WPA: RX message 1 of Group Key Handshake from f4:ec:38:6b:eb:6e (ver=2)
+wlan0: State: COMPLETED -> GROUP_HANDSHAKE
+WPA: Group Key - hexdump(len=16): [REMOVED]
+wlan0: WPA: Installing GTK to the driver (keyidx=2 tx=0 len=16)
+WPA: RSC - hexdump(len=6): 00 00 00 00 00 00
+wpa_driver_nl80211_set_key: ifindex=6 alg=3 addr=0x12659c key_idx=2 set_tx=0 seq_len=6 key_len=16
+   broadcast key
+wlan0: WPA: Sending EAPOL-Key 2/2
+WPA: KCK - hexdump(len=16): [REMOVED]
+WPA: Derived Key MIC - hexdump(len=16): 62 ae b8 c9 a2 49 fc b1 82 81 20 6b db 85 ce 4c
+WPA: TX EAPOL-Key - hexdump(len=99): 01 03 00 5f fe 03 22 00 10 00 00 00 00 00 00 00 05 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 62 ae b8 c9 a2 49 fc b1 82 81 20 6b db 85 ce 4c 00 00
+wlan0: WPA: Group rekeying completed with f4:ec:38:6b:eb:6e [GTK=CCMP]
+wlan0: Cancelling authentication timeout
+wlan0: State: GROUP_HANDSHAKE -> COMPLETED
+EAPOL: startWhen --> 0
+EAPOL: disable timer tick
+wlan0: RX EAPOL from f4:ec:38:6b:eb:6e
+RX EAPOL - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 06 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 48 2d e7 31 62 85 f8 33 a0 14 e6 86 a5 9d 9f 93 00 18 1e 9e 9c 36 a1 eb 89 30 c1 71 bd 17 7b 23 2a 84 a9 67 75 2b 43 1b 1b d9
+wlan0: IEEE 802.1X RX: version=2 type=3 length=119
+wlan0:   EAPOL-Key type=254
+wlan0:   key_info 0x3a2 (ver=2 keyidx=2 rsvd=0 Group Ack MIC Secure)
+wlan0:   key_length=16 key_data_length=24
+  replay_counter - hexdump(len=8): 00 00 00 00 00 00 00 06
+  key_nonce - hexdump(len=32): b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c
+  key_iv - hexdump(len=16): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  key_rsc - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_id (reserved) - hexdump(len=8): 00 00 00 00 00 00 00 00
+  key_mic - hexdump(len=16): 48 2d e7 31 62 85 f8 33 a0 14 e6 86 a5 9d 9f 93
+WPA: RX EAPOL-Key - hexdump(len=123): 02 03 00 77 fe 03 a2 00 10 00 00 00 00 00 00 00 06 b4 5b 33 ca 18 44 f5 ee b7 44 0c f9 9b 15 27 17 fc 01 e5 06 f2 ad f9 1e 51 00 1c 29 43 71 78 3c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 48 2d e7 31 62 85 f8 33 a0 14 e6 86 a5 9d 9f 93 00 18 1e 9e 9c 36 a1 eb 89 30 c1 71 bd 17 7b 23 2a 84 a9 67 75 2b 43 1b 1b d9
+wlan0: WPA: RX message 1 of Group Key Handshake from f4:ec:38:6b:eb:6e (ver=2)
+wlan0: State: COMPLETED -> GROUP_HANDSHAKE
+WPA: Group Key - hexdump(len=16): [REMOVED]
+wlan0: WPA: Installing GTK to the driver (keyidx=2 tx=0 len=16)
+WPA: RSC - hexdump(len=6): 00 00 00 00 00 00
+wpa_driver_nl80211_set_key: ifindex=6 alg=3 addr=0x12659c key_idx=2 set_tx=0 seq_len=6 key_len=16
+   broadcast key
+wlan0: WPA: Sending EAPOL-Key 2/2
+WPA: KCK - hexdump(len=16): [REMOVED]
+WPA: Derived Key MIC - hexdump(len=16): 59 ee dc 86 8d 69 83 8d d9 d1 bd a2 15 87 05 c7
+WPA: TX EAPOL-Key - hexdump(len=99): 01 03 00 5f fe 03 22 00 10 00 00 00 00 00 00 00 06 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 59 ee dc 86 8d 69 83 8d d9 d1 bd a2 15 87 05 c7 00 00
+wlan0: WPA: Group rekeying completed with f4:ec:38:6b:eb:6e [GTK=CCMP]
+wlan0: Cancelling authentication timeout
+wlan0: State: GROUP_HANDSHAKE -> COMPLETED
+wlan0: Removing interface wlan0
+wlan0: Request to deauthenticate - bssid=f4:ec:38:6b:eb:6e pending_bssid=00:00:00:00:00:00 reason=3 state=COMPLETED
+wpa_driver_nl80211_deauthenticate(addr=f4:ec:38:6b:eb:6e reason_code=3)
+wlan0: Event DEAUTH (12) received
+wlan0: Deauthentication notification
+wlan0:  * reason 3 (locally generated)
+Deauthentication frame IE(s) - hexdump(len=0): [NULL]
+wlan0: CTRL-EVENT-DISCONNECTED bssid=f4:ec:38:6b:eb:6e reason=3 locally_generated=1
+wlan0: Auto connect enabled: try to reconnect (wps=0 wpa_state=9)
+wlan0: Setting scan request: 0 sec 100000 usec
+Added BSSID f4:ec:38:6b:eb:6e into blacklist
+wlan0: Blacklist count 1 --> request scan in 100 ms
+wlan0: Setting scan request: 0 sec 100000 usec
+wlan0: Disconnect event - remove keys
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=0 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=1 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=2 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=(nil) key_idx=3 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=6 alg=0 addr=0x192540 key_idx=0 set_tx=0 seq_len=0 key_len=0
+   addr=f4:ec:38:6b:eb:6e
+wlan0: State: COMPLETED -> DISCONNECTED
+wpa_driver_nl80211_set_operstate: operstate 1->0 (DORMANT)
+netlink: Operstate: linkmode=-1, operstate=5
+EAPOL: External notification - portEnabled=0
+EAPOL: SUPP_PAE entering state DISCONNECTED
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: SUPP_BE entering state INITIALIZE
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - portValid=0
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - EAP success=0
+EAPOL: Supplicant port status: Unauthorized
+wlan0: No keys have been configured - skip key clearing
+wlan0: State: DISCONNECTED -> DISCONNECTED
+wpa_driver_nl80211_set_operstate: operstate 0->0 (DORMANT)
+netlink: Operstate: linkmode=-1, operstate=5
+EAPOL: External notification - portEnabled=0
+EAPOL: Supplicant port status: Unauthorized
+EAPOL: External notification - portValid=0
+EAPOL: Supplicant port status: Unauthorized
+wlan0: No keys have been configured - skip key clearing
+Removed BSSID f4:ec:38:6b:eb:6e from blacklist (clear)
+wlan0: BSS: Remove id 8 BSSID d8:5d:4c:1a:d6:62 SSID 'TP-LINK_WR941N' due to wpa_bss_flush
+wlan0: BSS: Remove id 16 BSSID d8:5d:4c:28:bd:98 SSID 'TP-LINK_28BD98' due to wpa_bss_flush
+wlan0: BSS: Remove id 10 BSSID 00:11:50:35:3c:3c SSID '13828431106' due to wpa_bss_flush
+wlan0: BSS: Remove id 11 BSSID 5c:63:bf:bf:98:3e SSID 'TP-LINK_BF983E' due to wpa_bss_flush
+wlan0: BSS: Remove id 12 BSSID 8c:21:0a:3f:e8:32 SSID 'MERCURY_3FE832' due to wpa_bss_flush
+wlan0: BSS: Remove id 13 BSSID 34:6b:d3:c8:34:00 SSID '1010' due to wpa_bss_flush
+wlan0: BSS: Remove id 0 BSSID d4:ee:07:01:ab:60 SSID 'HiWiFi_01AB60' due to wpa_bss_flush
+wlan0: BSS: Remove id 3 BSSID 00:06:25:00:96:86 SSID 'NG_Home' due to wpa_bss_flush
+wlan0: BSS: Remove id 4 BSSID 00:25:86:1f:34:2c SSID 'bang' due to wpa_bss_flush
+wlan0: BSS: Remove id 1 BSSID 8c:21:0a:8b:40:9c SSID 'TP-LINK_Harry' due to wpa_bss_flush
+wlan0: BSS: Remove id 2 BSSID f4:ec:38:6b:eb:6e SSID 'HOME' due to wpa_bss_flush
+wlan0: BSS: Remove id 5 BSSID f8:df:a8:b9:93:63 SSID 'ChinaNet-NHJE' due to wpa_bss_flush
+wlan0: BSS: Remove id 6 BSSID 70:b9:21:46:58:71 SSID 'CU_z3it' due to wpa_bss_flush
+wlan0: BSS: Remove id 7 BSSID 5c:d9:98:e6:c5:a6 SSID 'CCK' due to wpa_bss_flush
+wlan0: BSS: Remove id 9 BSSID c8:3a:35:3a:12:d8 SSID '66668888' due to wpa_bss_flush
+wlan0: BSS: Remove id 14 BSSID 28:5f:db:72:5c:4c SSID 'ChinaNet-3uif' due to wpa_bss_flush
+wlan0: BSS: Remove id 15 BSSID 5c:63:bf:6a:06:82 SSID 'hyl' due to wpa_bss_flush
+wlan0: Cancelling scan request
+wlan0: Cancelling authentication timeout
+netlink: Operstate: linkmode=0, operstate=6
+nl80211: Set mode ifindex 6 iftype 2 (STATION)
+nl80211: Unsubscribe mgmt frames handle 0x193158 (mode change)
+wlan0: CTRL-EVENT-TERMINATING 
+
+================================================================
+KERNEL LOG
+
+[   87.455000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:
+[   87.455000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:
+[   87.455000] cfg80211: Calling CRDA to update world regulatory domain
+[   87.455000] wlan0: deauthenticating from f4:ec:38:6b:eb:6e by local choice (reason=3)
+[   88.610000] wlan0: authenticate with f4:ec:38:6b:eb:6e (try 1)
+[   88.615000] wlan0: authenticated
+[   88.615000] wlan0: associate with f4:ec:38:6b:eb:6e (try 1)
+[   88.620000] wlan0: RX AssocResp from f4:ec:38:6b:eb:6e (capab=0x431 status=0 aid=3)
+[   88.620000] wlan0: associated
+[   88.760000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:
+[   88.825000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:
+[   89.820000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:
+[   89.820000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:
+[   90.030000] wlan0: no IPv6 routers present
+[   90.820000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:
+[   90.820000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:
+[   91.820000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:
+[   91.820000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:
+[   91.830000] wlan0: disassociated from f4:ec:38:6b:eb:6e (Reason: 2)
+[   91.830000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:
+[   91.830000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:
+[   91.830000] cfg80211: Calling CRDA to update world regulatory domain
+[   91.830000] wlan0: deauthenticating from f4:ec:38:6b:eb:6e by local choice (reason=3)
+[   92.985000] wlan0: authenticate with f4:ec:38:6b:eb:6e (try 1)
+[   92.990000] wlan0: authenticated
+[   92.995000] wlan0: associate with f4:ec:38:6b:eb:6e (try 1)
+[   93.000000] wlan0: RX AssocResp from f4:ec:38:6b:eb:6e (capab=0x431 status=0 aid=3)
+[   93.000000] wlan0: associated
+[   93.125000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:
+[   93.170000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:
+[   94.170000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:
+[   94.170000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:
+[   95.170000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:
+[   95.170000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:
+[   96.170000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:
+[   96.170000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:
+[  105.060000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:
+[  105.060000] wlan0: deauthenticating from f4:ec:38:6b:eb:6e by local choice (reason=3)
+[  105.060000] rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:
+[  105.060000] cfg80211: Calling CRDA to update world regulatory domain

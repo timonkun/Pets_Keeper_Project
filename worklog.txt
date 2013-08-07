@@ -1,9 +1,21 @@
+20130807
+
+iwlist wlan0 scan
+iwconfig wlan0 essid "HOME"
+
+ifconfig eth0 down
+ifconfig wlan0 up 
+ifconfig wlan0 192.168.1.111 netmask 255.255.255.0
+route add default gw 192.168.1.1
+wpa_supplicant -iwlan0 -c /etc/wpa_supplicant.conf -Dwext -dd > wifi3.log
+
+
 20130806
 
 更换了TPLINK路由的加密方式WPA2--》WPA，可以不稳定的连上。
 但是隔3s掉线，无法ping通路由。log显示：
 cfg80211: Calling CRDA to update world regulatory domain
-wpa_supplicant -iwlan0 -c/etc/wpa_supplicant.conf -B
+wpa_supplicant -Dnl80211 -iwlan0 -c/etc/wpa_supplicant.conf -dd
 
 考虑换respbarry Pi.
 
