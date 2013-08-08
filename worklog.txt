@@ -1,3 +1,12 @@
+20130808
+
+经过多日奋战，WIFI问题解决。
+内核自带驱动有问题，总是出现下面这句打印：
+rtlwifi:rtl_op_set_key():<0-0> alg_err:0!!!!:
+
+于是用从官网上下到的驱动，移植进来，就可以顺利运行了。
+下一步制作小车
+
 20130807
 
 iwlist wlan0 scan
@@ -5,9 +14,10 @@ iwconfig wlan0 essid "HOME"
 
 ifconfig eth0 down
 ifconfig wlan0 up 
-ifconfig wlan0 192.168.1.111 netmask 255.255.255.0
-route add default gw 192.168.1.1
-wpa_supplicant -iwlan0 -c /etc/wpa_supplicant.conf -Dwext -dd > wifi3.log
+ifconfig wlan0 192.168.199.111 netmask 255.255.255.0
+route add default gw 192.168.199.1
+wpa_supplicant -iwlan0 -c /etc/wpa_supplicant.conf -B
+udhcpc -i wlan0
 
 
 20130806
@@ -18,61 +28,8 @@ cfg80211: Calling CRDA to update world regulatory domain
 wpa_supplicant -Dnl80211 -iwlan0 -c/etc/wpa_supplicant.conf -dd
 
 考虑换respbarry Pi.
+                              
 
-                                                                     
-^Cwlan0: Removing interface wlan0                                               
-wlan0: Request to deauthenticate - bssid=00:00:00:00:00:00 pending_bssid=f4:ec:G
-wpa_driver_wext_deauthenticate                                                  
-ioctl[SIOCSIWMLME]: Invalid argument                                            
-wlan0: Event DEAUTH (12) received                                               
-wlan0: Deauthentication notification                                            
-wlan0:  * reason 3 (locally generated)                                          
-Deauthentication frame IE(s) - hexdump(len=0): [NULL]                           
-wlan0: CTRL-EVENT-DISCONNECTED bssid=f4:ec:38:6b:eb:6e reason=3 locally_generat1
-wlan0: Auto connect enabled: try to reconnect (wps=0 wpa_state=5)               
-wlan0: Setting scan request: 0 sec 100000 usec                                  
-Added BSSID f4:ec:38:6b:eb:6e into blacklist                                    
-wlan0: Blacklist count 7 --> request scan in 10000 ms                           
-wlan0: Setting scan request: 10 sec 0 usec                                      
-wlan0: Disconnect event - remove keys                                           
-wpa_driver_wext_set_key: alg=0 key_idx=0 set_tx=0 seq_len=0 key_len=0           
-wpa_driver_wext_set_key: alg=0 key_idx=1 set_tx=0 seq_len=0 key_len=0           
-wpa_driver_wext_set_key: alg=0 key_idx=2 set_tx=0 seq_len=0 key_len=0           
-wpa_driver_wext_set_key: alg=0 key_idx=3 set_tx=0 seq_len=0 key_len=0           
-wpa_driver_wext_set_key: alg=0 key_idx=0 set_tx=0 seq_len=0 key_len=0           
-wlan0: State: ASSOCIATING -> DISCONNECTED                                       
-wpa_driver_wext_set_operstate: operstate 0->0 (DORMANT)                         
-netlink: Operstate: linkmode=-1, operstate=5                                    
-EAPOL: External notification - portEnabled=0                                    
-EAPOL: Supplicant port status: Unauthorized                                     
-EAPOL: External notification - portValid=0                                      
-EAPOL: Supplicant port status: Unauthorized                                     
-EAPOL: External notification - EAP success=0                                    
-EAPOL: Supplicant port status: Unauthorized                                     
-wlan0: No keys have been configured - skip key clearing                         
-wlan0: State: DISCONNECTED -> DISCONNECTED                                      
-wpa_driver_wext_set_operstate: operstate 0->0 (DORMANT)                         
-netlink: Operstate: linkmode=-1, operstate=5                                    
-EAPOL: External notification - portEnabled=0                                    
-EAPOL: Supplicant port status: Unauthorized                                     
-EAPOL: External notification - portValid=0                                      
-EAPOL: Supplicant port status: Unauthorized                                     
-wpa_driver_wext_set_countermeasures                                             
-wlan0: No keys have been configured - skip key clearing                         
-Removed BSSID f4:ec:38:6b:eb:6e from blacklist (clear)                          
-wlan0: BSS: Remove id 9 BSSID 5c:63:bf:cd:ca:78 SSID '' due to wpa_bss_flush    
-wlan0: BSS: Remove id 13 BSSID ec:17:2f:66:c4:dc SSID '2012' due to wpa_bss_fluh
-wlan0: BSS: Remove id 14 BSSID c8:3a:35:28:6b:58 SSID 'Tenda_286B58' due to wpah
-wlan0: BSS: Remove id 5 BSSID d4:ee:07:01:ab:60 SSID 'HiWiFi_01AB60' due to wpah
-wlan0: BSS: Remove id 8 BSSID 20:dc:e6:86:7b:16 SSID 'haihai' due to wpa_bss_flh
-wlan0: BSS: Remove id 6 BSSID 00:25:86:1f:34:2c SSID 'bang' due to wpa_bss_flush
-wlan0: BSS: Remove id 7 BSSID 5c:63:bf:bf:98:3e SSID 'TP-LINK_BF983E' due to wph
-wlan0: BSS: Remove id 0 BSSID f4:ec:38:6b:eb:6e SSID 'HOME' due to wpa_bss_flush
-wlan0: BSS: Remove id 15 BSSID 00:1c:f0:4b:17:70 SSID 'apollo' due to wpa_bss_fh
-wlan0: Cancelling scan request                                                  
-wlan0: Cancelling authentication timeout                                        
-netlink: Operstate: linkmode=0, operstate=6                                     
-wlan0: CTRL-EVENT-TERMINATING
 
 changed from -Dwext to -Dnl80211
 
