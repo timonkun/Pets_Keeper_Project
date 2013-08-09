@@ -1,9 +1,0 @@
-/*
-    start.bit -- Startup Bit File for Embedthis Bit
- */
-
-Bit.load({
-    platforms: [
-        "linux-x64-release",
-    ],
-})
