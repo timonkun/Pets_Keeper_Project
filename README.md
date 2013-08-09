@@ -8,3 +8,4 @@ Implement these functions:
 1. Video Surveillance.
 2. Feeding control for pets.
 3. Fan control.
+4. Test GitHub Push
