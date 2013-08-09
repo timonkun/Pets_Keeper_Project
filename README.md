@@ -1,4 +1,4 @@
-webcam_project
+Pets_Keeper_Project
 ==============
 
 For smart home control system, based on Cortex-A8 development board and embedded Linux.
