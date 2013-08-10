@@ -1,0 +1,299 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>扩展程序 &mdash; 用Sphinx写书</title>
+    <link rel="stylesheet" href="_static/book.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/booktools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="用Sphinx写书" href="index.html" />
+    <link rel="next" title="Leo编辑器" href="leo.html" />
+    <link rel="prev" title="安装编辑环境" href="setup.html" /> 
+  </head>
+  <body lang="zh-Hans">
+    <div class="related">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="leo.html" title="Leo编辑器"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="setup.html" title="安装编辑环境"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="index.html">用Sphinx写书</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="id1">
+<h1>扩展程序<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>为了让最终的作品格式更美观和规范，我们提供了一些Sphinx插件程序和模板，本章对这些插件和模板进行介绍。为了让Sphinx能找到插件和模板，需要编辑书籍项目的配置文件“conf.py”中的路径设置。在此文件开头添加：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">_exts</span> <span class="o">=</span> <span class="s">&quot;../../exts&quot;</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">_exts</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>并修改HTML模板相关的配置：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">html_theme</span> <span class="o">=</span> <span class="s">&#39;book&#39;</span>
+<span class="n">html_theme_path</span> <span class="o">=</span> <span class="p">[</span><span class="n">_exts</span> <span class="o">+</span><span class="s">&quot;./theme&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="latex">
+<h2>LaTeX的编号<a class="headerlink" href="#latex" title="永久链接至标题">¶</a></h2>
+<div class="imagebox" style="background-image: url(_static/code.png)"><p>number_ref.py</p>
+<p>为LaTeX文件添加带编号的章节和插图参照，适合制作印刷版的PDF文档</p>
+</div><p>需要进行编号的插图使用以“fig”开头的标签，例如：</p>
+<div class="highlight-none"><div class="highlight"><pre>\ :ref:`fig-leo`\ 是Leo 4.9的界面截图。
+
+.. _fig-leo:
+
+.. figure:: images/leo.png
+    :width: 12.0cm
+
+    Leo的界面截图
+</pre></div>
+</div>
+<div class="imagebox" style="background-image: url(_static/tip.png)">在Leo编辑器中，可以输入“fig&gt;leo”并按CTRL+1，快速生成上面的代码。</div><p>需要进行引用的章节可以用以“sec”开头的标签，例如：</p>
+<div class="highlight-none"><div class="highlight"><pre>章节名
+======
+
+.. _sec-test:
+
+这是一个章节。
+
+这是一个引用：\ :ref:`sec-test`\ 。
+</pre></div>
+</div>
+<p>例如：关于书籍目录的相关说明请阅读<a class="reference internal" href="setup.html#sec-book-folder"><em>书籍目录</em></a>。</p>
+<div class="imagebox" style="background-image: url(_static/tip.png)">为了让章节标签包含在章节内部，本插件对以“sec”开头的标签进行特殊处理，因此可以在章节名之下定义标签。</div></div>
+<div class="section" id="id2">
+<h2>代码说明标签<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="imagebox" style="background-image: url(_static/code.png)"><p>number_label.py</p>
+<p>为代码添加如“❶❷”的说明标签</p>
+</div><p>为了对代码中的重要语句进行说明，本插件对代码中的“#❶”等进行处理。例如：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<span class="k">print</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span> <span class="c"><span class="prebc">#</span><span class="codenumber">❶</span></span>
+<span class="k">print</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span>  <span class="c"><span class="prebc">#</span><span class="codenumber">❷</span></span>
+</pre></div>
+</div>
+<p>❶输出当前路径，❷输出环境变量。</p>
+<div class="imagebox" style="background-image: url(_static/tip.png)">在Leo编辑器中，可以通过输入数字并按CTRL+1，快速输入“❶❷”等符号。如果通过“literalinclude”命令从外部文件载入代码段，则可以在代码中使用“#{1}”、“#{2}”等标签，它们会自动被转换为对应的数字符号。</div><div class="imagebox" style="background-image: url(_static/warning.png)">目前此功能只支持Python语言。</div></div>
+<div class="section" id="id3">
+<h2>带图标的块<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<div class="imagebox" style="background-image: url(_static/code.png)"><p>block.py</p>
+<p>可以在文章中间插入带图的块</p>
+</div><p>本扩展程序提供了5种图片块，例如：</p>
+<div class="highlight-none"><div class="highlight"><pre>.. ttip::
+
+    这个一个小提示。
+</pre></div>
+</div>
+<p>生成：</p>
+<div class="imagebox" style="background-image: url(_static/tip.png)">这个一个小提示。</div><div class="highlight-none"><div class="highlight"><pre>.. tcode::
+
+    example.py
+
+    这是一个例子程序
+</pre></div>
+</div>
+<p>生成：</p>
+<div class="imagebox" style="background-image: url(_static/code.png)"><p>example.py</p>
+<p>这是一个例子程序</p>
+</div><div class="highlight-none"><div class="highlight"><pre>.. twarning::
+
+    警告，如果你看到这个警告，那么请无视它。
+</pre></div>
+</div>
+<p>生成：</p>
+<div class="imagebox" style="background-image: url(_static/warning.png)">警告，如果你看到这个警告，那么请无视它。</div><div class="highlight-none"><div class="highlight"><pre>.. tlink::
+
+    http://hyry.dip.jp
+
+    欢迎访问我们的主页
+</pre></div>
+</div>
+<p>生成：</p>
+<div class="imagebox" style="background-image: url(_static/link.png)"><p><a class="reference external" href="http://hyry.dip.jp">http://hyry.dip.jp</a></p>
+<p>欢迎访问我们的主页</p>
+</div><div class="highlight-none"><div class="highlight"><pre>.. tanim::
+
+    demo.avi
+
+    这是一个动画演示文件
+</pre></div>
+</div>
+<p>生成：</p>
+<div class="imagebox" style="background-image: url(_static/anim.png)"><p>demo.avi</p>
+<p>这是一个动画演示文件</p>
+</div><p>为了添加新的图标块命令“tnews”，需要准备两个图标文件：“news.png”和“news.pdf”，将它们分别放到下面两个目录中：</p>
+<div class="highlight-none"><div class="highlight"><pre>exts\latexstyle\news.pdf
+exts\theme\book\static\news.png
+</pre></div>
+</div>
+<p>并编辑“block.py”文件，在其中的setup()中添加：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">app</span><span class="o">.</span><span class="n">add_directive</span><span class="p">(</span><span class="s">&#39;tnews&#39;</span><span class="p">,</span> <span class="n">MakeFileDirective</span><span class="p">(</span><span class="s">&quot;tnews&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="html">
+<h2>HTML的中文分词<a class="headerlink" href="#html" title="永久链接至标题">¶</a></h2>
+<div class="imagebox" style="background-image: url(_static/code.png)"><p>chinese_search.py</p>
+<p>增加HTML的中文搜索功能</p>
+</div><p>本扩展程序使用<a class="reference external" href="http://code.google.com/p/smallseg/">SmallSeg</a>对中文进行分词。</p>
+</div>
+<div class="section" id="id4">
+<h2>插入代码片段<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<div class="imagebox" style="background-image: url(_static/code.png)"><p>literal_include.py</p>
+<p>修改literalinclude命令，为其添加section选项，可从源程序中载入文件中的部分源代码</p>
+</div><p>例如程序“example.py”的内容如下：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Directive</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fake Directive class to allow Sphinx directives to be written in</span>
+<span class="sd">    class style.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">required_arguments</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">optional_arguments</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">final_argument_whitespace</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">option_spec</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">has_content</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="c">###1###</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">arguments</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">lineno</span><span class="p">,</span>
+                 <span class="n">content_offset</span><span class="p">,</span> <span class="n">block_text</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">state_machine</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arguments</span> <span class="o">=</span> <span class="n">arguments</span>  <span class="c"><span class="prebc">#</span><span class="codenumber">❶</span></span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="n">options</span>      <span class="c"><span class="prebc">#</span><span class="codenumber">❷</span></span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="n">content</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lineno</span> <span class="o">=</span> <span class="n">lineno</span>        <span class="c"><span class="prebc">#</span><span class="codenumber">❸</span></span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">content_offset</span> <span class="o">=</span> <span class="n">content_offset</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">block_text</span> <span class="o">=</span> <span class="n">block_text</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">state</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state_machine</span> <span class="o">=</span> <span class="n">state_machine</span>
+    <span class="c">###1###</span>
+    <span class="c">###2###</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s">&#39;Must override run() is subclass.&#39;</span><span class="p">)</span>
+    <span class="c">###2###</span>
+</pre></div>
+</div>
+<p>使用下面的命令可以载入其中以“###1###”包围的部分。</p>
+<div class="highlight-none"><div class="highlight"><pre>.. literalinclude:: codes/example.py
+    :section: 1
+</pre></div>
+</div>
+<p>结果为：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">arguments</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">lineno</span><span class="p">,</span>
+             <span class="n">content_offset</span><span class="p">,</span> <span class="n">block_text</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">state_machine</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">arguments</span> <span class="o">=</span> <span class="n">arguments</span>  <span class="c"><span class="prebc">#</span><span class="codenumber">❶</span></span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="n">options</span>      <span class="c"><span class="prebc">#</span><span class="codenumber">❷</span></span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="n">content</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">lineno</span> <span class="o">=</span> <span class="n">lineno</span>        <span class="c"><span class="prebc">#</span><span class="codenumber">❸</span></span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">content_offset</span> <span class="o">=</span> <span class="n">content_offset</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">block_text</span> <span class="o">=</span> <span class="n">block_text</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">state</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">state_machine</span> <span class="o">=</span> <span class="n">state_machine</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>自动选择图片<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<div class="imagebox" style="background-image: url(_static/code.png)"><p>image.py</p>
+<p>根据输出格式自动选择图像</p>
+</div><p>当figure命令的图像名参数以“.*”结尾时，Sphinx将根据输出格式选择合适的图像。例如输出HTML时优先选择PNG图像，而输出PDF时优先选择PDF图像。本扩展程序在此基础上，添加了通过文件名选择图像的功能。具体的使用方法请参考<a class="reference internal" href="tips.html#sec-tips-figure"><em>插图</em></a>。</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/cover_sphinx.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">內容目录</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">扩展程序</a><ul>
+<li><a class="reference internal" href="#latex">LaTeX的编号</a></li>
+<li><a class="reference internal" href="#id2">代码说明标签</a></li>
+<li><a class="reference internal" href="#id3">带图标的块</a></li>
+<li><a class="reference internal" href="#html">HTML的中文分词</a></li>
+<li><a class="reference internal" href="#id4">插入代码片段</a></li>
+<li><a class="reference internal" href="#id5">自动选择图片</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>上一个主题</h4>
+  <p class="topless"><a href="setup.html"
+                        title="上一章">安装编辑环境</a></p>
+  <h4>下一个主题</h4>
+  <p class="topless"><a href="leo.html"
+                        title="下一章">Leo编辑器</a></p>
+  <h3>本页</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/exts.txt"
+           rel="nofollow">显示源代码</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>快速搜索</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="搜索" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    输入相关的模块，术语，类或者函数名称进行搜索
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="leo.html" title="Leo编辑器"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="setup.html" title="安装编辑环境"
+             >上一页</a> |</li>
+        <li><a href="index.html">用Sphinx写书</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; 版权所有 2011, HYRY Studio.
+      使用 <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>
