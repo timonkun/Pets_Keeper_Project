@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>1.Message 格式</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-decoration: underline;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+		</style>
+	</head>
+	<body>
+
+<!-- Wiki content -->
+
+<h1>1.Message 格式</h1>
+<p>
+Created 星期六 03 八月 2013<br>
+<span class="zim-tag">@个人</span> <span class="zim-tag">@宠物机器人</span> <span class="zim-tag">@Message_Format</span> <span class="zim-tag">@草稿</span> <br>
+</p>
+
+<p>
+Message是writer/reader 和 DataCenter之间通信时，使用的数据格式。<strong>注意writer/reader和DataCenter之间的数据传输不使用此方式。</strong><br>
+</p>
+
+<h3>一、格式</h3>
+<p>
+{&lt;Module ID&gt;&lt;MSG priority&gt;&lt;MSG Type&gt;&lt;MSG Content&gt;}<br>
+</p>
+
+
+<h4>ID</h4>
+
+<p>
+    组件ID.因为消息队列是共享的,ID用来区分消息的发送者. ID 统一由ModuleManager管理.<br>
+</p>
+
+<h4>1.MSG Priority</h4>
+<p>
+    用于指定消息的优先级，提高消息的实时性。<br>
+    0：  致命的消息<br>
+    1：  错误<br>
+    2：  警告<br>
+    3：  高优先级的消息<br>
+    4：  正常优先级的消息   消息的默认优先级<br>
+    5：  低优先级的消息<br>
+<ul>
+<li style="list-style-image: url(file:///usr/share/zim/pixmaps/unchecked-box.png)">整个系统，对优先级的考虑 <span class="zim-tag">@宠物机器人</span> <span class="zim-tag">@优先级处理</span> </li>
+</ul>
+</p>
+
+<h4>2.MSG Type &amp; MSG Content</h4>
+<p>
+    消息类型。<br>
+<ul>
+<li>Register：  Writer向DataCenter注册MIME。其Content域格式如下：</li>
+</ul>
+        &lt;Class:Name:Size:Count;Class2:Name2:Size2:Count2;......&gt; <br>
+        Class  ： Writer产生的数据的类型。比如温度传感器writer所产生的数据，其类型可以定义为“温度”。<br>
+        Name ： 数据的名字。比如温度数据可以是室内的，也可以是宠物的体温。此信息用于区分同一Class下的不同传感器。<br>
+        Size     ： 数据的大小。<br>
+        Count ： 数据的个数。Size × Count 表示Writer向DataCenter申请的存储空间的大小。<br>
+    <strong>Return:</strong><br>
+        &lt;Success;Register;offset1:size2;offset2:size2;......&gt;<br>
+</p>
+
+<p>
+<ul>
+<li>Unregister：Writer向DataCenter取消MIME的注册。其Content域格式如下：</li>
+</ul>
+        &lt;Class:Name;Class2:Name2;......&gt;<br>
+    <strong>Return:</strong><br>
+        &lt;Success;Unregister;Class:Name;Class2:Name2;......&gt;<br>
+</p>
+
+<p>
+<ul>
+<li>Subscribe：Reader向DataCenter订阅数据。其Content域格式如下：</li>
+</ul>
+        &lt;Class:Name;Class2:name2;......&gt;<br>
+        Class,Name的含义与Register消息相同。返回结果中包含所订阅的数据的大小，如：&lt;Success:(Size1,Count1);(Size1,Count1);......&gt;<br>
+</p>
+
+<p>
+<ul>
+<li>Unsubscribe：Reader向DataCenter取消订阅。其Content域格式如下：</li>
+</ul>
+        &lt;Class:Name;Class:Name;......&gt;<br>
+</p>
+
+<p>
+<ul>
+<li>CheckPos  Writer通知DataCenter将有数据写入到指定位置。DataCenter检查Writer是否有写权限，此位置的数据是否正在被使用等。</li>
+</ul>
+        &lt;Class:Name:pos:count;Class2:Name2:pos2:count2&gt;<br>
+</p>
+   
+<p>
+<ul>
+<li>Write：Writer通知DataCenter有数据要写入。其Content域格式如下：</li>
+</ul>
+        &lt;Class:Name:index:Count;Class:Name:index:Count;...&gt;<br>
+        index：第一个有效的数据的位置。<br>
+        count：有效数据的个数。<br>
+</p>
+
+<p>
+<ul>
+<li>Read：DataCenter通知Reader其订阅的数据已经有效。其Content域格式如下：</li>
+</ul>
+        &lt;Class:Name:index:Count;Class:Name:index:Count;...&gt;<br>
+        index：第一个有效的数据的位置。<br>
+        count：有效数据的个数。<br>
+</p>
+
+<p>
+<ul>
+<li>Readed：Reader通知DataCenter数据已经读取，可以改变原来的数据。其Content域如下：</li>
+</ul>
+        &lt;Class:Name:Index:Count;Class:Name:Index:Count;....&gt;<br>
+</p>
+
+<p>
+<ul>
+<li>GetFreeList：Writer向DataCenter查询当前可用的空闲单元列表。其Content域如下：</li>
+</ul>
+        &lt;Class:Name;Class:name;...&gt;<br>
+    DataCenter返回的结果如下：<br>
+        &lt;<strong>Success</strong>;Class:Name:Index:Count;Class:Name:Index:Count;......&gt;<br>
+</p>
+
+<p>
+NoBackup：Writer通知DataCenter数据不用备份。其Content域如下：<br>
+    &lt;Class:Name;Class:Name&gt;<br>
+</p>
+
+<p>
+<ul>
+<li>Result：DataCenter向Writer/Reader返回消息的处理结果。其Content域格式如下：</li>
+</ul>
+        &lt;Result Type;MSG Type;Info&gt;<br>
+        Type：Success、Failed、Warning：非致命的错误，Writer可以决定是否忽略。<br>
+        Info：不同的Type，此值不一样。主要用来配合Type，让Writer/Reader更容易理解出错的原因。<br>
+</p>
+        
+
+
+<!-- End wiki content -->
+
+	</body>
+
+</html>

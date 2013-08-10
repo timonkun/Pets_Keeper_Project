@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>2.DataCenter数据处理</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-decoration: underline;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+		</style>
+	</head>
+	<body>
+
+<!-- Wiki content -->
+
+<h1>2.DataCenter数据处理</h1>
+<p>
+Created 星期六 03 八月 2013<br>
+</p>
+
+<p>
+目前的想法是，数据用共享内存处理。<br>
+Writer在注册时，DataCenter为其分配相应的内存。Writer将数据写入到内存后，通过Message通知DataCenter。<br>
+Reader在注册时，DataCenter将其订阅的MIME所对应的内存区域分配给Reader。有数据时，DataCenter通过Message通知Reader，Reader再从共享内存中读取相应的数据。<br>
+</p>
+
+<p>
+<img src="./DataCenterStorage.png" alt=""><br>
+</p>
+
+<p>
+上图为DataCenter中，数据保存的方式。Writer在注册时，向DataCentrer提供其所占用的空间大小，和该空间下最多可以存放多少个数据单元(Count)。<br>
+</p>
+
+<h2>一、初始化</h2>
+<p>
+    DataCenter在初始化时，创建一块合适大小的共享内存区域。此大小由ModuleManager设置。<br>
+</p>
+
+<h2>二、申请空间</h2>
+<p>
+     Writer通过Register消息，向DataCenter申请空间。Register的Content域中包含size和count变量，size表示每个数据单元的大小，count表示所申请空间中，最大能保存多少个数据单元。所以Writer向DataCenter所申请的空间大小为size*count.<br>
+       当分配成功时，DataCenter通过Result消息通知Writer，其Type域为Success，Info为(offset,size),即&lt;Success:offset,size&gt;。其中offset为所申请空间在共享内存中的偏移，size为申请到的大小。<br>
+       <strong>异常处理：</strong><br>
+       当DataCenter所剩空间太小，无法满足Writer的请求时， 尽量分配可能大的空间，并通过Result消息通知Writer，&lt;Warnning:offset,size&gt;。如果Writer接受此大小的空间，无需通知DataCenter。而不能接受，则用Unregister消息通知DataCenter删除该空间。<br>
+        当DataCenter空间用尽时，DataCenter应返回Error给Writer，&lt;Error:Data Space is full&gt;.  	<u>此时DataCenter应该如何处理？</u><br>
+</p>
+        
+
+<h2>三、写入</h2>
+<p>
+        Writer在申请空间成功后，DataCenter会将Writer所属的空间的偏移(offset)、大小(size)通知给Writer。Writer必须确保只访问此空间 [offset,offset+size] 。<br>
+        为了进一步保护DataCenter的数据，DataCenter必须控制各个Writer对共享内存的访问。在分配空间时，记录下能够对此空间访问的Writer ID。Writer必须通过统一的接口对共享内存访问，<br>
+    该接口会进行权限检查。<br>
+</p>
+
+<p>
+        <strong>边界问题</strong><br>
+        当写入的数据将要到达空间边界时，Writer将要从空间起始位置开始写，但是有可能起始位置的数据Reader正在引用。<br>
+        DataCenter中的数据，读取者只有DataCenter和Readers。当需要覆盖数据时，需要对以下两种情况处理：<br>
+<ol type="1" start="1" style='padding-left: 30pt'>
+<li>Reader还没有读取数据。</li>
+</ol>
+                通知所有的Reader数据将要被改写，尽快读取。<u>但是如果Reader的读取时间过长，导致在新的数据到达后，旧的数据还在使用。比如视频数据</u>。<br>
+                由DataCenter管理共享内存的使用，负责记录哪些单元可供Writer写入，哪些单元Reader正在读取。<br>
+                Writer在写数据之前，向DataCenter查询空闲单元列表(发送GetFreeList消息)，Writer根据需要写入的长度，选择合适的单元写入。当写入的数据个数超过空闲单元列表中最大的连续空<br>
+                间时，Writer应该将数据分割，多次发送。<br>
+                当Reader收到数据有效的通知后，应尽快读取数据，并通知DataCenter数据可以被Writer使用(发送Readed消息).Reader应该尽可能快得读取数据。<br>
+                当Reader长时间占用数据，导致Writer没有空间写入时，DataCenter将会发送FreeData消息给Reader，提醒Reader释放数据。如果Reader在指定时间内仍然没有释放，那么<br>
+                 DataCenter认为该Reader存在异常，将会通知ModuleManager Reset该Reader。<br>
+</p>
+
+<p>
+<ol type="1" start="2" style='padding-left: 30pt'>
+<li>DataCenter还没有完成数据备份。      </li>
+</ol>
+                 DataCenter优先完成该数据的备份。数据备份应该对Writer和Reader是透明的，故这种情况下Writer不用发送消息提醒DataCenter。<br>
+</p>
+
+<h2>四、读取</h2>
+<p>
+      Writer在写入数据后，通过Notify消息通知DataCenter，DataCenter通过Notify消息通知Reader。Reader在收到消息后，从指定Index中读取count个数据(index和count在Notify消息中指定)。<br>
+      Reader应该尽可能快地读取出数据，释放数据空间给Writer使用。当读完数据后，Reader应发送Readed消息给DataCenter。<br>
+      当Reader收到FreeData消息后，应优先读取FreeData中指定的数据。因为Writer在下一次写入时，就有可能用到这些数据空间。如果Reader无法在指定时间内完成读取，则会被ModuleManager重启。<br>
+</p>
+
+<h2>五、备份</h2>
+<p>
+        <strong>目标：</strong><br>
+<ol type="1" start="1" style='padding-left: 30pt'>
+<li>可选择性备份MIME。</li>
+<li>备份数据应该压缩，减少空间占用。</li>
+<li>备份格式应便于查询和统计。</li>
+<li>DataCenter最好不依赖于存储。使用共享内存或文件等，不需要知道。</li>
+<li>备份数据中应包含时间特性。</li>
+</ol>
+</p>
+
+
+<!-- End wiki content -->
+
+	</body>
+
+</html>
