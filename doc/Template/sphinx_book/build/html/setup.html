@@ -1,0 +1,203 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>安装编辑环境 &mdash; 用Sphinx写书</title>
+    <link rel="stylesheet" href="_static/book.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/booktools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="用Sphinx写书" href="index.html" />
+    <link rel="next" title="扩展程序" href="exts.html" />
+    <link rel="prev" title="用Sphinx写书" href="index.html" /> 
+  </head>
+  <body lang="zh-Hans">
+    <div class="related">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="exts.html" title="扩展程序"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="用Sphinx写书"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="index.html">用Sphinx写书</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="id1">
+<h1>安装编辑环境<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="pythonsphinx">
+<h2>Python和Sphinx<a class="headerlink" href="#pythonsphinx" title="永久链接至标题">¶</a></h2>
+<p>首先到Python的官方网站下载并安装2.6或2.7系列的Python运行环境。</p>
+<div class="imagebox" style="background-image: url(_static/link.png)"><p><a class="reference external" href="http://python.org/getit/">http://python.org/getit/</a></p>
+<p>Python的下载地址</p>
+</div><p>Sphinx是一套使用reStructuredText作为标记语言的文档生成工具。本环境所提供的所有插件均可在Sphinx v1.1.2中正常使用，如果需要单独升级Sphinx库，可以在控制台中输入如下命令：</p>
+<div class="highlight-none"><div class="highlight"><pre>easy_install -U sphinx
+</pre></div>
+</div>
+<p>如果高版本的Sphinx无法正确运行插件，请使用如下命令安装1.1.2版本的Sphinx：</p>
+<div class="highlight-none"><div class="highlight"><pre>easy_install sphinx==1.1.2
+</pre></div>
+</div>
+<div class="topic">
+<p class="topic-title first">reStructuredText</p>
+<p>restructuredText是一种简单易用的所见即所得的纯文本标记语法。可以通过转换工具将其转换为HTML、latex、PDF等多种格式。通常restructuredText的扩展名为&#8221;rst&#8221;。</p>
+</div>
+</div>
+<div class="section" id="leo">
+<h2>Leo<a class="headerlink" href="#leo" title="永久链接至标题">¶</a></h2>
+<p>Leo是一个用Python编写的提纲式程序编辑器，我们用它组织和编辑构成书籍内容的reStructuredText文档，并管理Sphinx的插件程序、HTML模板以及配置文档等。</p>
+<div class="imagebox" style="background-image: url(_static/link.png)"><p><a class="reference external" href="http://sourceforge.net/projects/leo/files/Leo/">http://sourceforge.net/projects/leo/files/Leo/</a></p>
+<p>Leo的下载地址，可以下载源程序版或打包版，由于系统中已经安装了Python环境，因此推荐安装源程序版</p>
+</div></div>
+<div class="section" id="miktex">
+<h2>MiKTeX<a class="headerlink" href="#miktex" title="永久链接至标题">¶</a></h2>
+<div class="imagebox" style="background-image: url(_static/link.png)"><p><a class="reference external" href="http://miktex.org/">http://miktex.org/</a></p>
+<p>MiKTex是一个Windows下的Tex编译环境，我们用它将Sphinx自动生成的LaTex源文件编译成PDF文件</p>
+</div><p>安装完成之后，执行：</p>
+<div class="highlight-none"><div class="highlight"><pre>xelatex sample.tex
+</pre></div>
+</div>
+<p>就可以将“sample.tex”编译成“sample.pdf”。</p>
+</div>
+<div class="section" id="id2">
+<span id="sec-book-folder"></span><h2>书籍目录<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="imagebox" style="background-image: url(_static/link.png)"><p><a class="reference external" href="http://hyry.dip.jp/files/books.zip">http://hyry.dip.jp/files/books.zip</a></p>
+<p>下载本书的编辑环境</p>
+</div><p>编写书籍项目的目录结构如下：</p>
+<div class="highlight-none"><div class="highlight"><pre>[books]
+    master.leo     -- 管理所有内容的leo文件
+    [exts]         -- 插件和模板
+    [sphinxbook]   -- 本书的文件夹
+    [xxxbook]      -- 其它书籍的文件夹
+</pre></div>
+</div>
+<p>其中exts文件夹中包含了所有Sphinx插件程序以及LaTex和HTML的模板。而其它文件夹均为Sphinx书籍的文件夹。每本书籍的目录结构如下：</p>
+<div class="highlight-none"><div class="highlight"><pre>[sphinxbook]
+    make.bat      -- 编译书籍的批处理脚本
+    [source]      -- 书籍的源文件
+        conf.py   -- 书籍配置
+        *.rst     -- 各个章节的reStructuredText文件
+        [images]  -- 保存所有插图的文件夹
+        [codes]   -- 保存所有代码的文件夹
+    [build]
+        [latex]   -- PDF的编译输出文件夹
+        [html]    -- HTML的编译输出文件夹
+</pre></div>
+</div>
+<p>在书籍文件夹下运行“make.bat html”命令将书籍编译成HTML格式，而运行“make.bat latex”则编译成LaTex格式。这些命令可以通过Leo的按钮工具栏(<a class="reference internal" href="leo.html#sec-leo-buttons"><em>按钮工具栏</em></a>)运行。</p>
+<div class="imagebox" style="background-image: url(_static/warning.png)">为了保证程序能正常运行，请保证所有路径中没有空格或中文。</div></div>
+<div class="section" id="id3">
+<h2>字体<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>使用合适的字体可以使编辑环境用起来更舒适，使书籍更容易阅读。在“master.leo”中使用“YaHei Mono”字体，它中文字体采用微软雅黑，英文字体采用等宽的Consolas字体。可以通过如下节点中的QT样式表修改Leo编辑器所使用的字体：</p>
+<div class="highlight-none"><div class="highlight"><pre>@chapters--&gt;@settings--&gt;qtGui plugin--&gt;@data qt-gui-plugin-style-sheet
+</pre></div>
+</div>
+<div class="imagebox" style="background-image: url(_static/link.png)"><p>yahei_mono.7z</p>
+<p>YaHei Mono字体：中文字体采用微软雅黑，英文字体采用等宽的Consolas字体</p>
+</div><p>书籍的HTML版本的字体可以通过书籍模板的样式表进行修改，而PDF版本的字体通过书籍配置文件“conf.py”中的latex_preamble配置进行修改，例如本书中采用如下字体配置：</p>
+<div class="highlight-none"><div class="highlight"><pre>\setCJKsansfont[BoldFont={STXihei},ItalicFont={STXihei}]{STXihei}
+\setCJKromanfont[BoldFont={STXihei},ItalicFont={STXihei}]{STXihei}
+\setCJKmainfont[BoldFont={STXihei},ItalicFont={STXihei}]{STXihei}
+\setCJKmonofont[BoldFont={STXihei},ItalicFont={STXihei}]{STXihei}
+</pre></div>
+</div>
+<p>STXihei字体的中文名为华文细黑，在网络上可以搜索到它的下载地址。</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/cover_sphinx.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">內容目录</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">安装编辑环境</a><ul>
+<li><a class="reference internal" href="#pythonsphinx">Python和Sphinx</a></li>
+<li><a class="reference internal" href="#leo">Leo</a></li>
+<li><a class="reference internal" href="#miktex">MiKTeX</a></li>
+<li><a class="reference internal" href="#id2">书籍目录</a></li>
+<li><a class="reference internal" href="#id3">字体</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>上一个主题</h4>
+  <p class="topless"><a href="index.html"
+                        title="上一章">用Sphinx写书</a></p>
+  <h4>下一个主题</h4>
+  <p class="topless"><a href="exts.html"
+                        title="下一章">扩展程序</a></p>
+  <h3>本页</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/setup.txt"
+           rel="nofollow">显示源代码</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>快速搜索</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="搜索" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    输入相关的模块，术语，类或者函数名称进行搜索
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="exts.html" title="扩展程序"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="用Sphinx写书"
+             >上一页</a> |</li>
+        <li><a href="index.html">用Sphinx写书</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; 版权所有 2011, HYRY Studio.
+      使用 <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

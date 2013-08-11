@@ -1,0 +1,171 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>用Sphinx写书 &mdash; 用Sphinx写书</title>
+    <link rel="stylesheet" href="_static/book.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/booktools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="用Sphinx写书" href="#" />
+    <link rel="next" title="安装编辑环境" href="setup.html" /> 
+  </head>
+  <body lang="zh-Hans">
+    <div class="related">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="setup.html" title="安装编辑环境"
+             accesskey="N">下一页</a> |</li>
+        <li><a href="#">用Sphinx写书</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="sphinx">
+<h1>用Sphinx写书<a class="headerlink" href="#sphinx" title="永久链接至标题">¶</a></h1>
+<p>写技术书是一件十分费时费力的事情，作者不但需要编写有趣的内容，还需要用标准且美观大方的格式呈现内容。在编写《Python科学计算》一书的过程中，我尝试使用Sphinx、Leo、MiKTeX等软件，拼凑出了一套适合编写技术书籍和文档的编写环境。这本书是关于这个编写环境的一些介绍。</p>
+<div class="topic">
+<p class="topic-title first">更新历史</p>
+<table border="1" class="docutils">
+<caption>本写书环境的更新历史</caption>
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">日期</th>
+<th class="head">描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>2011/12/05</td>
+<td>Sphinx 1.1.2已经支持多语言分词的接口，因此更新了chinese_search插件，以支持此接口</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">安装编辑环境</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#pythonsphinx">Python和Sphinx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#leo">Leo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#miktex">MiKTeX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#id2">书籍目录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#id3">字体</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exts.html">扩展程序</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exts.html#latex">LaTeX的编号</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exts.html#id2">代码说明标签</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exts.html#id3">带图标的块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exts.html#html">HTML的中文分词</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exts.html#id4">插入代码片段</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exts.html#id5">自动选择图片</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="leo.html">Leo编辑器</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="leo.html#id1">按钮工具栏</a></li>
+<li class="toctree-l2"><a class="reference internal" href="leo.html#id2">快速输入宏</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tips.html">解决方案</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tips.html#id2">表格</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tips.html#id3">插图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tips.html#id4">插入代码</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id1">
+<h1>索引<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><em>索引</em></a></li>
+<li><a class="reference internal" href="search.html"><em>搜索页面</em></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="#">
+              <img class="logo" src="_static/cover_sphinx.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="#">內容目录</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">用Sphinx写书</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#id1">索引</a></li>
+</ul>
+
+  <h4>下一个主题</h4>
+  <p class="topless"><a href="setup.html"
+                        title="下一章">安装编辑环境</a></p>
+  <h3>本页</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/index.txt"
+           rel="nofollow">显示源代码</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>快速搜索</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="搜索" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    输入相关的模块，术语，类或者函数名称进行搜索
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="setup.html" title="安装编辑环境"
+             >下一页</a> |</li>
+        <li><a href="#">用Sphinx写书</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; 版权所有 2011, HYRY Studio.
+      使用 <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

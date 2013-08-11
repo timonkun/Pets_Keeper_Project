@@ -1,0 +1,208 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>解决方案 &mdash; 用Sphinx写书</title>
+    <link rel="stylesheet" href="_static/book.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/booktools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="用Sphinx写书" href="index.html" />
+    <link rel="prev" title="Leo编辑器" href="leo.html" /> 
+  </head>
+  <body lang="zh-Hans">
+    <div class="related">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="leo.html" title="Leo编辑器"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="index.html">用Sphinx写书</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="id1">
+<h1>解决方案<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>本章列出一些在写书过程中经常会遇到的问题。</p>
+<div class="section" id="id2">
+<h2>表格<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<table border="1" class="docutils">
+<caption>Python中的常用类型</caption>
+<colgroup>
+<col width="20%" />
+<col width="40%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">类型</th>
+<th class="head">描述</th>
+<th class="head">例子</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>str</td>
+<td>一个由字符组成的不可更改的有串行。在Python 3.x里，字符串由Unicode字符组成。</td>
+<td>&#8216;Wikipedia&#8217;, &#8220;Wikipedia&#8221;</td>
+</tr>
+<tr class="row-odd"><td>bytes</td>
+<td>一个由字节组成的不可更改的有串行。</td>
+<td>b&#8217;Some ASCII&#8217;, b&#8221;Some ASCII&#8221;</td>
+</tr>
+<tr class="row-even"><td>list</td>
+<td>可以包含多种类型的可改变的有串行</td>
+<td>[4.0, &#8216;string&#8217;, True]</td>
+</tr>
+<tr class="row-odd"><td>tuple</td>
+<td>可以包含多种类型的不可改变的有串行</td>
+<td>(4.0, &#8216;string&#8217;, True)</td>
+</tr>
+<tr class="row-even"><td>set, frozenset</td>
+<td>与数学中集合的概念类似。无序的、每个元素唯一。</td>
+<td>{4.0, &#8216;string&#8217;, True}, frozenset([4.0, &#8216;string&#8217;, True])</td>
+</tr>
+<tr class="row-odd"><td>dict</td>
+<td>一个可改变的由键值对组成的无串行。</td>
+<td>{&#8216;key1&#8217;: 1.0, 3: False}</td>
+</tr>
+<tr class="row-even"><td>int</td>
+<td>精度不限的整数</td>
+<td>42</td>
+</tr>
+<tr class="row-odd"><td>float</td>
+<td>浮点数。精度与系统相关。</td>
+<td>3.1415927</td>
+</tr>
+<tr class="row-even"><td>complex</td>
+<td>复数</td>
+<td>3+2.7j</td>
+</tr>
+<tr class="row-odd"><td>bool</td>
+<td>逻辑值。</td>
+<td>只有两个值：True和False</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<span id="sec-tips-figure"></span><h2>插图<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p id="sec-tips-figure">当图像文件名以&#8221;.*&#8221;结尾时，将根据输出格式自动选择图像文件。例如，<a class="reference internal" href="#fig-fftexamplerectangle"><em>用正弦波合成矩形波</em></a>采用的文件名为“.*”，它对应两个文件：“fft_example_rectangle.png”和“fft_example_rectangle.pdf”。输出HTML时将选用PNG文件，而输出PDF时将选用PDF文件。</p>
+<div class="highlight-none"><div class="highlight"><pre>.. figure:: images/fft_example_rectangle.*
+</pre></div>
+</div>
+<div class="figure" id="fig-fftexamplerectangle">
+<img alt="_images/fft_example_rectangle.png" src="_images/fft_example_rectangle.png" style="width: 14.0cm;" />
+<p class="caption">用正弦波合成矩形波</p>
+</div>
+<p><a class="reference internal" href="#fig-numpyaccess2d"><em>二维NumPy数组的下标存取</em></a>采用的文件名为“numpy_access2d.*”，对应两个文件：“numpy_access2d.html.png”和“numpy_access2d.latex.png”。</p>
+<div class="highlight-none"><div class="highlight"><pre>.. figure:: images/numpy_access2d.*
+</pre></div>
+</div>
+<div class="figure" id="fig-numpyaccess2d">
+<img alt="_images/numpy_access2d.html.png" src="_images/numpy_access2d.html.png" style="width: 12.0cm;" />
+<p class="caption">二维NumPy数组的下标存取</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>插入代码<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<div class="highlight-python"><pre>class Directive(object):
+    Fake Directive class to allow Sphinx directives to be written in
+    class style.
+    """
+</pre>
+</div>
+<div class="highlight-matlab"><div class="highlight"><pre><span class="c">%DOCLINK - Provide windows dir HREF text(clipboard)</span>
+
+<span class="n">string_temp_ahead</span> <span class="p">=</span> <span class="n">fullfile</span><span class="p">(</span><span class="s">&#39;jar:file:///&#39;</span><span class="p">,</span> <span class="n">matlabroot</span><span class="p">,</span> <span class="s">&#39;help&#39;</span><span class="p">);</span>
+
+<span class="n">clipboard</span><span class="p">(</span><span class="s">&#39;copy&#39;</span><span class="p">,</span> <span class="n">href_for_codelib</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/cover_sphinx.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">內容目录</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">解决方案</a><ul>
+<li><a class="reference internal" href="#id2">表格</a></li>
+<li><a class="reference internal" href="#id3">插图</a></li>
+<li><a class="reference internal" href="#id4">插入代码</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>上一个主题</h4>
+  <p class="topless"><a href="leo.html"
+                        title="上一章">Leo编辑器</a></p>
+  <h3>本页</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/tips.txt"
+           rel="nofollow">显示源代码</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>快速搜索</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="搜索" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    输入相关的模块，术语，类或者函数名称进行搜索
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="leo.html" title="Leo编辑器"
+             >上一页</a> |</li>
+        <li><a href="index.html">用Sphinx写书</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; 版权所有 2011, HYRY Studio.
+      使用 <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>
