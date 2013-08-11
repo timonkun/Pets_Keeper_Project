@@ -6,7 +6,12 @@
 #include <sys/wait.h>
 
 #define CONFIG_FILE "control.txt"
-#define URL_PATH  "http://timonkun.me/webcam/control.txt"
+#define URL_PATH   "http://kaffeel.org/timeonkun/control.txt"
+//"http://timonkun.me/webcam/control.txt"
+#define CAR_IN1    "/sys/devices/platform/qt210_gpio_ctl/gph3_0"
+#define CAR_IN2    "/sys/devices/platform/qt210_gpio_ctl/gph3_1"
+#define CAR_IN3    "/sys/devices/platform/qt210_gpio_ctl/gph3_2"
+#define CAR_IN4    "/sys/devices/platform/qt210_gpio_ctl/gph3_3"
 
 typedef struct{
 	char pKeyword[40];
@@ -17,18 +22,29 @@ typedef struct{
 	int iCtrl_webcam;
 	int iCtrl_fan;
 	int iCtrl_feed;
+    int iCtrl_car;
 } Control_Struct;
 
 enum ctrl_code {
 CTRL_CLOSE,  //0
 CTRL_OPEN,
+};
 
+enum car_ctrl_code {
+    CAR_CTRL_STOP,      //0
+    CAR_CTRL_FORWARD,   //1
+    CAR_CTRL_BACKWARD,  //2
+    CAR_CTRL_LEFT,      //3
+    CAR_CTRL_RIGHT,     //4
+    CAR_CTRL_CENTER_LEFT,   //5
+    CAR_CTRL_CENTER_RIGHT,  //6
 };
 
 enum ctrl_mode {
 MODE_WEBCAM,  //0
 MODE_FAN,
 MODE_FEED,
+MODE_CAR,
 MODE_MAX,
 };
 
@@ -36,16 +52,18 @@ Control_Struct cur_ctrl = {
 0,	// iCtrl_webcam 
 0,	// iCtrl_fan
 0,	// iCtrl_feed
+0,  // iCtrl_car
 };
 
 Control_Struct last_ctrl = {
-	0, 0, 0,
+	0, 0, 0, 0,
 };
 
 static Keyword_Struct config_keyword[] = {
 {"<CTRL_MODE_WEBCAM>", 1},  //0
 {"<CTRL_MODE_FAN>",    1},
 {"<CTRL_MODE_FEED>",   1},
+{"<CTRL_MODE_CAR>",    1},
 };
 
 int compare_update(void);
@@ -55,15 +73,36 @@ void download_config_file(void);
 int webcam_operation(int ctrl_code);
 int fan_operation(int ctrl_code);
 int feed_operation(int ctrl_code);
+int car_operation(int ctrl_code);
 
 int main(int argc, char **argv)
 {
-	
+    char *separateur;
+    char *sleep_time_string  = NULL;
+	int sleep_time = 1;
+    int i;
+    
+    for (i = 1; i < argc; i++) 
+    {
+        /* skip bad arguments */
+		if (argv[i] == NULL || *argv[i] == 0 || *argv[i] != '-') {
+		    continue;
+		}
+        if (strcmp(argv[i], "-s") == 0) {   // sleep
+		    if (i + 1 >= argc) {
+			printf("No parameter specified with -s, aborting.\n");
+			exit(1);
+		    }
+            sleep_time_string = strdup(argv[i + 1]);
+            sleep_time = strtoul(sleep_time_string, &separateur, 10);
+		}
+    }
+    
 	while(1)
 	{
 		download_config_file();
 		compare_update();	// don't compare the entire file, compare the values.
-		sleep(3);
+		sleep(sleep_time);
 	}
 
 	return 0;
@@ -91,6 +130,7 @@ void remove_config_file(void)
 
 void download_config_file(void)
 {
+#if 1
 	pid_t pid;
 
 	pid = fork();
@@ -108,7 +148,12 @@ void download_config_file(void)
 	}
 	pid = wait(NULL);
 	//if(pid > 0)
-		//printf("wget exit success.\n");
+	//	printf("wget exit success.\n");
+#else
+    
+    system("wget -O control.txt -q http://timonkun.me/webcam/control.txt");
+    printf("wget success.\n");
+#endif
 }
 
 int load_config_data(Control_Struct *tmp_ctrl)
@@ -145,6 +190,8 @@ int load_config_data(Control_Struct *tmp_ctrl)
 							break;
 						case MODE_FEED:
 							tmp_ctrl->iCtrl_feed = atoi(str_value);
+                        case MODE_CAR:
+							tmp_ctrl->iCtrl_car = atoi(str_value);
 							break;
 						default:
 							printf("[%s] Error. index=%d", __func__, index);
@@ -175,16 +222,13 @@ int load_config_data(Control_Struct *tmp_ctrl)
 
 void start_webcam(void)
 {
-	system("ffserver -f ffserver.conf &");
-	sleep(1);
-	system("ffmpeg -f v4l2 -preset utralfast -tune zerolatency -i /dev/video0 http://localhost:8090/cam1.ffm cam`date +\"%I-%M-%S\"`.mpeg &");
+	system("sh /samples/mjpg-streamer/start.sh &");
 	printf("%s\n", __func__);
 }
 
 void stop_webcam()
 {
-	system("sh pkill.sh ffserver");
-	system("sh pkill.sh ffmpeg");
+	system("sh /samples/pkill.sh mjpg_streamer");
 	printf("%s\n", __func__);
 }
 
@@ -201,6 +245,7 @@ int webcam_operation(int ctrl_code)
 			start_webcam();
 			break;
 		default:
+            printf("[%s] ERR: out of range. ctrl_code=%d\n", __func__, ctrl_code);
 			break;
 	}
 	return 0;
@@ -219,12 +264,80 @@ int feed_operation(int ctrl_code)
 	return 0;
 }
 
+/***
+ * #define CAR_IN1    "/sys/devices/platform/qt210_gpio_ctl/gph3_0"
+ * #define CAR_IN2    "/sys/devices/platform/qt210_gpio_ctl/gph3_1"
+ * #define CAR_IN3    "/sys/devices/platform/qt210_gpio_ctl/gph3_2"
+ * #define CAR_IN4    "/sys/devices/platform/qt210_gpio_ctl/gph3_3"
+ ***/
+int car_operation(int ctrl_code)
+{
+    
+    switch(ctrl_code)
+    {
+        case CAR_CTRL_STOP: //0
+            system("echo 0 > /sys/devices/platform/qt210_gpio_ctl/gph3_0");
+            system("echo 0 > /sys/devices/platform/qt210_gpio_ctl/gph3_1");
+            system("echo 0 > /sys/devices/platform/qt210_gpio_ctl/gph3_2");
+            system("echo 0 > /sys/devices/platform/qt210_gpio_ctl/gph3_3");
+            printf("%s: CAR_CTRL_STOP\n", __func__);
+            break;
+        case CAR_CTRL_FORWARD:  //1
+            system("echo 1 > /sys/devices/platform/qt210_gpio_ctl/gph3_0");
+            system("echo 0 > /sys/devices/platform/qt210_gpio_ctl/gph3_1");
+            system("echo 1 > /sys/devices/platform/qt210_gpio_ctl/gph3_2");
+            system("echo 0 > /sys/devices/platform/qt210_gpio_ctl/gph3_3");
+            printf("%s: CAR_CTRL_FORWARD\n", __func__);
+            break;
+        case CAR_CTRL_BACKWARD: //2
+            system("echo 0 > /sys/devices/platform/qt210_gpio_ctl/gph3_0");
+            system("echo 1 > /sys/devices/platform/qt210_gpio_ctl/gph3_1");
+            system("echo 0 > /sys/devices/platform/qt210_gpio_ctl/gph3_2");
+            system("echo 1 > /sys/devices/platform/qt210_gpio_ctl/gph3_3");
+            printf("%s: CAR_CTRL_BACKWARD\n", __func__);
+            break;
+        case CAR_CTRL_LEFT: //3
+            system("echo 1 > /sys/devices/platform/qt210_gpio_ctl/gph3_0");
+            system("echo 0 > /sys/devices/platform/qt210_gpio_ctl/gph3_1");
+            system("echo 0 > /sys/devices/platform/qt210_gpio_ctl/gph3_2");
+            system("echo 1 > /sys/devices/platform/qt210_gpio_ctl/gph3_3");
+            printf("%s: CAR_CTRL_LEFT\n", __func__);
+            break;
+        case CAR_CTRL_RIGHT:    //4
+            system("echo 0 > /sys/devices/platform/qt210_gpio_ctl/gph3_0");
+            system("echo 1 > /sys/devices/platform/qt210_gpio_ctl/gph3_1");
+            system("echo 1 > /sys/devices/platform/qt210_gpio_ctl/gph3_2");
+            system("echo 0 > /sys/devices/platform/qt210_gpio_ctl/gph3_3");
+            printf("%s: CAR_CTRL_RIGHT\n", __func__);
+            break;
+        case CAR_CTRL_CENTER_LEFT: //5
+            system("echo 1 > /sys/devices/platform/qt210_gpio_ctl/gph3_0");
+            system("echo 0 > /sys/devices/platform/qt210_gpio_ctl/gph3_1");
+            system("echo 1 > /sys/devices/platform/qt210_gpio_ctl/gph3_2");
+            system("echo 1 > /sys/devices/platform/qt210_gpio_ctl/gph3_3");
+            printf("%s: CAR_CTRL_CENTER_LEFT\n", __func__);
+            break;
+        case CAR_CTRL_CENTER_RIGHT:    //6
+            system("echo 1 > /sys/devices/platform/qt210_gpio_ctl/gph3_0");
+            system("echo 1 > /sys/devices/platform/qt210_gpio_ctl/gph3_1");
+            system("echo 1 > /sys/devices/platform/qt210_gpio_ctl/gph3_2");
+            system("echo 0 > /sys/devices/platform/qt210_gpio_ctl/gph3_3");
+            printf("%s: CAR_CTRL_CENTER_RIGHT\n", __func__);
+            break;
+        default:
+            printf("[%s] ERR: out of range. ctrl_code=%d\n", __func__, ctrl_code);
+            break;
+    }
+    
+	return 0;
+}
+
 // read config file, compare the ctrl values.
 int compare_update(void)
 {
 	load_config_data(&cur_ctrl);
-	//printf("webcam=%d, fan=%d, feed=%d\n", cur_ctrl.iCtrl_webcam, \
-			cur_ctrl.iCtrl_fan, cur_ctrl.iCtrl_feed);
+	printf("webcam=%d, fan=%d, feed=%d, car=%d\n", cur_ctrl.iCtrl_webcam, \
+			cur_ctrl.iCtrl_fan, cur_ctrl.iCtrl_feed, cur_ctrl.iCtrl_car);
 
 	if(cur_ctrl.iCtrl_webcam != last_ctrl.iCtrl_webcam)
 	{
@@ -248,6 +361,14 @@ int compare_update(void)
 				last_ctrl.iCtrl_feed, cur_ctrl.iCtrl_feed);
 		feed_operation(cur_ctrl.iCtrl_feed);
 		last_ctrl.iCtrl_feed = cur_ctrl.iCtrl_feed;
+	}
+    
+    if(cur_ctrl.iCtrl_car != last_ctrl.iCtrl_car)
+	{
+		//printf("last_ctrl.car=%d, cur_ctrl.car=%d\n", 
+		//		last_ctrl.iCtrl_car, cur_ctrl.iCtrl_car);
+		car_operation(cur_ctrl.iCtrl_car);
+		last_ctrl.iCtrl_car = cur_ctrl.iCtrl_car;
 	}
 
 	return 0;

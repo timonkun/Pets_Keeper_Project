@@ -6,3 +6,6 @@
 
 <CTRL_MODE_FEED>
 1
+
+<CTRL_MODE_CAR>
+1
