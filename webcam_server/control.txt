@@ -1,5 +1,5 @@
 <CTRL_MODE_WEBCAM>
-1
+0
 
 <CTRL_MODE_FAN>
 1
@@ -8,4 +8,4 @@
 1
 
 <CTRL_MODE_CAR>
-1
+2

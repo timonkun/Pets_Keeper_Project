@@ -6,7 +6,7 @@ all : x86 arm
 arm : webcam_server.arm
 
 webcam_server.arm : webcam_server.c
-	$(CROSS_CC) $< -o $@
+	$(CROSS_CC) -Wall $< -o $@
 
 x86 : webcam_server
 

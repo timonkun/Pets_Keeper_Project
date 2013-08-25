@@ -6,8 +6,10 @@
 #include <sys/wait.h>
 
 #define CONFIG_FILE "control.txt"
-#define URL_PATH   "http://kaffeel.org/timeonkun/control.txt"
-//"http://timonkun.me/webcam/control.txt"
+
+#define URL_PATH   "http://timonkun.me/webcam/control.txt"
+//"http://kaffeel.org/timeonkun/control.txt"
+//
 #define CAR_IN1    "/sys/devices/platform/qt210_gpio_ctl/gph3_0"
 #define CAR_IN2    "/sys/devices/platform/qt210_gpio_ctl/gph3_1"
 #define CAR_IN3    "/sys/devices/platform/qt210_gpio_ctl/gph3_2"
@@ -101,8 +103,8 @@ int main(int argc, char **argv)
 	while(1)
 	{
 		download_config_file();
+        sleep(sleep_time);
 		compare_update();	// don't compare the entire file, compare the values.
-		sleep(sleep_time);
 	}
 
 	return 0;
@@ -130,15 +132,19 @@ void remove_config_file(void)
 
 void download_config_file(void)
 {
-#if 1
+#if 0
 	pid_t pid;
 
 	pid = fork();
 	switch(pid)
 	{
 		case 0:
+        #if 0
 			execlp("wget", "wget", /*"-N",*/ "-O", CONFIG_FILE, "-q", \
 					URL_PATH, NULL);
+        #else
+            execlp("cp", "cp", "/mnt/mjpg-streamer/control.txt", "./control.txt", NULL);
+        #endif
 			break;
 		case -1:
 			perror("fork error.");
@@ -148,11 +154,12 @@ void download_config_file(void)
 	}
 	pid = wait(NULL);
 	//if(pid > 0)
-	//	printf("wget exit success.\n");
+	//	printf("execlp exit success!!!\n");
 #else
     
-    system("wget -O control.txt -q http://timonkun.me/webcam/control.txt");
-    printf("wget success.\n");
+    //system("wget -O control.txt -q http://timonkun.me/webcam/control.txt");
+    system("cp /mnt/mjpg-streamer/control.txt ./control.txt");
+    //printf("download success!!!\n");
 #endif
 }
 
@@ -161,8 +168,11 @@ int load_config_data(Control_Struct *tmp_ctrl)
 	int i, index, string_len;
 	char string[256];
 	char str_value[16];
-	int  ctrl_value;
-
+	//int  ctrl_value;
+    
+    system("umount /mnt");
+    system("mount -t nfs -o nolock 192.168.2.213:/home/nfs /mnt");
+    
 	FILE *fp = fopen(CONFIG_FILE, "r");
 	if(NULL == fp)
 	{
@@ -197,8 +207,8 @@ int load_config_data(Control_Struct *tmp_ctrl)
 							printf("[%s] Error. index=%d", __func__, index);
 							exit(1);
 					}
-					//printf("%s: %d\n%d\n", string, \
-						config_keyword[index].iItemNum, atoi(str_value));
+					//printf("%s: %d\n%d\n", string, 
+					//	config_keyword[index].iItemNum, atoi(str_value));
 				}
 				else
 				{
@@ -336,36 +346,36 @@ int car_operation(int ctrl_code)
 int compare_update(void)
 {
 	load_config_data(&cur_ctrl);
-	printf("webcam=%d, fan=%d, feed=%d, car=%d\n", cur_ctrl.iCtrl_webcam, \
-			cur_ctrl.iCtrl_fan, cur_ctrl.iCtrl_feed, cur_ctrl.iCtrl_car);
+	//printf("webcam=%d, fan=%d, feed=%d, car=%d\n", cur_ctrl.iCtrl_webcam, 
+	//		cur_ctrl.iCtrl_fan, cur_ctrl.iCtrl_feed, cur_ctrl.iCtrl_car);
 
 	if(cur_ctrl.iCtrl_webcam != last_ctrl.iCtrl_webcam)
 	{
-		//printf("last_ctrl.webcam=%d, cur_ctrl.webcam=%d\n", \
-				last_ctrl.iCtrl_webcam, cur_ctrl.iCtrl_webcam);
+		//printf("last_ctrl.webcam=%d, cur_ctrl.webcam=%d\n", 
+		//		last_ctrl.iCtrl_webcam, cur_ctrl.iCtrl_webcam);
 		webcam_operation(cur_ctrl.iCtrl_webcam);
 		last_ctrl.iCtrl_webcam = cur_ctrl.iCtrl_webcam;
 	}
 
 	if(cur_ctrl.iCtrl_fan != last_ctrl.iCtrl_fan)
 	{
-		//printf("last_ctrl.fan=%d, cur_ctrl.fan=%d\n", \
-				last_ctrl.iCtrl_fan, cur_ctrl.iCtrl_fan);
+		//printf("last_ctrl.fan=%d, cur_ctrl.fan=%d\n", 
+		//		last_ctrl.iCtrl_fan, cur_ctrl.iCtrl_fan);
 		fan_operation(cur_ctrl.iCtrl_fan);
 		last_ctrl.iCtrl_fan = cur_ctrl.iCtrl_fan;
 	}
 
 	if(cur_ctrl.iCtrl_feed != last_ctrl.iCtrl_feed)
 	{
-		//printf("last_ctrl.feed=%d, cur_ctrl.feed=%d\n", \
-				last_ctrl.iCtrl_feed, cur_ctrl.iCtrl_feed);
+		//printf("last_ctrl.feed=%d, cur_ctrl.feed=%d\n", 
+		//		last_ctrl.iCtrl_feed, cur_ctrl.iCtrl_feed);
 		feed_operation(cur_ctrl.iCtrl_feed);
 		last_ctrl.iCtrl_feed = cur_ctrl.iCtrl_feed;
 	}
     
     if(cur_ctrl.iCtrl_car != last_ctrl.iCtrl_car)
 	{
-		//printf("last_ctrl.car=%d, cur_ctrl.car=%d\n", 
+		//printf("last_ctrl.car=%d, cur_ctrl.car=%d\n",  
 		//		last_ctrl.iCtrl_car, cur_ctrl.iCtrl_car);
 		car_operation(cur_ctrl.iCtrl_car);
 		last_ctrl.iCtrl_car = cur_ctrl.iCtrl_car;
