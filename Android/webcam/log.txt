@@ -1,0 +1,29 @@
+12-06 10:32:44.148: I/System.out(2735): SocketThread running!
+12-06 10:32:44.148: I/System.out(2735): type:login	user_name:mobile	private_ip:127.0.0.1	private_port:4321
+12-06 10:32:44.460: I/System.out(2735): info#mobile login in successful , the info from server  LEN=54
+12-06 10:32:44.460: I/System.out(2735): info@
+12-06 10:32:44.460: I/System.out(2735): mobile login in successful , the info from server
+12-06 10:32:44.460: I/System.out(2735): getalluser#username:robot pub_ip:113.109.19.44 pub_por  LEN=54
+12-06 10:32:44.460: I/System.out(2735): getalluser@
+12-06 10:32:44.460: W/System.err(2735): java.lang.ArrayIndexOutOfBoundsException: length=1; index=1
+12-06 10:32:44.460: W/System.err(2735): 	at com.samsung.webcam.SocketThread.run(SocketThread.java:88)
+12-06 10:32:44.460: W/System.err(2735): 	at java.lang.Thread.run(Thread.java:856)
+12-06 10:33:27.523: D/AndroidRuntime(2735): Shutting down VM
+12-06 10:33:27.523: W/dalvikvm(2735): threadid=1: thread exiting with uncaught exception (group=0x40be41f8)
+12-06 10:33:27.546: E/AndroidRuntime(2735): FATAL EXCEPTION: main
+12-06 10:33:27.546: E/AndroidRuntime(2735): java.lang.NullPointerException
+12-06 10:33:27.546: E/AndroidRuntime(2735): 	at com.samsung.webcam.UserName.isNull(UserName.java:30)
+12-06 10:33:27.546: E/AndroidRuntime(2735): 	at com.samsung.webcam.SocketUDPClient.registerClient(SocketUDPClient.java:60)
+12-06 10:33:27.546: E/AndroidRuntime(2735): 	at com.samsung.webcam.MainActivity$2.onClick(MainActivity.java:82)
+12-06 10:33:27.546: E/AndroidRuntime(2735): 	at android.view.View.performClick(View.java:3558)
+12-06 10:33:27.546: E/AndroidRuntime(2735): 	at android.widget.CompoundButton.performClick(CompoundButton.java:101)
+12-06 10:33:27.546: E/AndroidRuntime(2735): 	at android.view.View$PerformClick.run(View.java:14152)
+12-06 10:33:27.546: E/AndroidRuntime(2735): 	at android.os.Handler.handleCallback(Handler.java:605)
+12-06 10:33:27.546: E/AndroidRuntime(2735): 	at android.os.Handler.dispatchMessage(Handler.java:92)
+12-06 10:33:27.546: E/AndroidRuntime(2735): 	at android.os.Looper.loop(Looper.java:137)
+12-06 10:33:27.546: E/AndroidRuntime(2735): 	at android.app.ActivityThread.main(ActivityThread.java:4514)
+12-06 10:33:27.546: E/AndroidRuntime(2735): 	at java.lang.reflect.Method.invokeNative(Native Method)
+12-06 10:33:27.546: E/AndroidRuntime(2735): 	at java.lang.reflect.Method.invoke(Method.java:511)
+12-06 10:33:27.546: E/AndroidRuntime(2735): 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:790)
+12-06 10:33:27.546: E/AndroidRuntime(2735): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:557)
+12-06 10:33:27.546: E/AndroidRuntime(2735): 	at dalvik.system.NativeStart.main(Native Method)

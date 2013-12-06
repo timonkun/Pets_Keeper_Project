@@ -1,0 +1,76 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="36dp"
+        android:padding="@dimen/padding_medium"
+        android:text="@string/webcam"
+        tools:context=".MainActivity" />
+
+    <ToggleButton
+        android:id="@+id/toggleWebcamBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/textView1"
+        android:layout_marginRight="52dp"
+        android:text="@string/webcam_btn" />
+
+    <ToggleButton
+        android:id="@+id/toggleFanBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/toggleWebcamBtn"
+        android:layout_below="@+id/toggleWebcamBtn"
+        android:layout_marginTop="44dp"
+        android:text="@string/fan_btn" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/toggleFanBtn"
+        android:layout_alignBottom="@+id/toggleFanBtn"
+        android:layout_alignLeft="@+id/textView1"
+        android:padding="@dimen/padding_medium"
+        android:text="@string/fan"
+        tools:context=".MainActivity" />
+
+    <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView01"
+        android:layout_below="@+id/toggleFanBtn"
+        android:layout_marginTop="54dp"
+        android:padding="@dimen/padding_medium"
+        android:text="@string/feed"
+        tools:context=".MainActivity" />
+
+    <ToggleButton
+        android:id="@+id/toggleFeedBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/TextView02"
+        android:layout_alignBottom="@+id/TextView02"
+        android:layout_alignLeft="@+id/toggleFanBtn"
+        android:text="@string/feed_btn" />
+
+    <Button
+        android:id="@+id/updateBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toggleFeedBtn"
+        android:layout_marginTop="43dp"
+        android:layout_toRightOf="@+id/textView1"
+        android:text="UPDATE" />
+
+</RelativeLayout>
